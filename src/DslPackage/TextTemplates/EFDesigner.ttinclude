@@ -642,7 +642,7 @@ void WritePersistentProperties(ModelClass modelClass)
       {
          Output("/// <summary>");
          if (segments.Any())
-            WriteCommentBody($"{string.Join(", ", segments)}");
+            WriteCommentBody(string.Join(", ", segments) + (string.IsNullOrEmpty(modelAttribute.Summary) ? "" : "<br/>"));
          if (!string.IsNullOrEmpty(modelAttribute.Summary))
             WriteCommentBody(modelAttribute.Summary);
          Output("/// </summary>");
@@ -776,13 +776,6 @@ void WriteCalculatedProperties(ModelClass modelClass)
    }
 }
 
-//string CamelCase(string str)
-//{
-//   if (str.Length == 0) 
-//      return str;
-//   return str.Substring(0,1).ToLower() + str.Substring(1);
-//}
-
 void WritePersistentNavigationProperties(ModelClass modelClass, bool requireVirtual)
 {
    if (!modelClass.LocalNavigationProperties().Any(x => x.AssociationObject.Persistent))
@@ -800,7 +793,7 @@ void WritePersistentNavigationProperties(ModelClass modelClass, bool requireVirt
                         ? $"ICollection<{navigationProperty.ClassType.FullName}>"
                         : navigationProperty.ClassType.FullName;
 
-      if (modelClass.ImplementNotify && !navigationProperty.IsCollection)
+      if ((modelClass.ImplementNotify || !navigationProperty.IsAutoProperty) && !navigationProperty.IsCollection)
       {
          Output($"protected {type} _{navigationProperty.PropertyName};");
          Output($"partial void Set{navigationProperty.PropertyName}({type} oldValue, ref {type} newValue);");
@@ -812,17 +805,14 @@ void WritePersistentNavigationProperties(ModelClass modelClass, bool requireVirt
       List<string> comments = new List<string>();
       if (navigationProperty.Required)
          comments.Add("Required");
-      string comment = comments.Count > 0 ? string.Join(", ", comments) : string.Empty;
       string _virtual = requireVirtual ? "virtual " : string.Empty;
 
-      if (!string.IsNullOrEmpty(navigationProperty.Summary) || !string.IsNullOrEmpty(comment))
+      if (!string.IsNullOrEmpty(navigationProperty.Summary) || comments.Any())
       {
          Output("/// <summary>");
-         if (!string.IsNullOrEmpty(comment) && !string.IsNullOrEmpty(navigationProperty.Summary)) 
-            comment = comment + "<br/>";
-         if (!string.IsNullOrEmpty(comment)) 
-            WriteCommentBody(comment);
-         if (!string.IsNullOrEmpty(navigationProperty.Summary)) 
+         if (comments.Any())
+            WriteCommentBody(string.Join(", ", comments) + (string.IsNullOrEmpty(navigationProperty.Summary) ? "" : "<br/>"));
+         if (!string.IsNullOrEmpty(navigationProperty.Summary))
             WriteCommentBody(navigationProperty.Summary);
          Output("/// </summary>");
       }

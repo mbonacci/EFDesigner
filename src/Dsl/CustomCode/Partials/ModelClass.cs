@@ -124,7 +124,8 @@ namespace Sawczyn.EFDesigner.EFModel
                                                                    Summary = x.TargetSummary,
                                                                    Description = x.TargetDescription,
                                                                    CustomAttributes = x.TargetCustomAttributes,
-                                                                   DisplayText = x.TargetDisplayText
+                                                                   DisplayText = x.TargetDisplayText,
+                                                                   IsAutoProperty = x.TargetAutoProperty
                                                                 })
                                                                 .ToList();
 
@@ -140,7 +141,8 @@ namespace Sawczyn.EFDesigner.EFModel
                                                                    Summary = x.SourceSummary,
                                                                    Description = x.SourceDescription,
                                                                    CustomAttributes = x.SourceCustomAttributes,
-                                                                   DisplayText = x.SourceDisplayText
+                                                                   DisplayText = x.SourceDisplayText,
+                                                                   IsAutoProperty = x.SourceAutoProperty
                                                                 })
                                                                 .ToList();
          targetProperties.AddRange(Association.GetLinksToSources(this)
@@ -151,7 +153,8 @@ namespace Sawczyn.EFDesigner.EFModel
                                                  Cardinality = x.SourceMultiplicity,
                                                  ClassType = x.Source,
                                                  AssociationObject = x,
-                                                 PropertyName = null
+                                                 PropertyName = null,
+                                                 IsAutoProperty = true
                                               }));
          int index = 0;
          foreach (NavigationProperty navigationProperty in targetProperties.Where(x => x.PropertyName == null))

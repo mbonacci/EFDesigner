@@ -59,15 +59,49 @@ namespace Sandbox_EF6
        *************************************************************************/
 
       /// <summary>
+      /// Backing field for Id
+      /// </summary>
+      protected long _Id;
+      /// <summary>
+      /// When provided in a partial class, allows value of Id to be changed before setting.
+      /// </summary>
+      partial void SetId(long oldValue, ref long newValue);
+      /// <summary>
+      /// When provided in a partial class, allows value of Id to be changed before returning.
+      /// </summary>
+      partial void GetId(ref long result);
+
+      /// <summary>
       /// Identity, Required, Indexed
       /// </summary>
       [Key]
       [Required]
-      public long Id { get; set; }
+      public long Id
+      {
+         get
+         {
+            long value = _Id;
+            GetId(ref value);
+            return (_Id = value);
+         }
+         set
+         {
+            long oldValue = _Id;
+            SetId(oldValue, ref value);
+            if (oldValue != value)
+            {
+               _Id = value;
+            }
+         }
+      }
 
       /*************************************************************************
        * Persistent navigation properties
        *************************************************************************/
+
+      protected Sandbox_EF6.Role _Role;
+      partial void SetRole(Sandbox_EF6.Role oldValue, ref Sandbox_EF6.Role newValue);
+      partial void GetRole(ref Sandbox_EF6.Role result);
 
       /// <summary>
       /// Required{br/}
