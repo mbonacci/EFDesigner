@@ -483,7 +483,7 @@
   <xsd:element name="modelAttribute" type="ModelAttribute" substitutionGroup="core:modelElement" />
   <xsd:complexType name="ModelAttribute">
     <xsd:annotation>
-      <xsd:documentation>An attribute of a class.</xsd:documentation>
+      <xsd:documentation>A scalar property of a class.</xsd:documentation>
     </xsd:annotation>
     <xsd:complexContent>
       <xsd:extension base="core:ModelElement">
@@ -1064,6 +1064,12 @@
             <xsd:documentation>Text for [Display(Name=&quot;&lt;text&gt;&quot;)] attribute on this end&apos;s property</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
+        <!-- Property: TargetAutoProperty -->
+        <xsd:attribute name="targetAutoProperty" type="xsd:boolean" >
+          <xsd:annotation>
+            <xsd:documentation>If false, generates a backing field with a partial method to hook getting and setting the property, or adding and removing items if this is a collection. If true, generates a simple auto property.</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
       </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>
@@ -1274,6 +1280,12 @@
         <xsd:attribute name="sourceDisplayText" type="xsd:string" >
           <xsd:annotation>
             <xsd:documentation>Text for [Display(Name=&quot;&lt;text&gt;&quot;)] attribute on this end&apos;s property</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+        <!-- Property: SourceAutoProperty -->
+        <xsd:attribute name="sourceAutoProperty" type="xsd:boolean" >
+          <xsd:annotation>
+            <xsd:documentation>If false, generates a backing field with a partial method to hook getting and setting the property, or adding and removing items if this is a collection. If true, generates a simple auto property.</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
       </xsd:extension>

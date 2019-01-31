@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Dsl xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" dslVersion="1.0.0.0" Id="9987f227-3d05-49b7-b151-857879f5dfb8" Description="Entity Framework visual editor for EF6, EFCore and beyond." Name="EFModel" DisplayName="Entity Framework Visual Editor" Namespace="Sawczyn.EFDesigner.EFModel" MinorVersion="2" Build="6" Revision="25" ProductName="EFDesigner" CompanyName="Michael Sawczyn" PackageGuid="56bbe1ba-aaee-4883-848f-e3c8656f8db2" PackageNamespace="Sawczyn.EFDesigner.EFModel" xmlns="http://schemas.microsoft.com/VisualStudio/2005/DslTools/DslDefinitionModel">
+<Dsl xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" dslVersion="1.0.0.0" Id="9987f227-3d05-49b7-b151-857879f5dfb8" Description="Entity Framework visual editor for EF6, EFCore and beyond." Name="EFModel" DisplayName="Entity Framework Visual Editor" Namespace="Sawczyn.EFDesigner.EFModel" MinorVersion="2" Build="6" Revision="26" ProductName="EFDesigner" CompanyName="Michael Sawczyn" PackageGuid="56bbe1ba-aaee-4883-848f-e3c8656f8db2" PackageNamespace="Sawczyn.EFDesigner.EFModel" xmlns="http://schemas.microsoft.com/VisualStudio/2005/DslTools/DslDefinitionModel">
   <Classes>
     <DomainClass Id="95532cb8-3452-4b09-a654-aeb2e2d0b3ad" Description="" Name="ModelRoot" DisplayName="Entity Model" Namespace="Sawczyn.EFDesigner.EFModel">
       <CustomTypeDescriptor>
@@ -419,7 +419,7 @@
         </ElementMergeDirective>
       </ElementMergeDirectives>
     </DomainClass>
-    <DomainClass Id="8be1f7ab-85c8-4f57-8621-38e1207d8f8d" Description="An attribute of a class." Name="ModelAttribute" DisplayName="Property" Namespace="Sawczyn.EFDesigner.EFModel">
+    <DomainClass Id="8be1f7ab-85c8-4f57-8621-38e1207d8f8d" Description="A scalar property of a class." Name="ModelAttribute" DisplayName="Property" Namespace="Sawczyn.EFDesigner.EFModel">
       <CustomTypeDescriptor>
         <DomainTypeDescriptor CustomCoded="true" />
       </CustomTypeDescriptor>
@@ -902,6 +902,11 @@
             <ExternalTypeMoniker Name="/System/String" />
           </Type>
         </DomainProperty>
+        <DomainProperty Id="b91c3b38-7f74-4f55-b9e0-46b0e56a58e7" Description="If false, generates a backing field with a partial method to hook getting and setting the property, or adding and removing items if this is a collection. If true, generates a simple auto property." Name="TargetAutoProperty" DisplayName="End1 Auto Property" Category="End 2">
+          <Type>
+            <ExternalTypeMoniker Name="/System/Boolean" />
+          </Type>
+        </DomainProperty>
       </Properties>
       <Source>
         <DomainRole Id="d2edf927-64c2-4fe3-8d4e-c44e87142c4c" Description="" Name="Source" DisplayName="Source" PropertyName="Targets" PropertyDisplayName="Targets">
@@ -1031,6 +1036,11 @@
         <DomainProperty Id="5069324e-4190-403e-8791-416c692c872a" Description="Text for [Display(Name=&quot;&lt;text&gt;&quot;)] attribute on this end's property" Name="SourceDisplayText" DisplayName="End1 Display Text" Category="End 1">
           <Type>
             <ExternalTypeMoniker Name="/System/String" />
+          </Type>
+        </DomainProperty>
+        <DomainProperty Id="30816d13-dba4-4632-99c4-4c3cdeef98b3" Description="If false, generates a backing field with a partial method to hook getting and setting the property, or adding and removing items if this is a collection. If true, generates a simple auto property." Name="SourceAutoProperty" DisplayName="End2 Auto Property" Category="End 1">
+          <Type>
+            <ExternalTypeMoniker Name="/System/Boolean" />
           </Type>
         </DomainProperty>
       </Properties>
@@ -1554,6 +1564,9 @@
           <XmlPropertyData XmlName="targetDisplayText">
             <DomainPropertyMoniker Name="Association/TargetDisplayText" />
           </XmlPropertyData>
+          <XmlPropertyData XmlName="targetAutoProperty">
+            <DomainPropertyMoniker Name="Association/TargetAutoProperty" />
+          </XmlPropertyData>
         </ElementData>
       </XmlClassData>
       <XmlClassData TypeName="ClassHasAttributes" MonikerAttributeName="" SerializeId="true" MonikerElementName="classHasAttributesMoniker" ElementName="classHasAttributes" MonikerTypeName="ClassHasAttributesMoniker">
@@ -1872,6 +1885,9 @@
           </XmlPropertyData>
           <XmlPropertyData XmlName="sourceDisplayText">
             <DomainPropertyMoniker Name="BidirectionalAssociation/SourceDisplayText" />
+          </XmlPropertyData>
+          <XmlPropertyData XmlName="sourceAutoProperty">
+            <DomainPropertyMoniker Name="BidirectionalAssociation/SourceAutoProperty" />
           </XmlPropertyData>
         </ElementData>
       </XmlClassData>

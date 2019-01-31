@@ -5025,7 +5025,7 @@ namespace Sawczyn.EFDesigner.EFModel
 {
 	/// <summary>
 	/// DomainClass ModelAttribute
-	/// An attribute of a class.
+	/// A scalar property of a class.
 	/// </summary>
 	[DslDesign::DisplayNameResource("Sawczyn.EFDesigner.EFModel.ModelAttribute.DisplayName", typeof(global::Sawczyn.EFDesigner.EFModel.EFModelDomainModel), "Sawczyn.EFDesigner.EFModel.GeneratedCode.DomainModelResx")]
 	[global::System.ComponentModel.TypeDescriptionProvider(typeof(ModelAttributeTypeDescriptionProvider))]
