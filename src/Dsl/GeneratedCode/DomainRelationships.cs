@@ -1680,7 +1680,7 @@ namespace Sawczyn.EFDesigner.EFModel
 		/// <summary>
 		/// Storage for TargetAutoProperty
 		/// </summary>
-		private global::System.Boolean targetAutoPropertyPropertyStorage;
+		private global::System.Boolean targetAutoPropertyPropertyStorage = true;
 		
 		/// <summary>
 		/// Gets or sets the value of TargetAutoProperty domain property.
@@ -1691,6 +1691,7 @@ namespace Sawczyn.EFDesigner.EFModel
 		[DslDesign::DisplayNameResource("Sawczyn.EFDesigner.EFModel.Association/TargetAutoProperty.DisplayName", typeof(global::Sawczyn.EFDesigner.EFModel.EFModelDomainModel), "Sawczyn.EFDesigner.EFModel.GeneratedCode.DomainModelResx")]
 		[DslDesign::CategoryResource("Sawczyn.EFDesigner.EFModel.Association/TargetAutoProperty.Category", typeof(global::Sawczyn.EFDesigner.EFModel.EFModelDomainModel), "Sawczyn.EFDesigner.EFModel.GeneratedCode.DomainModelResx")]
 		[DslDesign::DescriptionResource("Sawczyn.EFDesigner.EFModel.Association/TargetAutoProperty.Description", typeof(global::Sawczyn.EFDesigner.EFModel.EFModelDomainModel), "Sawczyn.EFDesigner.EFModel.GeneratedCode.DomainModelResx")]
+		[global::System.ComponentModel.DefaultValue(true)]
 		[DslModeling::DomainObjectId("b91c3b38-7f74-4f55-b9e0-46b0e56a58e7")]
 		public global::System.Boolean TargetAutoProperty
 		{
@@ -3403,7 +3404,7 @@ namespace Sawczyn.EFDesigner.EFModel
 		/// <summary>
 		/// Storage for SourceAutoProperty
 		/// </summary>
-		private global::System.Boolean sourceAutoPropertyPropertyStorage;
+		private global::System.Boolean sourceAutoPropertyPropertyStorage = true;
 		
 		/// <summary>
 		/// Gets or sets the value of SourceAutoProperty domain property.
@@ -3414,6 +3415,7 @@ namespace Sawczyn.EFDesigner.EFModel
 		[DslDesign::DisplayNameResource("Sawczyn.EFDesigner.EFModel.BidirectionalAssociation/SourceAutoProperty.DisplayName", typeof(global::Sawczyn.EFDesigner.EFModel.EFModelDomainModel), "Sawczyn.EFDesigner.EFModel.GeneratedCode.DomainModelResx")]
 		[DslDesign::CategoryResource("Sawczyn.EFDesigner.EFModel.BidirectionalAssociation/SourceAutoProperty.Category", typeof(global::Sawczyn.EFDesigner.EFModel.EFModelDomainModel), "Sawczyn.EFDesigner.EFModel.GeneratedCode.DomainModelResx")]
 		[DslDesign::DescriptionResource("Sawczyn.EFDesigner.EFModel.BidirectionalAssociation/SourceAutoProperty.Description", typeof(global::Sawczyn.EFDesigner.EFModel.EFModelDomainModel), "Sawczyn.EFDesigner.EFModel.GeneratedCode.DomainModelResx")]
+		[global::System.ComponentModel.DefaultValue(true)]
 		[DslModeling::DomainObjectId("30816d13-dba4-4632-99c4-4c3cdeef98b3")]
 		public global::System.Boolean SourceAutoProperty
 		{

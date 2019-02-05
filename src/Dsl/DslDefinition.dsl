@@ -902,7 +902,7 @@
             <ExternalTypeMoniker Name="/System/String" />
           </Type>
         </DomainProperty>
-        <DomainProperty Id="b91c3b38-7f74-4f55-b9e0-46b0e56a58e7" Description="If false, generates a backing field with a partial method to hook getting and setting the property, or adding and removing items if this is a collection. If true, generates a simple auto property." Name="TargetAutoProperty" DisplayName="End1 Auto Property" Category="End 2">
+        <DomainProperty Id="b91c3b38-7f74-4f55-b9e0-46b0e56a58e7" Description="If false, generates a backing field with a partial method to hook getting and setting the property, or adding and removing items if this is a collection. If true, generates a simple auto property." Name="TargetAutoProperty" DisplayName="End1 Auto Property" DefaultValue="true" Category="End 2">
           <Type>
             <ExternalTypeMoniker Name="/System/Boolean" />
           </Type>
@@ -1038,7 +1038,7 @@
             <ExternalTypeMoniker Name="/System/String" />
           </Type>
         </DomainProperty>
-        <DomainProperty Id="30816d13-dba4-4632-99c4-4c3cdeef98b3" Description="If false, generates a backing field with a partial method to hook getting and setting the property, or adding and removing items if this is a collection. If true, generates a simple auto property." Name="SourceAutoProperty" DisplayName="End2 Auto Property" Category="End 1">
+        <DomainProperty Id="30816d13-dba4-4632-99c4-4c3cdeef98b3" Description="If false, generates a backing field with a partial method to hook getting and setting the property, or adding and removing items if this is a collection. If true, generates a simple auto property." Name="SourceAutoProperty" DisplayName="End2 Auto Property" DefaultValue="true" Category="End 1">
           <Type>
             <ExternalTypeMoniker Name="/System/Boolean" />
           </Type>

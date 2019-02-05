@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Custom\ObservableHashSet.cs" />
     <Compile Include="EFModel.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -66,6 +67,8 @@
     <None Include="App.config">
       <SubType>Designer</SubType>
     </None>
+    <None Include="EF6Designer.ttinclude" />
+    <None Include="EFDesigner.ttinclude" />
     <None Include="EFModel.efmodel" />
     <None Include="EFModel.efmodel.diagram">
       <DependentUpon>EFModel.efmodel</DependentUpon>

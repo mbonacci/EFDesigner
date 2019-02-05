@@ -8888,7 +8888,10 @@ namespace Sawczyn.EFDesigner.EFModel
 				string serializedPropValue = DslModeling::SerializationUtilities.GetString<global::System.Boolean>(serializationContext, propValue);
 				if (!serializationContext.Result.Failed)
 				{
-					EFModelSerializationHelper.Instance.WriteAttributeString(serializationContext, element, writer, "targetAutoProperty", serializedPropValue);
+					if (serializationContext.WriteOptionalPropertiesWithDefaultValue || string.CompareOrdinal(serializedPropValue, "true") != 0)
+					{	// No need to write the value out if it's the same as default value.
+						EFModelSerializationHelper.Instance.WriteAttributeString(serializationContext, element, writer, "targetAutoProperty", serializedPropValue);
+					}
 				}
 			}
 		}
@@ -12925,7 +12928,10 @@ namespace Sawczyn.EFDesigner.EFModel
 				string serializedPropValue = DslModeling::SerializationUtilities.GetString<global::System.Boolean>(serializationContext, propValue);
 				if (!serializationContext.Result.Failed)
 				{
-					EFModelSerializationHelper.Instance.WriteAttributeString(serializationContext, element, writer, "sourceAutoProperty", serializedPropValue);
+					if (serializationContext.WriteOptionalPropertiesWithDefaultValue || string.CompareOrdinal(serializedPropValue, "true") != 0)
+					{	// No need to write the value out if it's the same as default value.
+						EFModelSerializationHelper.Instance.WriteAttributeString(serializationContext, element, writer, "sourceAutoProperty", serializedPropValue);
+					}
 				}
 			}
 		}

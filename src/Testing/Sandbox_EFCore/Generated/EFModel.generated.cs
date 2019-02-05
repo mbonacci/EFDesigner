@@ -74,6 +74,7 @@ namespace Sandbox_EFCore
          modelBuilder.Entity<Sandbox_EFCore.User>()
                      .Property(t => t.Id)
                      .IsRequired()
+                     .HasField("_Id")
                      .ValueGeneratedOnAdd();
          modelBuilder.Entity<Sandbox_EFCore.User>()
                      .HasOne(x => x.Role)

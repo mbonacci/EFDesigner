@@ -15,6 +15,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sandbox_EF6", "Sandbox_EF6\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sandbox_EFCore", "Sandbox_EFCore\Sandbox_EFCore.csproj", "{B4A41735-E7A7-460C-80EC-EC8C87DB1D62}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Permutations", "Permutations", "{20563F9D-B767-4014-9B99-61DE742067C2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -44,6 +46,12 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{89566534-4C77-41FC-B2D8-46602781C139} = {20563F9D-B767-4014-9B99-61DE742067C2}
+		{4C3DA14F-D060-451B-BF51-78CA531C82F4} = {20563F9D-B767-4014-9B99-61DE742067C2}
+		{72DD1BC9-83D3-4B04-8F4E-BB313B0FCF72} = {20563F9D-B767-4014-9B99-61DE742067C2}
+		{FD969E2A-A151-4AFE-A0F8-672B0E5D7502} = {20563F9D-B767-4014-9B99-61DE742067C2}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {C1564741-D3E6-4EFB-B1A8-82190DB1A31C}
