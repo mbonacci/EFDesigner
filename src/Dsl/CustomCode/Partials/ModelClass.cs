@@ -113,6 +113,8 @@ namespace Sawczyn.EFDesigner.EFModel
 
       public IEnumerable<NavigationProperty> LocalNavigationProperties(params Association[] ignore)
       {
+         if (IsDependentType) return new NavigationProperty[0];
+
          List<NavigationProperty> sourceProperties = Association.GetLinksToTargets(this)
                                                                 .Except(ignore)
                                                                 .Select(x => new NavigationProperty

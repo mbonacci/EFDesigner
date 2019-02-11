@@ -28,7 +28,7 @@ namespace Sawczyn.EFDesigner.EFModel
                return "0..1";
          }
 
-         return "?";
+         return "?"; 
       }
 
       #region Warning display
@@ -49,7 +49,7 @@ namespace Sawczyn.EFDesigner.EFModel
             modelElements.SelectMany(modelElement => PresentationViewsSubject.GetPresentation(modelElement)
                                                                              .OfType<ShapeElement>())
                          .ToList();
-
+            
          foreach (ShapeElement shapeElement in shapeElements)
             shapeElement.Invalidate();
       }

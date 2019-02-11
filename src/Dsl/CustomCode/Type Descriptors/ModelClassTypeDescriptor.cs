@@ -27,6 +27,13 @@ namespace Sawczyn.EFDesigner.EFModel
 
             storeDomainDataDirectory = modelClass.Store.DomainDataDirectory;
 
+            // don't display table name for dependent types
+            if (modelClass.IsDependentType)
+            {
+                PropertyDescriptor tableNameTypeDescriptor = propertyDescriptors.OfType<PropertyDescriptor>().Single(x => x.Name == "TableName");
+                propertyDescriptors.Remove(tableNameTypeDescriptor);
+            }
+
             //Add the descriptors for the tracking properties 
             /********************************************************************************/
 

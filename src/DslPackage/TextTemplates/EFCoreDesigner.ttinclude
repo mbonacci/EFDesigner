@@ -272,7 +272,7 @@ void WriteDbContextEFCore(ModelRoot modelRoot)
       NL();
 
       // class level
-      bool isDependent = modelClass.IsDependentType;
+      bool isOwnedType = modelClass.IsDependentType;
       segments.Add($"modelBuilder.Entity<{modelClass.FullName}>()");
 
       // note: this must come before the 'ToTable' call or there's a runtime error
@@ -387,17 +387,23 @@ void WriteDbContextEFCore(ModelRoot modelRoot)
                   segments.Add($"HasMany(x => x.{association.TargetPropertyName})");
                break;
             case Sawczyn.EFDesigner.EFModel.Multiplicity.One:
-               segments.Add($"HasOne(x => x.{association.TargetPropertyName})");
+               if (association.Target.IsDependentType)
+                  segments.Add($"OwnsOne(x => x.{association.TargetPropertyName})");
+               else
+                  segments.Add($"HasOne(x => x.{association.TargetPropertyName})");
                break;
             case Sawczyn.EFDesigner.EFModel.Multiplicity.ZeroOne:
-               segments.Add($"HasOne(x => x.{association.TargetPropertyName})");
+               if (association.Target.IsDependentType)
+                  segments.Add($"OwnsOne(x => x.{association.TargetPropertyName})");
+               else
+                  segments.Add($"HasOne(x => x.{association.TargetPropertyName})");
                break;
             //case Sawczyn.EFDesigner.EFModel.Multiplicity.OneMany:
             //   segments.Add($"HasMany(x => x.{association.TargetPropertyName})");
             //   break;
          }
 
-         switch (association.SourceMultiplicity) // realized by property on target, but no property on target
+         switch (association.SourceMultiplicity) // realized by property on target
          {
             case Sawczyn.EFDesigner.EFModel.Multiplicity.ZeroMany:
                if (association.TargetMultiplicity != Sawczyn.EFDesigner.EFModel.Multiplicity.ZeroMany)

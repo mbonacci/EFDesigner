@@ -420,7 +420,14 @@ void WriteConstructor(ModelClass modelClass)
    bool hasRequiredParameters = GetRequiredParameters(modelClass, false).Any();
    string visibility = hasRequiredParameters || modelClass.IsAbstract ? "protected" : "public";
 
-   if (visibility == "public")
+   if (modelClass.IsDependentType)
+   {
+      visibility = "protected internal";
+      Output("/// <summary>");
+      Output("/// Default constructor");
+      Output("/// </summary>");
+   }
+   else if (visibility == "public")
    {
       Output("/// <summary>");
       Output("/// Default constructor");
@@ -538,7 +545,7 @@ void WriteConstructor(ModelClass modelClass)
          WriteConstructorComments(modelClass);
          
          string newToken = string.Empty;
-         List<string> requiredParameters = GetRequiredParameters(modelClass);
+         List<string> requiredParameters = modelClass.IsDependentType ? new List<string>() : GetRequiredParameters(modelClass);
          if (!AllSuperclassesAreNullOrAbstract(modelClass))
          {
             List<string> superclassRequiredParameters = GetRequiredParameters(modelClass.Superclass);
@@ -546,9 +553,9 @@ void WriteConstructor(ModelClass modelClass)
                newToken = "new " ;
          }
          
-         Output($"public static {newToken}{modelClass.Name} Create({string.Join(", ", GetRequiredParameters(modelClass))})");
+         Output($"public static {newToken}{modelClass.Name} Create({string.Join(", ", requiredParameters)})");
          Output("{");
-         Output($"return new {modelClass.Name}({string.Join(", ", GetRequiredParameterNames(modelClass))});");
+         Output($"return new {modelClass.Name}({string.Join(", ", requiredParameters)});");
          Output("}");
          NL();
       }

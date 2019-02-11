@@ -22,7 +22,7 @@ namespace Sawczyn.EFDesigner.EFModel
          // add unidirectional
          //    source can't be dependent (connection builder handles this)
          // if target is dependent,
-         //    source cardinality is 0..1
+         //    source cardinality is 1
          //    target cardinality is 0..1 
          //    source is principal
          if (element is UnidirectionalAssociation && element.Target.IsDependentType)

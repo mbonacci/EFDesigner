@@ -26,13 +26,35 @@ namespace Sandbox_EF6
       partial void Init();
 
       /// <summary>
-      /// Default constructor
+      /// Default constructor. Protected due to required properties, but present because EF needs it.
       /// </summary>
-      public Role()
+      protected Role()
       {
-         Users = new System.Collections.Generic.HashSet<Sandbox_EF6.User>();
+         Init();
+      }
+
+      /// <summary>
+      /// Public constructor with required data
+      /// </summary>
+      /// <param name="id"></param>
+      /// <param name="_user0"></param>
+      public Role(long id)
+      {
+         Id = id;
+         if (_user0 == null) throw new ArgumentNullException(nameof(_user0));
+         _user0.Roles = this;
 
          Init();
+      }
+
+      /// <summary>
+      /// Static create function (for use in LINQ queries, etc.)
+      /// </summary>
+      /// <param name="id"></param>
+      /// <param name="_user0"></param>
+      public static Role Create(long id)
+      {
+         return new Role(id, _user0);
       }
 
       /*************************************************************************
@@ -40,20 +62,14 @@ namespace Sandbox_EF6
        *************************************************************************/
 
       /// <summary>
-      /// Identity, Required, Indexed
+      /// Required, Indexed
       /// </summary>
-      [Key]
       [Required]
       public long Id { get; set; }
 
       /*************************************************************************
        * Persistent navigation properties
        *************************************************************************/
-
-      /// <summary>
-      /// Users
-      /// </summary>
-      public virtual ICollection<Sandbox_EF6.User> Users { get; set; }
 
    }
 }

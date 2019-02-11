@@ -26,11 +26,27 @@ namespace Sawczyn.EFDesigner.EFModel
 
             EFCoreValidator.RemoveHiddenProperties(propertyDescriptors, modelAttribute);
 
+            // don't display identity properties for dependent types
+            // dependent types don't have db sets
+            if (modelAttribute.ModelClass.IsDependentType)
+            {
+                PropertyDescriptor isIdentityTypeDescriptor = propertyDescriptors.OfType<PropertyDescriptor>().Single(x => x.Name == "IsIdentity");
+                propertyDescriptors.Remove(isIdentityTypeDescriptor);
+
+                PropertyDescriptor identityTypeDescriptor = propertyDescriptors.OfType<PropertyDescriptor>().Single(x => x.Name == "IdentityType");
+                propertyDescriptors.Remove(identityTypeDescriptor);
+
+                PropertyDescriptor dbSetNameTypeDescriptor = propertyDescriptors.OfType<PropertyDescriptor>().Single(x => x.Name == "DbSetName");
+                propertyDescriptors.Remove(dbSetNameTypeDescriptor);
+
+            }
+
             // don't display IdentityType unless the IsIdentity is true
             if (!modelAttribute.IsIdentity)
             {
-               PropertyDescriptor identityTypeDescriptor = propertyDescriptors.OfType<PropertyDescriptor>().Single(x => x.Name == "IdentityType");
-               propertyDescriptors.Remove(identityTypeDescriptor);
+               PropertyDescriptor identityTypeDescriptor = propertyDescriptors.OfType<PropertyDescriptor>().SingleOrDefault(x => x.Name == "IdentityType");
+               if (identityTypeDescriptor != null)
+                  propertyDescriptors.Remove(identityTypeDescriptor);
             }
 
             /********************************************************************************/
