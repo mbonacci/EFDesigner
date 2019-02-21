@@ -307,10 +307,17 @@ void WriteDbContextEF6(ModelRoot modelRoot)
    /***********************************************************************/
    // SaveChanges 
    /***********************************************************************/
+   Output("#region SaveChanges");
+   NL();
+
    Output("private void HandleOrphans()");
    Output("{");
    Output("ChangeTracker.DetectChanges();");
+   Output("bool wasLazyLoading = Configuration.LazyLoadingEnabled;");
+   Output("Configuration.LazyLoadingEnabled = false;");
    NL();
+   Output("try");
+   Output("{");
 
    Dictionary<string, List<string>> orphanRemoval = new Dictionary<string, List<string>>();
    foreach (ModelClass modelClass in modelRoot.Classes.Where(x => !x.IsDependentType).OrderBy(x => x.Name))
@@ -334,12 +341,15 @@ void WriteDbContextEF6(ModelRoot modelRoot)
                orphanRemoval[modelClass.DbSetName].Add($"{modelClass.DbSetName}.RemoveRange({modelClass.DbSetName}.Local.Where(x => Entry(x).State != EntityState.Deleted).Except({association.Source.DbSetName}.Local.Where(x => Entry(x).State != EntityState.Deleted).SelectMany(x => x.{association.TargetPropertyName})));");
             }
             else if (association is UnidirectionalAssociation &&
+                     !association.Source.IsDependentType && !association.Target.IsDependentType &&
                      (association.TargetMultiplicity == Sawczyn.EFDesigner.EFModel.Multiplicity.ZeroOne ||
                       association.TargetMultiplicity == Sawczyn.EFDesigner.EFModel.Multiplicity.One))
             {
                orphanRemoval[modelClass.DbSetName].Add($"{modelClass.DbSetName}.RemoveRange({modelClass.DbSetName}.Local.Where(x => Entry(x).State != EntityState.Deleted).Except({association.Source.DbSetName}.Local.Where(x => Entry(x).State != EntityState.Deleted).Select(x => x.{association.TargetPropertyName})));");
             }
-            else if (association is BidirectionalAssociation bidirectional && (bidirectional.SourceMultiplicity == Sawczyn.EFDesigner.EFModel.Multiplicity.ZeroOne))
+            else if (association is BidirectionalAssociation bidirectional &&
+                     !association.Source.IsDependentType && !association.Target.IsDependentType &&
+                     bidirectional.SourceMultiplicity == Sawczyn.EFDesigner.EFModel.Multiplicity.ZeroOne)
             {
                orphanRemoval[modelClass.DbSetName].Add($"{modelClass.DbSetName}.RemoveRange({modelClass.DbSetName}.Local.Where(x => Entry(x).State != EntityState.Deleted).Except({bidirectional.Target.DbSetName}.Local.Where(x => Entry(x).State != EntityState.Deleted).Select(x => x.{bidirectional.SourcePropertyName})));");
             }
@@ -359,8 +369,16 @@ void WriteDbContextEF6(ModelRoot modelRoot)
    }
 
    Output("}");
-   NL();
+   Output("finally");
+   Output("{");
+   Output("Configuration.LazyLoadingEnabled = wasLazyLoading;");
+   Output("}");
 
+   Output("}");
+   NL();
+   Output("#endregion SaveChanges");
+   NL();
+   
    /***********************************************************************/
    // OnModelCreating 
    /***********************************************************************/
