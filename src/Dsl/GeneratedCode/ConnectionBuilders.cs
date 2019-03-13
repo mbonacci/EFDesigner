@@ -1474,5 +1474,18 @@ namespace Sawczyn.EFDesigner.EFModel
 		{
 		}
 	}
+
+ 	/// <summary>
+	/// Handles creation of an element through its ElementTool.
+	/// </summary>
+	internal partial class ProcedureCreateAction : DslDiagrams::CreateAction
+	{
+		/// <summary>
+		/// Constructs a new ProcedureCreateAction for the given Diagram.
+		/// </summary>
+		public ProcedureCreateAction(DslDiagrams::Diagram diagram): base(diagram)
+		{
+		}
+	}
 }
 

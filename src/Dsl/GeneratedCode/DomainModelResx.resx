@@ -501,6 +501,18 @@
     <value>Designer</value>
     <comment>Category for DomainProperty &apos;ShowWarningsInDesigner&apos; on DomainClass &apos;ModelRoot&apos;</comment>
   </data>
+  <data name="Sawczyn.EFDesigner.EFModel.ModelRoot/ClientModelFile.Description" xml:space="preserve">
+    <value>Output file for client entities</value>
+    <comment>Description for DomainProperty &apos;ClientModelFile&apos; on DomainClass &apos;ModelRoot&apos;</comment>
+  </data>
+  <data name="Sawczyn.EFDesigner.EFModel.ModelRoot/ClientModelFile.DisplayName" xml:space="preserve">
+    <value>Output File - Client </value>
+    <comment>DisplayName for DomainProperty &apos;ClientModelFile&apos; on DomainClass &apos;ModelRoot&apos;</comment>
+  </data>
+  <data name="Sawczyn.EFDesigner.EFModel.ModelRoot/ClientModelFile.Category" xml:space="preserve">
+    <value>Code Generation</value>
+    <comment>Category for DomainProperty &apos;ClientModelFile&apos; on DomainClass &apos;ModelRoot&apos;</comment>
+  </data>
   <data name="Sawczyn.EFDesigner.EFModel.ModelClass.Description" xml:space="preserve">
     <value></value>
     <comment>Description for DomainClass &apos;ModelClass&apos;</comment>
@@ -720,6 +732,18 @@
   <data name="Sawczyn.EFDesigner.EFModel.ModelClass/CustomAttributes.Category" xml:space="preserve">
     <value>Code Generation</value>
     <comment>Category for DomainProperty &apos;CustomAttributes&apos; on DomainClass &apos;ModelClass&apos;</comment>
+  </data>
+  <data name="Sawczyn.EFDesigner.EFModel.ModelClass/GenerateClient.Description" xml:space="preserve">
+    <value>Description for Sawczyn.EFDesigner.EFModel.ModelClass.Generate Client Model</value>
+    <comment>Description for DomainProperty &apos;GenerateClient&apos; on DomainClass &apos;ModelClass&apos;</comment>
+  </data>
+  <data name="Sawczyn.EFDesigner.EFModel.ModelClass/GenerateClient.DisplayName" xml:space="preserve">
+    <value>Generate Client Model</value>
+    <comment>DisplayName for DomainProperty &apos;GenerateClient&apos; on DomainClass &apos;ModelClass&apos;</comment>
+  </data>
+  <data name="Sawczyn.EFDesigner.EFModel.ModelClass/GenerateClient.Category" xml:space="preserve">
+    <value>Code Generation</value>
+    <comment>Category for DomainProperty &apos;GenerateClient&apos; on DomainClass &apos;ModelClass&apos;</comment>
   </data>
   <data name="Sawczyn.EFDesigner.EFModel.ModelAttribute.Description" xml:space="preserve">
     <value>An attribute of a class.</value>
@@ -1033,6 +1057,18 @@
     <value>Code Generation</value>
     <comment>Category for DomainProperty &apos;DisplayText&apos; on DomainClass &apos;ModelAttribute&apos;</comment>
   </data>
+  <data name="Sawczyn.EFDesigner.EFModel.ModelAttribute/GenerateClient.Description" xml:space="preserve">
+    <value>Description for Sawczyn.EFDesigner.EFModel.ModelAttribute.Generate Client Model</value>
+    <comment>Description for DomainProperty &apos;GenerateClient&apos; on DomainClass &apos;ModelAttribute&apos;</comment>
+  </data>
+  <data name="Sawczyn.EFDesigner.EFModel.ModelAttribute/GenerateClient.DisplayName" xml:space="preserve">
+    <value>Generate Client Model</value>
+    <comment>DisplayName for DomainProperty &apos;GenerateClient&apos; on DomainClass &apos;ModelAttribute&apos;</comment>
+  </data>
+  <data name="Sawczyn.EFDesigner.EFModel.ModelAttribute/GenerateClient.Category" xml:space="preserve">
+    <value>Code Generation</value>
+    <comment>Category for DomainProperty &apos;GenerateClient&apos; on DomainClass &apos;ModelAttribute&apos;</comment>
+  </data>
   <data name="Sawczyn.EFDesigner.EFModel.Comment.Description" xml:space="preserve">
     <value></value>
     <comment>Description for DomainClass &apos;Comment&apos;</comment>
@@ -1273,6 +1309,226 @@
     <value>Design Element</value>
     <comment>DisplayName for DomainClass &apos;DesignElement&apos;</comment>
   </data>
+  <data name="Sawczyn.EFDesigner.EFModel.ModelProcedure.Description" xml:space="preserve">
+    <value></value>
+    <comment>Description for DomainClass &apos;ModelProcedure&apos;</comment>
+  </data>
+  <data name="Sawczyn.EFDesigner.EFModel.ModelProcedure.DisplayName" xml:space="preserve">
+    <value>StoredProcedure</value>
+    <comment>DisplayName for DomainClass &apos;ModelProcedure&apos;</comment>
+  </data>
+  <data name="Sawczyn.EFDesigner.EFModel.ModelProcedure/Name.Description" xml:space="preserve">
+    <value>Procedure name</value>
+    <comment>Description for DomainProperty &apos;Name&apos; on DomainClass &apos;ModelProcedure&apos;</comment>
+  </data>
+  <data name="Sawczyn.EFDesigner.EFModel.ModelProcedure/Name.DisplayName" xml:space="preserve">
+    <value>Name</value>
+    <comment>DisplayName for DomainProperty &apos;Name&apos; on DomainClass &apos;ModelProcedure&apos;</comment>
+  </data>
+  <data name="Sawczyn.EFDesigner.EFModel.ModelProcedure/Name.Category" xml:space="preserve">
+    <value>Code generation</value>
+    <comment>Category for DomainProperty &apos;Name&apos; on DomainClass &apos;ModelProcedure&apos;</comment>
+  </data>
+  <data name="Sawczyn.EFDesigner.EFModel.ModelProcedure/DatabaseSchema.Description" xml:space="preserve">
+    <value>The schema to use for table creation. Overrides default schema for model if present.</value>
+    <comment>Description for DomainProperty &apos;DatabaseSchema&apos; on DomainClass &apos;ModelProcedure&apos;</comment>
+  </data>
+  <data name="Sawczyn.EFDesigner.EFModel.ModelProcedure/DatabaseSchema.DisplayName" xml:space="preserve">
+    <value>Database Schema</value>
+    <comment>DisplayName for DomainProperty &apos;DatabaseSchema&apos; on DomainClass &apos;ModelProcedure&apos;</comment>
+  </data>
+  <data name="Sawczyn.EFDesigner.EFModel.ModelProcedure/DatabaseSchema.Category" xml:space="preserve">
+    <value>Database</value>
+    <comment>Category for DomainProperty &apos;DatabaseSchema&apos; on DomainClass &apos;ModelProcedure&apos;</comment>
+  </data>
+  <data name="Sawczyn.EFDesigner.EFModel.ModelProcedure/Description.Description" xml:space="preserve">
+    <value>Detailed code documentation</value>
+    <comment>Description for DomainProperty &apos;Description&apos; on DomainClass &apos;ModelProcedure&apos;</comment>
+  </data>
+  <data name="Sawczyn.EFDesigner.EFModel.ModelProcedure/Description.DisplayName" xml:space="preserve">
+    <value>Comment Detail</value>
+    <comment>DisplayName for DomainProperty &apos;Description&apos; on DomainClass &apos;ModelProcedure&apos;</comment>
+  </data>
+  <data name="Sawczyn.EFDesigner.EFModel.ModelProcedure/Description.Category" xml:space="preserve">
+    <value>Documentation</value>
+    <comment>Category for DomainProperty &apos;Description&apos; on DomainClass &apos;ModelProcedure&apos;</comment>
+  </data>
+  <data name="Sawczyn.EFDesigner.EFModel.ModelProcedure/Summary.Description" xml:space="preserve">
+    <value>Brief code documentation</value>
+    <comment>Description for DomainProperty &apos;Summary&apos; on DomainClass &apos;ModelProcedure&apos;</comment>
+  </data>
+  <data name="Sawczyn.EFDesigner.EFModel.ModelProcedure/Summary.DisplayName" xml:space="preserve">
+    <value>Comment Summary</value>
+    <comment>DisplayName for DomainProperty &apos;Summary&apos; on DomainClass &apos;ModelProcedure&apos;</comment>
+  </data>
+  <data name="Sawczyn.EFDesigner.EFModel.ModelProcedure/Summary.Category" xml:space="preserve">
+    <value>Documentation</value>
+    <comment>Category for DomainProperty &apos;Summary&apos; on DomainClass &apos;ModelProcedure&apos;</comment>
+  </data>
+  <data name="Sawczyn.EFDesigner.EFModel.ModelProcedure/CustomAttributes.Description" xml:space="preserve">
+    <value>Any custom attributes to be generated for this element.  Will be passed through as entered.</value>
+    <comment>Description for DomainProperty &apos;CustomAttributes&apos; on DomainClass &apos;ModelProcedure&apos;</comment>
+  </data>
+  <data name="Sawczyn.EFDesigner.EFModel.ModelProcedure/CustomAttributes.DisplayName" xml:space="preserve">
+    <value>Custom Attributes</value>
+    <comment>DisplayName for DomainProperty &apos;CustomAttributes&apos; on DomainClass &apos;ModelProcedure&apos;</comment>
+  </data>
+  <data name="Sawczyn.EFDesigner.EFModel.ModelProcedure/CustomAttributes.Category" xml:space="preserve">
+    <value>Code Generation</value>
+    <comment>Category for DomainProperty &apos;CustomAttributes&apos; on DomainClass &apos;ModelProcedure&apos;</comment>
+  </data>
+  <data name="Sawczyn.EFDesigner.EFModel.ModelProcedure/StoredProcName.Description" xml:space="preserve">
+    <value>Name of the stored procedure in the database</value>
+    <comment>Description for DomainProperty &apos;StoredProcName&apos; on DomainClass &apos;ModelProcedure&apos;</comment>
+  </data>
+  <data name="Sawczyn.EFDesigner.EFModel.ModelProcedure/StoredProcName.DisplayName" xml:space="preserve">
+    <value>Stored Procedure Name</value>
+    <comment>DisplayName for DomainProperty &apos;StoredProcName&apos; on DomainClass &apos;ModelProcedure&apos;</comment>
+  </data>
+  <data name="Sawczyn.EFDesigner.EFModel.ModelProcedure/StoredProcName.Category" xml:space="preserve">
+    <value>Database</value>
+    <comment>Category for DomainProperty &apos;StoredProcName&apos; on DomainClass &apos;ModelProcedure&apos;</comment>
+  </data>
+  <data name="Sawczyn.EFDesigner.EFModel.ModelProcedure/ReturnType.Description" xml:space="preserve">
+    <value>Description for Sawczyn.EFDesigner.EFModel.ModelProcedure.Return Type</value>
+    <comment>Description for DomainProperty &apos;ReturnType&apos; on DomainClass &apos;ModelProcedure&apos;</comment>
+  </data>
+  <data name="Sawczyn.EFDesigner.EFModel.ModelProcedure/ReturnType.DisplayName" xml:space="preserve">
+    <value>Return Type</value>
+    <comment>DisplayName for DomainProperty &apos;ReturnType&apos; on DomainClass &apos;ModelProcedure&apos;</comment>
+  </data>
+  <data name="Sawczyn.EFDesigner.EFModel.ModelProcedure/IsFunction.Description" xml:space="preserve">
+    <value>Description for Sawczyn.EFDesigner.EFModel.ModelProcedure.Is Function</value>
+    <comment>Description for DomainProperty &apos;IsFunction&apos; on DomainClass &apos;ModelProcedure&apos;</comment>
+  </data>
+  <data name="Sawczyn.EFDesigner.EFModel.ModelProcedure/IsFunction.DisplayName" xml:space="preserve">
+    <value>Is Function</value>
+    <comment>DisplayName for DomainProperty &apos;IsFunction&apos; on DomainClass &apos;ModelProcedure&apos;</comment>
+  </data>
+  <data name="Sawczyn.EFDesigner.EFModel.ModelParameter.Description" xml:space="preserve">
+    <value></value>
+    <comment>Description for DomainClass &apos;ModelParameter&apos;</comment>
+  </data>
+  <data name="Sawczyn.EFDesigner.EFModel.ModelParameter.DisplayName" xml:space="preserve">
+    <value>Parameter</value>
+    <comment>DisplayName for DomainClass &apos;ModelParameter&apos;</comment>
+  </data>
+  <data name="Sawczyn.EFDesigner.EFModel.ModelParameter/Type.Description" xml:space="preserve">
+    <value>Type of this parameter</value>
+    <comment>Description for DomainProperty &apos;Type&apos; on DomainClass &apos;ModelParameter&apos;</comment>
+  </data>
+  <data name="Sawczyn.EFDesigner.EFModel.ModelParameter/Type.DisplayName" xml:space="preserve">
+    <value>Type</value>
+    <comment>DisplayName for DomainProperty &apos;Type&apos; on DomainClass &apos;ModelParameter&apos;</comment>
+  </data>
+  <data name="Sawczyn.EFDesigner.EFModel.ModelParameter/Type.Category" xml:space="preserve">
+    <value>Code Generation</value>
+    <comment>Category for DomainProperty &apos;Type&apos; on DomainClass &apos;ModelParameter&apos;</comment>
+  </data>
+  <data name="Sawczyn.EFDesigner.EFModel.ModelParameter/Required.Description" xml:space="preserve">
+    <value>If true, cannot be null (or the default value for the parametertype, if not nullable)</value>
+    <comment>Description for DomainProperty &apos;Required&apos; on DomainClass &apos;ModelParameter&apos;</comment>
+  </data>
+  <data name="Sawczyn.EFDesigner.EFModel.ModelParameter/Required.DisplayName" xml:space="preserve">
+    <value>Required</value>
+    <comment>DisplayName for DomainProperty &apos;Required&apos; on DomainClass &apos;ModelParameter&apos;</comment>
+  </data>
+  <data name="Sawczyn.EFDesigner.EFModel.ModelParameter/Required.Category" xml:space="preserve">
+    <value>Code Generation</value>
+    <comment>Category for DomainProperty &apos;Required&apos; on DomainClass &apos;ModelParameter&apos;</comment>
+  </data>
+  <data name="Sawczyn.EFDesigner.EFModel.ModelParameter/MaxLength.Description" xml:space="preserve">
+    <value>Maximum length of the string, 0 for no max length</value>
+    <comment>Description for DomainProperty &apos;MaxLength&apos; on DomainClass &apos;ModelParameter&apos;</comment>
+  </data>
+  <data name="Sawczyn.EFDesigner.EFModel.ModelParameter/MaxLength.DisplayName" xml:space="preserve">
+    <value>Max Length</value>
+    <comment>DisplayName for DomainProperty &apos;MaxLength&apos; on DomainClass &apos;ModelParameter&apos;</comment>
+  </data>
+  <data name="Sawczyn.EFDesigner.EFModel.ModelParameter/MaxLength.Category" xml:space="preserve">
+    <value>String Properties</value>
+    <comment>Category for DomainProperty &apos;MaxLength&apos; on DomainClass &apos;ModelParameter&apos;</comment>
+  </data>
+  <data name="Sawczyn.EFDesigner.EFModel.ModelParameter/Description.Description" xml:space="preserve">
+    <value>Detailed code documentation</value>
+    <comment>Description for DomainProperty &apos;Description&apos; on DomainClass &apos;ModelParameter&apos;</comment>
+  </data>
+  <data name="Sawczyn.EFDesigner.EFModel.ModelParameter/Description.DisplayName" xml:space="preserve">
+    <value>Comment Detail</value>
+    <comment>DisplayName for DomainProperty &apos;Description&apos; on DomainClass &apos;ModelParameter&apos;</comment>
+  </data>
+  <data name="Sawczyn.EFDesigner.EFModel.ModelParameter/Description.Category" xml:space="preserve">
+    <value>Documentation</value>
+    <comment>Category for DomainProperty &apos;Description&apos; on DomainClass &apos;ModelParameter&apos;</comment>
+  </data>
+  <data name="Sawczyn.EFDesigner.EFModel.ModelParameter/Summary.Description" xml:space="preserve">
+    <value>Brief code documentation</value>
+    <comment>Description for DomainProperty &apos;Summary&apos; on DomainClass &apos;ModelParameter&apos;</comment>
+  </data>
+  <data name="Sawczyn.EFDesigner.EFModel.ModelParameter/Summary.DisplayName" xml:space="preserve">
+    <value>Comment Summary</value>
+    <comment>DisplayName for DomainProperty &apos;Summary&apos; on DomainClass &apos;ModelParameter&apos;</comment>
+  </data>
+  <data name="Sawczyn.EFDesigner.EFModel.ModelParameter/Summary.Category" xml:space="preserve">
+    <value>Documentation</value>
+    <comment>Category for DomainProperty &apos;Summary&apos; on DomainClass &apos;ModelParameter&apos;</comment>
+  </data>
+  <data name="Sawczyn.EFDesigner.EFModel.ModelParameter/Name.Description" xml:space="preserve">
+    <value>The name of the parameter. Must be a valid C# symbol.</value>
+    <comment>Description for DomainProperty &apos;Name&apos; on DomainClass &apos;ModelParameter&apos;</comment>
+  </data>
+  <data name="Sawczyn.EFDesigner.EFModel.ModelParameter/Name.DisplayName" xml:space="preserve">
+    <value>Name</value>
+    <comment>DisplayName for DomainProperty &apos;Name&apos; on DomainClass &apos;ModelParameter&apos;</comment>
+  </data>
+  <data name="Sawczyn.EFDesigner.EFModel.ModelParameter/Name.Category" xml:space="preserve">
+    <value>Code Generation</value>
+    <comment>Category for DomainProperty &apos;Name&apos; on DomainClass &apos;ModelParameter&apos;</comment>
+  </data>
+  <data name="Sawczyn.EFDesigner.EFModel.ModelParameter/ParameterName.Description" xml:space="preserve">
+    <value>The name for the parameter in db</value>
+    <comment>Description for DomainProperty &apos;ParameterName&apos; on DomainClass &apos;ModelParameter&apos;</comment>
+  </data>
+  <data name="Sawczyn.EFDesigner.EFModel.ModelParameter/ParameterName.DisplayName" xml:space="preserve">
+    <value>Parameter Name</value>
+    <comment>DisplayName for DomainProperty &apos;ParameterName&apos; on DomainClass &apos;ModelParameter&apos;</comment>
+  </data>
+  <data name="Sawczyn.EFDesigner.EFModel.ModelParameter/ParameterName.Category" xml:space="preserve">
+    <value>Database</value>
+    <comment>Category for DomainProperty &apos;ParameterName&apos; on DomainClass &apos;ModelParameter&apos;</comment>
+  </data>
+  <data name="Sawczyn.EFDesigner.EFModel.ModelParameter/ColumnType.Description" xml:space="preserve">
+    <value>The data type for the parameter in db</value>
+    <comment>Description for DomainProperty &apos;ColumnType&apos; on DomainClass &apos;ModelParameter&apos;</comment>
+  </data>
+  <data name="Sawczyn.EFDesigner.EFModel.ModelParameter/ColumnType.DisplayName" xml:space="preserve">
+    <value>Column Type</value>
+    <comment>DisplayName for DomainProperty &apos;ColumnType&apos; on DomainClass &apos;ModelParameter&apos;</comment>
+  </data>
+  <data name="Sawczyn.EFDesigner.EFModel.ModelParameter/ColumnType.Category" xml:space="preserve">
+    <value>Database</value>
+    <comment>Category for DomainProperty &apos;ColumnType&apos; on DomainClass &apos;ModelParameter&apos;</comment>
+  </data>
+  <data name="Sawczyn.EFDesigner.EFModel.ModelParameter/CustomAttributes.Description" xml:space="preserve">
+    <value>Any custom attributes to be generated for this element.  Will be passed through as entered.</value>
+    <comment>Description for DomainProperty &apos;CustomAttributes&apos; on DomainClass &apos;ModelParameter&apos;</comment>
+  </data>
+  <data name="Sawczyn.EFDesigner.EFModel.ModelParameter/CustomAttributes.DisplayName" xml:space="preserve">
+    <value>Custom Attributes</value>
+    <comment>DisplayName for DomainProperty &apos;CustomAttributes&apos; on DomainClass &apos;ModelParameter&apos;</comment>
+  </data>
+  <data name="Sawczyn.EFDesigner.EFModel.ModelParameter/CustomAttributes.Category" xml:space="preserve">
+    <value>Code Generation</value>
+    <comment>Category for DomainProperty &apos;CustomAttributes&apos; on DomainClass &apos;ModelParameter&apos;</comment>
+  </data>
+  <data name="Sawczyn.EFDesigner.EFModel.ModelParameter/Direction.Description" xml:space="preserve">
+    <value>Description for Sawczyn.EFDesigner.EFModel.ModelParameter.Direction</value>
+    <comment>Description for DomainProperty &apos;Direction&apos; on DomainClass &apos;ModelParameter&apos;</comment>
+  </data>
+  <data name="Sawczyn.EFDesigner.EFModel.ModelParameter/Direction.DisplayName" xml:space="preserve">
+    <value>Direction</value>
+    <comment>DisplayName for DomainProperty &apos;Direction&apos; on DomainClass &apos;ModelParameter&apos;</comment>
+  </data>
   <data name="Sawczyn.EFDesigner.EFModel.Association.Description" xml:space="preserve">
     <value>Associations between Classes.</value>
     <comment>Description for DomainClass &apos;Association&apos;</comment>
@@ -1314,7 +1570,7 @@
     <comment>DisplayName for DomainProperty &apos;TargetPropertyName&apos; on DomainClass &apos;Association&apos;</comment>
   </data>
   <data name="Sawczyn.EFDesigner.EFModel.Association/TargetPropertyName.Category" xml:space="preserve">
-    <value>End 2</value>
+    <value>End 1</value>
     <comment>Category for DomainProperty &apos;TargetPropertyName&apos; on DomainClass &apos;Association&apos;</comment>
   </data>
   <data name="Sawczyn.EFDesigner.EFModel.Association/Persistent.Description" xml:space="preserve">
@@ -1489,6 +1745,42 @@
     <value>End 2</value>
     <comment>Category for DomainProperty &apos;TargetDisplayText&apos; on DomainClass &apos;Association&apos;</comment>
   </data>
+  <data name="Sawczyn.EFDesigner.EFModel.Association/TargetForeignKey.Description" xml:space="preserve">
+    <value>Name of the foreign key column at this end</value>
+    <comment>Description for DomainProperty &apos;TargetForeignKey&apos; on DomainClass &apos;Association&apos;</comment>
+  </data>
+  <data name="Sawczyn.EFDesigner.EFModel.Association/TargetForeignKey.DisplayName" xml:space="preserve">
+    <value>End2 Foreign Key</value>
+    <comment>DisplayName for DomainProperty &apos;TargetForeignKey&apos; on DomainClass &apos;Association&apos;</comment>
+  </data>
+  <data name="Sawczyn.EFDesigner.EFModel.Association/TargetForeignKey.Category" xml:space="preserve">
+    <value>End 2</value>
+    <comment>Category for DomainProperty &apos;TargetForeignKey&apos; on DomainClass &apos;Association&apos;</comment>
+  </data>
+  <data name="Sawczyn.EFDesigner.EFModel.Association/SourceForeignKey.Description" xml:space="preserve">
+    <value>Name of the foreign key column at this end</value>
+    <comment>Description for DomainProperty &apos;SourceForeignKey&apos; on DomainClass &apos;Association&apos;</comment>
+  </data>
+  <data name="Sawczyn.EFDesigner.EFModel.Association/SourceForeignKey.DisplayName" xml:space="preserve">
+    <value>End1 Foreign Key</value>
+    <comment>DisplayName for DomainProperty &apos;SourceForeignKey&apos; on DomainClass &apos;Association&apos;</comment>
+  </data>
+  <data name="Sawczyn.EFDesigner.EFModel.Association/SourceForeignKey.Category" xml:space="preserve">
+    <value>End 1</value>
+    <comment>Category for DomainProperty &apos;SourceForeignKey&apos; on DomainClass &apos;Association&apos;</comment>
+  </data>
+  <data name="Sawczyn.EFDesigner.EFModel.Association/GenerateClient.Description" xml:space="preserve">
+    <value>Description for Sawczyn.EFDesigner.EFModel.Association.Generate Client Model</value>
+    <comment>Description for DomainProperty &apos;GenerateClient&apos; on DomainClass &apos;Association&apos;</comment>
+  </data>
+  <data name="Sawczyn.EFDesigner.EFModel.Association/GenerateClient.DisplayName" xml:space="preserve">
+    <value>Generate Client Model</value>
+    <comment>DisplayName for DomainProperty &apos;GenerateClient&apos; on DomainClass &apos;Association&apos;</comment>
+  </data>
+  <data name="Sawczyn.EFDesigner.EFModel.Association/GenerateClient.Category" xml:space="preserve">
+    <value>Code Generation</value>
+    <comment>Category for DomainProperty &apos;GenerateClient&apos; on DomainClass &apos;Association&apos;</comment>
+  </data>
   <data name="Sawczyn.EFDesigner.EFModel.Association/Source.Description" xml:space="preserve">
     <value></value>
     <comment>Description for DomainRole &apos;Source&apos; on DomainRelationship &apos;Association&apos;</comment>
@@ -1658,7 +1950,7 @@
     <comment>DisplayName for DomainProperty &apos;SourcePropertyName&apos; on DomainClass &apos;BidirectionalAssociation&apos;</comment>
   </data>
   <data name="Sawczyn.EFDesigner.EFModel.BidirectionalAssociation/SourcePropertyName.Category" xml:space="preserve">
-    <value>End 1</value>
+    <value>End 2</value>
     <comment>Category for DomainProperty &apos;SourcePropertyName&apos; on DomainClass &apos;BidirectionalAssociation&apos;</comment>
   </data>
   <data name="Sawczyn.EFDesigner.EFModel.BidirectionalAssociation/SourceDescription.Description" xml:space="preserve">
@@ -1924,6 +2216,70 @@
   <data name="Sawczyn.EFDesigner.EFModel.CommentReferencesEnums/ModelEnum.PropertyDisplayName" xml:space="preserve">
     <value>Comments</value>
     <comment>PropertyDisplayName for DomainRole &apos;ModelEnum&apos; on DomainRelationship &apos;CommentReferencesEnums&apos;</comment>
+  </data>
+  <data name="Sawczyn.EFDesigner.EFModel.ModelRootHasProcedures.Description" xml:space="preserve">
+    <value>Description for Sawczyn.EFDesigner.EFModel.ModelRootHasProcedures</value>
+    <comment>Description for DomainClass &apos;ModelRootHasProcedures&apos;</comment>
+  </data>
+  <data name="Sawczyn.EFDesigner.EFModel.ModelRootHasProcedures.DisplayName" xml:space="preserve">
+    <value>Model Root Has Procedures</value>
+    <comment>DisplayName for DomainClass &apos;ModelRootHasProcedures&apos;</comment>
+  </data>
+  <data name="Sawczyn.EFDesigner.EFModel.ModelRootHasProcedures/ModelRoot.Description" xml:space="preserve">
+    <value>Description for Sawczyn.EFDesigner.EFModel.ModelRootHasProcedures.ModelRoot</value>
+    <comment>Description for DomainRole &apos;ModelRoot&apos; on DomainRelationship &apos;ModelRootHasProcedures&apos;</comment>
+  </data>
+  <data name="Sawczyn.EFDesigner.EFModel.ModelRootHasProcedures/ModelRoot.DisplayName" xml:space="preserve">
+    <value>Model Root</value>
+    <comment>DisplayName for DomainRole &apos;ModelRoot&apos; on DomainRelationship &apos;ModelRootHasProcedures&apos;</comment>
+  </data>
+  <data name="Sawczyn.EFDesigner.EFModel.ModelRootHasProcedures/ModelRoot.PropertyDisplayName" xml:space="preserve">
+    <value>Model Procedures</value>
+    <comment>PropertyDisplayName for DomainRole &apos;ModelRoot&apos; on DomainRelationship &apos;ModelRootHasProcedures&apos;</comment>
+  </data>
+  <data name="Sawczyn.EFDesigner.EFModel.ModelRootHasProcedures/ModelProcedure.Description" xml:space="preserve">
+    <value>Description for Sawczyn.EFDesigner.EFModel.ModelRootHasProcedures.ModelProcedure</value>
+    <comment>Description for DomainRole &apos;ModelProcedure&apos; on DomainRelationship &apos;ModelRootHasProcedures&apos;</comment>
+  </data>
+  <data name="Sawczyn.EFDesigner.EFModel.ModelRootHasProcedures/ModelProcedure.DisplayName" xml:space="preserve">
+    <value>Model Procedure</value>
+    <comment>DisplayName for DomainRole &apos;ModelProcedure&apos; on DomainRelationship &apos;ModelRootHasProcedures&apos;</comment>
+  </data>
+  <data name="Sawczyn.EFDesigner.EFModel.ModelRootHasProcedures/ModelProcedure.PropertyDisplayName" xml:space="preserve">
+    <value>Model Root</value>
+    <comment>PropertyDisplayName for DomainRole &apos;ModelProcedure&apos; on DomainRelationship &apos;ModelRootHasProcedures&apos;</comment>
+  </data>
+  <data name="Sawczyn.EFDesigner.EFModel.ProcedureHasParameters.Description" xml:space="preserve">
+    <value>Description for Sawczyn.EFDesigner.EFModel.ProcedureHasParameters</value>
+    <comment>Description for DomainClass &apos;ProcedureHasParameters&apos;</comment>
+  </data>
+  <data name="Sawczyn.EFDesigner.EFModel.ProcedureHasParameters.DisplayName" xml:space="preserve">
+    <value>Procedure Has Parameters</value>
+    <comment>DisplayName for DomainClass &apos;ProcedureHasParameters&apos;</comment>
+  </data>
+  <data name="Sawczyn.EFDesigner.EFModel.ProcedureHasParameters/ModelProcedure.Description" xml:space="preserve">
+    <value></value>
+    <comment>Description for DomainRole &apos;ModelProcedure&apos; on DomainRelationship &apos;ProcedureHasParameters&apos;</comment>
+  </data>
+  <data name="Sawczyn.EFDesigner.EFModel.ProcedureHasParameters/ModelProcedure.DisplayName" xml:space="preserve">
+    <value>Procedure</value>
+    <comment>DisplayName for DomainRole &apos;ModelProcedure&apos; on DomainRelationship &apos;ProcedureHasParameters&apos;</comment>
+  </data>
+  <data name="Sawczyn.EFDesigner.EFModel.ProcedureHasParameters/ModelProcedure.PropertyDisplayName" xml:space="preserve">
+    <value>Parameters</value>
+    <comment>PropertyDisplayName for DomainRole &apos;ModelProcedure&apos; on DomainRelationship &apos;ProcedureHasParameters&apos;</comment>
+  </data>
+  <data name="Sawczyn.EFDesigner.EFModel.ProcedureHasParameters/Parameter.Description" xml:space="preserve">
+    <value></value>
+    <comment>Description for DomainRole &apos;Parameter&apos; on DomainRelationship &apos;ProcedureHasParameters&apos;</comment>
+  </data>
+  <data name="Sawczyn.EFDesigner.EFModel.ProcedureHasParameters/Parameter.DisplayName" xml:space="preserve">
+    <value>Parameter</value>
+    <comment>DisplayName for DomainRole &apos;Parameter&apos; on DomainRelationship &apos;ProcedureHasParameters&apos;</comment>
+  </data>
+  <data name="Sawczyn.EFDesigner.EFModel.ProcedureHasParameters/Parameter.PropertyDisplayName" xml:space="preserve">
+    <value>Procedure</value>
+    <comment>PropertyDisplayName for DomainRole &apos;Parameter&apos; on DomainRelationship &apos;ProcedureHasParameters&apos;</comment>
   </data>
   <data name="Sawczyn.EFDesigner.EFModel.TypeAccessModifier/Public.DisplayName" xml:space="preserve">
     <value>Public</value>
@@ -2645,6 +3001,30 @@
     <value>Ask each time if should perform the action automatically</value>
     <comment>Description for EnumerationLiteral &apos;Ask&apos; on DomainEnumeration &apos;AutomaticAction&apos;</comment>
   </data>
+  <data name="Sawczyn.EFDesigner.EFModel.ParamDirection/In.DisplayName" xml:space="preserve">
+    <value>In</value>
+    <comment>Display name for EnumerationLiteral &apos;In&apos; on DomainEnumeration &apos;ParamDirection&apos;</comment>
+  </data>
+  <data name="Sawczyn.EFDesigner.EFModel.ParamDirection/In.Description" xml:space="preserve">
+    <value></value>
+    <comment>Description for EnumerationLiteral &apos;In&apos; on DomainEnumeration &apos;ParamDirection&apos;</comment>
+  </data>
+  <data name="Sawczyn.EFDesigner.EFModel.ParamDirection/Out.DisplayName" xml:space="preserve">
+    <value>Out</value>
+    <comment>Display name for EnumerationLiteral &apos;Out&apos; on DomainEnumeration &apos;ParamDirection&apos;</comment>
+  </data>
+  <data name="Sawczyn.EFDesigner.EFModel.ParamDirection/Out.Description" xml:space="preserve">
+    <value></value>
+    <comment>Description for EnumerationLiteral &apos;Out&apos; on DomainEnumeration &apos;ParamDirection&apos;</comment>
+  </data>
+  <data name="Sawczyn.EFDesigner.EFModel.ParamDirection/InOut.DisplayName" xml:space="preserve">
+    <value>InOut</value>
+    <comment>Display name for EnumerationLiteral &apos;InOut&apos; on DomainEnumeration &apos;ParamDirection&apos;</comment>
+  </data>
+  <data name="Sawczyn.EFDesigner.EFModel.ParamDirection/InOut.Description" xml:space="preserve">
+    <value></value>
+    <comment>Description for EnumerationLiteral &apos;InOut&apos; on DomainEnumeration &apos;ParamDirection&apos;</comment>
+  </data>
   <data name="Sawczyn.EFDesigner.EFModel.ClassShape.Description" xml:space="preserve">
     <value></value>
     <comment>Description for DomainClass &apos;ClassShape&apos;</comment>
@@ -2829,6 +3209,90 @@
     <value>Name</value>
     <comment>Text decorator default text</comment>
   </data>
+  <data name="Sawczyn.EFDesigner.EFModel.ProcedureShape.Description" xml:space="preserve">
+    <value></value>
+    <comment>Description for DomainClass &apos;ProcedureShape&apos;</comment>
+  </data>
+  <data name="Sawczyn.EFDesigner.EFModel.ProcedureShape.DisplayName" xml:space="preserve">
+    <value>Procedure Shape</value>
+    <comment>DisplayName for DomainClass &apos;ProcedureShape&apos;</comment>
+  </data>
+  <data name="Sawczyn.EFDesigner.EFModel.ProcedureShape/FillColor.Description" xml:space="preserve">
+    <value>No description available</value>
+    <comment>Description for DomainProperty &apos;FillColor&apos; on DomainClass &apos;ProcedureShape&apos;</comment>
+  </data>
+  <data name="Sawczyn.EFDesigner.EFModel.ProcedureShape/FillColor.DisplayName" xml:space="preserve">
+    <value>Fill Color</value>
+    <comment>DisplayName for DomainProperty &apos;FillColor&apos; on DomainClass &apos;ProcedureShape&apos;</comment>
+  </data>
+  <data name="Sawczyn.EFDesigner.EFModel.ProcedureShape/FillColor.Category" xml:space="preserve">
+    <value>Display</value>
+    <comment>Category for DomainProperty &apos;FillColor&apos; on DomainClass &apos;ProcedureShape&apos;</comment>
+  </data>
+  <data name="Sawczyn.EFDesigner.EFModel.ProcedureShape/TextColor.Description" xml:space="preserve">
+    <value>No description available</value>
+    <comment>Description for DomainProperty &apos;TextColor&apos; on DomainClass &apos;ProcedureShape&apos;</comment>
+  </data>
+  <data name="Sawczyn.EFDesigner.EFModel.ProcedureShape/TextColor.DisplayName" xml:space="preserve">
+    <value>Text Color</value>
+    <comment>DisplayName for DomainProperty &apos;TextColor&apos; on DomainClass &apos;ProcedureShape&apos;</comment>
+  </data>
+  <data name="Sawczyn.EFDesigner.EFModel.ProcedureShape/TextColor.Category" xml:space="preserve">
+    <value>Display</value>
+    <comment>Category for DomainProperty &apos;TextColor&apos; on DomainClass &apos;ProcedureShape&apos;</comment>
+  </data>
+  <data name="Sawczyn.EFDesigner.EFModel.ProcedureShape/OutlineColor.Description" xml:space="preserve">
+    <value>No description available</value>
+    <comment>Description for DomainProperty &apos;OutlineColor&apos; on DomainClass &apos;ProcedureShape&apos;</comment>
+  </data>
+  <data name="Sawczyn.EFDesigner.EFModel.ProcedureShape/OutlineColor.DisplayName" xml:space="preserve">
+    <value>Outline Color</value>
+    <comment>DisplayName for DomainProperty &apos;OutlineColor&apos; on DomainClass &apos;ProcedureShape&apos;</comment>
+  </data>
+  <data name="Sawczyn.EFDesigner.EFModel.ProcedureShape/OutlineColor.Category" xml:space="preserve">
+    <value>Display</value>
+    <comment>Category for DomainProperty &apos;OutlineColor&apos; on DomainClass &apos;ProcedureShape&apos;</comment>
+  </data>
+  <data name="Sawczyn.EFDesigner.EFModel.ProcedureShape/OutlineDashStyle.Description" xml:space="preserve">
+    <value>Description for Sawczyn.EFDesigner.EFModel.ProcedureShape.Outline Dash Style</value>
+    <comment>Description for DomainProperty &apos;OutlineDashStyle&apos; on DomainClass &apos;ProcedureShape&apos;</comment>
+  </data>
+  <data name="Sawczyn.EFDesigner.EFModel.ProcedureShape/OutlineDashStyle.DisplayName" xml:space="preserve">
+    <value>Outline Dash Style</value>
+    <comment>DisplayName for DomainProperty &apos;OutlineDashStyle&apos; on DomainClass &apos;ProcedureShape&apos;</comment>
+  </data>
+  <data name="Sawczyn.EFDesigner.EFModel.ProcedureShape/OutlineDashStyle.Category" xml:space="preserve">
+    <value>Display</value>
+    <comment>Category for DomainProperty &apos;OutlineDashStyle&apos; on DomainClass &apos;ProcedureShape&apos;</comment>
+  </data>
+  <data name="Sawczyn.EFDesigner.EFModel.ProcedureShape/Visible.Description" xml:space="preserve">
+    <value>Description for Sawczyn.EFDesigner.EFModel.ProcedureShape.Visible</value>
+    <comment>Description for DomainProperty &apos;Visible&apos; on DomainClass &apos;ProcedureShape&apos;</comment>
+  </data>
+  <data name="Sawczyn.EFDesigner.EFModel.ProcedureShape/Visible.DisplayName" xml:space="preserve">
+    <value>Visible</value>
+    <comment>DisplayName for DomainProperty &apos;Visible&apos; on DomainClass &apos;ProcedureShape&apos;</comment>
+  </data>
+  <data name="Sawczyn.EFDesigner.EFModel.ProcedureShape/Visible.Category" xml:space="preserve">
+    <value>Display</value>
+    <comment>Category for DomainProperty &apos;Visible&apos; on DomainClass &apos;ProcedureShape&apos;</comment>
+  </data>
+  <data name="Sawczyn.EFDesigner.EFModel.ProcedureShape/OutlineThickness.Description" xml:space="preserve">
+    <value>Description for Sawczyn.EFDesigner.EFModel.ProcedureShape.Outline Thickness</value>
+    <comment>Description for DomainProperty &apos;OutlineThickness&apos; on DomainClass &apos;ProcedureShape&apos;</comment>
+  </data>
+  <data name="Sawczyn.EFDesigner.EFModel.ProcedureShape/OutlineThickness.DisplayName" xml:space="preserve">
+    <value>Outline Thickness</value>
+    <comment>DisplayName for DomainProperty &apos;OutlineThickness&apos; on DomainClass &apos;ProcedureShape&apos;</comment>
+  </data>
+  <data name="ProcedureShapeParametersCompartmentTitle" xml:space="preserve">
+    <value>Parameters</value>
+    <comment>Compartment title</comment>
+  </data>
+  <data name="ProcedureShapeNameDefaultText" xml:space="preserve">
+    <value>Name</value>
+    <comment>Text decorator default text</comment>
+  </data>
   <data name="Sawczyn.EFDesigner.EFModel.AssociationConnector.Description" xml:space="preserve">
     <value></value>
     <comment>Description for DomainClass &apos;AssociationConnector&apos;</comment>
@@ -2977,6 +3441,14 @@
     <value>Creates an enumeration</value>
     <comment>Toolbox tooltip text</comment>
   </data>
+  <data name="ProcedureToolboxItem" xml:space="preserve">
+    <value>Procedure</value>
+    <comment>Toolbox item name</comment>
+  </data>
+  <data name="ProcedureToolboxTooltip" xml:space="preserve">
+    <value>Procedure</value>
+    <comment>Toolbox tooltip text</comment>
+  </data>
   <data name="UnresolvedToolboxItem" xml:space="preserve">
     <value>ToolboxItem {0} was not found</value>
     <comment>Invalid toolId</comment>
@@ -3122,6 +3594,10 @@ A DomainClass can be serialized as a moniker only if
     <value>..\Resources\Warning.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
     <comment>Icon decorator default image</comment>
   </data>
+  <data name="ProcedureShapeProcedureGlyphDefaultImage" type="System.Resources.ResXFileRef, System.Windows.Forms" xml:space="preserve">
+    <value>..\Resources\proc.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <comment>Icon decorator default image</comment>
+  </data>
   <data name="ModelClassExplorerImage" type="System.Resources.ResXFileRef, System.Windows.Forms" xml:space="preserve">
     <value>..\Resources\EntityGlyph.bmp;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
     <comment>Toolbox item image</comment>
@@ -3140,6 +3616,14 @@ A DomainClass can be serialized as a moniker only if
   </data>
   <data name="CommentExplorerImage" type="System.Resources.ResXFileRef, System.Windows.Forms" xml:space="preserve">
     <value>..\Resources\CommentTool.bmp;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <comment>Toolbox item image</comment>
+  </data>
+  <data name="ModelParameterExplorerImage" type="System.Resources.ResXFileRef, System.Windows.Forms" xml:space="preserve">
+    <value>..\Resources\param.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <comment>Toolbox item image</comment>
+  </data>
+  <data name="ModelProcedureExplorerImage" type="System.Resources.ResXFileRef, System.Windows.Forms" xml:space="preserve">
+    <value>..\Resources\proc.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
     <comment>Toolbox item image</comment>
   </data>
   <data name="ModelClassToolboxBitmap" type="System.Resources.ResXFileRef, System.Windows.Forms" xml:space="preserve">
@@ -3168,6 +3652,10 @@ A DomainClass can be serialized as a moniker only if
   </data>
   <data name="EnumerationToolboxBitmap" type="System.Resources.ResXFileRef, System.Windows.Forms" xml:space="preserve">
     <value>..\Resources\EnumTool.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <comment>Toolbox item image</comment>
+  </data>
+  <data name="ProcedureToolboxBitmap" type="System.Resources.ResXFileRef, System.Windows.Forms" xml:space="preserve">
+    <value>..\Resources\proc.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
     <comment>Toolbox item image</comment>
   </data>
 </root>

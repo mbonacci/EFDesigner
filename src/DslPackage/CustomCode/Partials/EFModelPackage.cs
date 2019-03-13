@@ -19,6 +19,8 @@ namespace Sawczyn.EFDesigner.EFModel
          TypeDescriptor.AddProvider(new AssociationTypeDescriptionProvider(), typeof(Association));
          TypeDescriptor.AddProvider(new ModelAttributeTypeDescriptionProvider(), typeof(ModelAttribute));
          TypeDescriptor.AddProvider(new ModelRootTypeDescriptionProvider(), typeof(ModelRoot));
+         TypeDescriptor.AddProvider(new ModelProcedureTypeDescriptionProvider(), typeof(ModelProcedure));
+         TypeDescriptor.AddProvider(new ModelParameterTypeDescriptionProvider(), typeof(ModelParameter));
 
          base.Initialize();
       }

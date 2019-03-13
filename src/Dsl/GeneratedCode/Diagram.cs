@@ -300,6 +300,12 @@ namespace Sawczyn.EFDesigner.EFModel
 				if(newShape != null) newShape.Size = newShape.DefaultSize; // set default shape size
 				return newShape;
 			}
+			if(element is global::Sawczyn.EFDesigner.EFModel.ModelProcedure)
+			{
+				global::Sawczyn.EFDesigner.EFModel.ProcedureShape newShape = new global::Sawczyn.EFDesigner.EFModel.ProcedureShape(this.Partition);
+				if(newShape != null) newShape.Size = newShape.DefaultSize; // set default shape size
+				return newShape;
+			}
 			if(element is global::Sawczyn.EFDesigner.EFModel.BidirectionalAssociation)
 			{
 				global::Sawczyn.EFDesigner.EFModel.BidirectionalConnector newShape = new global::Sawczyn.EFDesigner.EFModel.BidirectionalConnector(this.Partition);
@@ -340,6 +346,7 @@ namespace Sawczyn.EFDesigner.EFModel
 			global::Sawczyn.EFDesigner.EFModel.ClassShape.DecoratorsInitialized += ClassShapeDecoratorMap.OnDecoratorsInitialized;
 			global::Sawczyn.EFDesigner.EFModel.CommentBoxShape.DecoratorsInitialized += CommentBoxShapeDecoratorMap.OnDecoratorsInitialized;
 			global::Sawczyn.EFDesigner.EFModel.EnumShape.DecoratorsInitialized += EnumShapeDecoratorMap.OnDecoratorsInitialized;
+			global::Sawczyn.EFDesigner.EFModel.ProcedureShape.DecoratorsInitialized += ProcedureShapeDecoratorMap.OnDecoratorsInitialized;
 			global::Sawczyn.EFDesigner.EFModel.UnidirectionalConnector.DecoratorsInitialized += UnidirectionalConnectorDecoratorMap.OnDecoratorsInitialized;
 			global::Sawczyn.EFDesigner.EFModel.BidirectionalConnector.DecoratorsInitialized += BidirectionalConnectorDecoratorMap.OnDecoratorsInitialized;
 		}
@@ -415,6 +422,24 @@ namespace Sawczyn.EFDesigner.EFModel
 				propertyInfo = new DslDiagrams::AssociatedPropertyInfo(global::Sawczyn.EFDesigner.EFModel.ModelEnum.GlyphTypeDomainPropertyId);
 				propertyInfo.FilteringValues.Add("WarningGlyph");
 				DslDiagrams::ShapeElement.FindDecorator(shape.Decorators, "WarningGlyph").AssociateVisibilityWith(shape.Store, propertyInfo);
+			}
+		}
+		
+		/// <summary>
+		/// Class containing decorator path traversal methods for ProcedureShape.
+		/// </summary>
+		internal static partial class ProcedureShapeDecoratorMap
+		{
+			/// <summary>
+			/// Event handler called when decorator initialization is complete for ProcedureShape.  Adds decorator mappings for this shape or connector.
+			/// </summary>
+			public static void OnDecoratorsInitialized(object sender, global::System.EventArgs e)
+			{
+				DslDiagrams::ShapeElement shape = (DslDiagrams::ShapeElement)sender;
+				DslDiagrams::AssociatedPropertyInfo propertyInfo;
+				
+				propertyInfo = new DslDiagrams::AssociatedPropertyInfo(global::Sawczyn.EFDesigner.EFModel.ModelProcedure.NameDomainPropertyId);
+				DslDiagrams::ShapeElement.FindDecorator(shape.Decorators, "Name").AssociateValueWith(shape.Store, propertyInfo);
 			}
 		}
 		
@@ -545,6 +570,7 @@ namespace Sawczyn.EFDesigner.EFModel
 		private global::Sawczyn.EFDesigner.EFModel.ModelClassCreateAction modelClassCreateAction;
 		private global::Sawczyn.EFDesigner.EFModel.CommentCreateAction commentCreateAction;
 		private global::Sawczyn.EFDesigner.EFModel.EnumerationCreateAction enumerationCreateAction;
+		private global::Sawczyn.EFDesigner.EFModel.ProcedureCreateAction procedureCreateAction;
 		private global::Sawczyn.EFDesigner.EFModel.UnidirectionalAssociationConnectAction unidirectionalAssociationConnectAction;
 		private global::Sawczyn.EFDesigner.EFModel.BidirectionalAssociationConnectAction bidirectionalAssociationConnectAction;
 		private global::Sawczyn.EFDesigner.EFModel.GeneralizationConnectAction generalizationConnectAction;
@@ -612,6 +638,16 @@ namespace Sawczyn.EFDesigner.EFModel
 					}
 					this.enumerationCreateAction.StickyMode = stickyMode;
 					action = this.enumerationCreateAction;
+				}
+				else if (SelectedToolboxItemSupportsFilterString(activeView, global::Sawczyn.EFDesigner.EFModel.EFModelToolboxHelper.ProcedureFilterString))
+				{
+					if (this.procedureCreateAction == null)
+					{
+						this.procedureCreateAction = new global::Sawczyn.EFDesigner.EFModel.ProcedureCreateAction(this);
+						this.procedureCreateAction.MouseActionDeactivated += new DslDiagrams::MouseAction.MouseActionDeactivatedEventHandler(OnToolboxActionDeactivated);
+					}
+					this.procedureCreateAction.StickyMode = stickyMode;
+					action = this.procedureCreateAction;
 				}
 				else if (SelectedToolboxItemSupportsFilterString(activeView, global::Sawczyn.EFDesigner.EFModel.EFModelToolboxHelper.UnidirectionalAssociationFilterString))
 				{
@@ -725,6 +761,11 @@ namespace Sawczyn.EFDesigner.EFModel
 						this.enumerationCreateAction.Dispose();
 						this.enumerationCreateAction = null;
 					}
+					if(this.procedureCreateAction != null)
+					{
+						this.procedureCreateAction.Dispose();
+						this.procedureCreateAction = null;
+					}
 					if(this.unidirectionalAssociationConnectAction != null)
 					{
 						this.unidirectionalAssociationConnectAction.Dispose();
@@ -801,6 +842,7 @@ namespace Sawczyn.EFDesigner.EFModel
 		/// </summary>
 		[DslModeling::RuleOn(typeof(global::Sawczyn.EFDesigner.EFModel.ModelClass), FireTime = DslModeling::TimeToFire.TopLevelCommit, Priority = DslDiagrams::DiagramFixupConstants.AddShapeParentExistRulePriority, InitiallyDisabled=true)]
 		[DslModeling::RuleOn(typeof(global::Sawczyn.EFDesigner.EFModel.ModelEnum), FireTime = DslModeling::TimeToFire.TopLevelCommit, Priority = DslDiagrams::DiagramFixupConstants.AddShapeParentExistRulePriority, InitiallyDisabled=true)]
+		[DslModeling::RuleOn(typeof(global::Sawczyn.EFDesigner.EFModel.ModelProcedure), FireTime = DslModeling::TimeToFire.TopLevelCommit, Priority = DslDiagrams::DiagramFixupConstants.AddShapeParentExistRulePriority, InitiallyDisabled=true)]
 		[DslModeling::RuleOn(typeof(global::Sawczyn.EFDesigner.EFModel.BidirectionalAssociation), FireTime = DslModeling::TimeToFire.TopLevelCommit, Priority = DslDiagrams::DiagramFixupConstants.AddConnectionRulePriority, InitiallyDisabled=true)]
 		[DslModeling::RuleOn(typeof(global::Sawczyn.EFDesigner.EFModel.UnidirectionalAssociation), FireTime = DslModeling::TimeToFire.TopLevelCommit, Priority = DslDiagrams::DiagramFixupConstants.AddConnectionRulePriority, InitiallyDisabled=true)]
 		[DslModeling::RuleOn(typeof(global::Sawczyn.EFDesigner.EFModel.Comment), FireTime = DslModeling::TimeToFire.TopLevelCommit, Priority = DslDiagrams::DiagramFixupConstants.AddShapeParentExistRulePriority, InitiallyDisabled=true)]
@@ -828,6 +870,10 @@ namespace Sawczyn.EFDesigner.EFModel
 				if(childElement is global::Sawczyn.EFDesigner.EFModel.ModelEnum)
 				{
 					parentElement = GetParentForModelEnum((global::Sawczyn.EFDesigner.EFModel.ModelEnum)childElement);
+				} else
+				if(childElement is global::Sawczyn.EFDesigner.EFModel.ModelProcedure)
+				{
+					parentElement = GetParentForModelProcedure((global::Sawczyn.EFDesigner.EFModel.ModelProcedure)childElement);
 				} else
 				if(childElement is global::Sawczyn.EFDesigner.EFModel.Comment)
 				{
@@ -857,6 +903,13 @@ namespace Sawczyn.EFDesigner.EFModel
 				return result;
 			}
 			public static global::Sawczyn.EFDesigner.EFModel.ModelRoot GetParentForModelEnum( global::Sawczyn.EFDesigner.EFModel.ModelEnum root )
+			{
+				// Segments 0 and 1
+				global::Sawczyn.EFDesigner.EFModel.ModelRoot result = root.ModelRoot;
+				if ( result == null ) return null;
+				return result;
+			}
+			public static global::Sawczyn.EFDesigner.EFModel.ModelRoot GetParentForModelProcedure( global::Sawczyn.EFDesigner.EFModel.ModelProcedure root )
 			{
 				// Segments 0 and 1
 				global::Sawczyn.EFDesigner.EFModel.ModelRoot result = root.ModelRoot;
@@ -955,6 +1008,7 @@ namespace Sawczyn.EFDesigner.EFModel
 		[DslModeling::RuleOn(typeof(global::Sawczyn.EFDesigner.EFModel.Association), FireTime=DslModeling::TimeToFire.TopLevelCommit, InitiallyDisabled=true)]
 		[DslModeling::RuleOn(typeof(global::Sawczyn.EFDesigner.EFModel.BidirectionalAssociation), FireTime=DslModeling::TimeToFire.TopLevelCommit, InitiallyDisabled=true)]
 		[DslModeling::RuleOn(typeof(global::Sawczyn.EFDesigner.EFModel.ModelEnumHasValues), FireTime=DslModeling::TimeToFire.TopLevelCommit, InitiallyDisabled=true)]
+		[DslModeling::RuleOn(typeof(global::Sawczyn.EFDesigner.EFModel.ProcedureHasParameters), FireTime=DslModeling::TimeToFire.TopLevelCommit, InitiallyDisabled=true)]
 		internal sealed class CompartmentItemAddRule : DslModeling::AddRule
 		{
 			/// <summary>
@@ -990,6 +1044,11 @@ namespace Sawczyn.EFDesigner.EFModel
 				{
 					global::System.Collections.IEnumerable elements = GetModelEnumForEnumShapeValuesCompartmentFromLastLink((global::Sawczyn.EFDesigner.EFModel.ModelEnumHasValues)e.ModelElement);
 					UpdateCompartments(elements, typeof(global::Sawczyn.EFDesigner.EFModel.EnumShape), "ValuesCompartment", repaintOnly);
+				}
+				if(e.ModelElement is global::Sawczyn.EFDesigner.EFModel.ProcedureHasParameters)
+				{
+					global::System.Collections.IEnumerable elements = GetModelProcedureForProcedureShapeParametersCompartmentFromLastLink((global::Sawczyn.EFDesigner.EFModel.ProcedureHasParameters)e.ModelElement);
+					UpdateCompartments(elements, typeof(global::Sawczyn.EFDesigner.EFModel.ProcedureShape), "ParametersCompartment", repaintOnly);
 				}
 			}
 			
@@ -1048,6 +1107,20 @@ namespace Sawczyn.EFDesigner.EFModel
 				if ( result == null ) return new DslModeling::ModelElement[0];
 				return new DslModeling::ModelElement[] {result};
 			}
+			internal static global::System.Collections.ICollection GetModelProcedureForProcedureShapeParametersCompartmentFromLastLink(global::Sawczyn.EFDesigner.EFModel.ProcedureHasParameters root)
+			{
+				// Segment 0
+				global::Sawczyn.EFDesigner.EFModel.ModelProcedure result = root.ModelProcedure;
+				if ( result == null ) return new DslModeling::ModelElement[0];
+				return new DslModeling::ModelElement[] {result};
+			}
+			internal static global::System.Collections.ICollection GetModelProcedureForProcedureShapeParametersCompartment(global::Sawczyn.EFDesigner.EFModel.ModelParameter root)
+			{
+				// Segments 1 and 0
+				global::Sawczyn.EFDesigner.EFModel.ModelProcedure result = root.ModelProcedure;
+				if ( result == null ) return new DslModeling::ModelElement[0];
+				return new DslModeling::ModelElement[] {result};
+			}
 			#endregion
 	
 			#region helper method to update compartments 
@@ -1097,6 +1170,7 @@ namespace Sawczyn.EFDesigner.EFModel
 		[DslModeling::RuleOn(typeof(global::Sawczyn.EFDesigner.EFModel.Association), FireTime=DslModeling::TimeToFire.TopLevelCommit, InitiallyDisabled=true)]
 		[DslModeling::RuleOn(typeof(global::Sawczyn.EFDesigner.EFModel.BidirectionalAssociation), FireTime=DslModeling::TimeToFire.TopLevelCommit, InitiallyDisabled=true)]
 		[DslModeling::RuleOn(typeof(global::Sawczyn.EFDesigner.EFModel.ModelEnumHasValues), FireTime=DslModeling::TimeToFire.TopLevelCommit, InitiallyDisabled=true)]
+		[DslModeling::RuleOn(typeof(global::Sawczyn.EFDesigner.EFModel.ProcedureHasParameters), FireTime=DslModeling::TimeToFire.TopLevelCommit, InitiallyDisabled=true)]
 		internal sealed class CompartmentItemDeleteRule : DslModeling::DeleteRule
 		{
 			/// <summary>
@@ -1131,6 +1205,11 @@ namespace Sawczyn.EFDesigner.EFModel
 					global::System.Collections.ICollection elements = CompartmentItemAddRule.GetModelEnumForEnumShapeValuesCompartmentFromLastLink((global::Sawczyn.EFDesigner.EFModel.ModelEnumHasValues)e.ModelElement);
 					CompartmentItemAddRule.UpdateCompartments(elements, typeof(global::Sawczyn.EFDesigner.EFModel.EnumShape), "ValuesCompartment", repaintOnly);
 				}
+				if(e.ModelElement is global::Sawczyn.EFDesigner.EFModel.ProcedureHasParameters)
+				{
+					global::System.Collections.ICollection elements = CompartmentItemAddRule.GetModelProcedureForProcedureShapeParametersCompartmentFromLastLink((global::Sawczyn.EFDesigner.EFModel.ProcedureHasParameters)e.ModelElement);
+					CompartmentItemAddRule.UpdateCompartments(elements, typeof(global::Sawczyn.EFDesigner.EFModel.ProcedureShape), "ParametersCompartment", repaintOnly);
+				}
 			}
 		}
 		
@@ -1140,6 +1219,7 @@ namespace Sawczyn.EFDesigner.EFModel
 		[DslModeling::RuleOn(typeof(global::Sawczyn.EFDesigner.EFModel.ModelAttribute), FireTime=DslModeling::TimeToFire.TopLevelCommit, InitiallyDisabled=true)]
 		[DslModeling::RuleOn(typeof(global::Sawczyn.EFDesigner.EFModel.ModelClass), FireTime=DslModeling::TimeToFire.TopLevelCommit, InitiallyDisabled=true)]
 		[DslModeling::RuleOn(typeof(global::Sawczyn.EFDesigner.EFModel.ModelEnumValue), FireTime=DslModeling::TimeToFire.TopLevelCommit, InitiallyDisabled=true)]
+		[DslModeling::RuleOn(typeof(global::Sawczyn.EFDesigner.EFModel.ModelParameter), FireTime=DslModeling::TimeToFire.TopLevelCommit, InitiallyDisabled=true)]
 		internal sealed class CompartmentItemChangeRule : DslModeling::ChangeRule 
 		{
 			/// <summary>
@@ -1186,6 +1266,11 @@ namespace Sawczyn.EFDesigner.EFModel
 					global::System.Collections.IEnumerable elements = CompartmentItemAddRule.GetModelEnumForEnumShapeValuesCompartment((global::Sawczyn.EFDesigner.EFModel.ModelEnumValue)e.ModelElement);
 					CompartmentItemAddRule.UpdateCompartments(elements, typeof(global::Sawczyn.EFDesigner.EFModel.EnumShape), "ValuesCompartment", repaintOnly);
 				}
+				if(e.ModelElement is global::Sawczyn.EFDesigner.EFModel.ModelParameter && e.DomainProperty.Id == global::Sawczyn.EFDesigner.EFModel.ModelParameter.NameDomainPropertyId)
+				{
+					global::System.Collections.IEnumerable elements = CompartmentItemAddRule.GetModelProcedureForProcedureShapeParametersCompartment((global::Sawczyn.EFDesigner.EFModel.ModelParameter)e.ModelElement);
+					CompartmentItemAddRule.UpdateCompartments(elements, typeof(global::Sawczyn.EFDesigner.EFModel.ProcedureShape), "ParametersCompartment", repaintOnly);
+				}
 			}
 		}
 		
@@ -1196,6 +1281,7 @@ namespace Sawczyn.EFDesigner.EFModel
 		[DslModeling::RuleOn(typeof(global::Sawczyn.EFDesigner.EFModel.Association), FireTime=DslModeling::TimeToFire.TopLevelCommit, InitiallyDisabled=true)]
 		[DslModeling::RuleOn(typeof(global::Sawczyn.EFDesigner.EFModel.BidirectionalAssociation), FireTime=DslModeling::TimeToFire.TopLevelCommit, InitiallyDisabled=true)]
 		[DslModeling::RuleOn(typeof(global::Sawczyn.EFDesigner.EFModel.ModelEnumHasValues), FireTime=DslModeling::TimeToFire.TopLevelCommit, InitiallyDisabled=true)]
+		[DslModeling::RuleOn(typeof(global::Sawczyn.EFDesigner.EFModel.ProcedureHasParameters), FireTime=DslModeling::TimeToFire.TopLevelCommit, InitiallyDisabled=true)]
 		internal sealed class CompartmentItemRolePlayerChangeRule : DslModeling::RolePlayerChangeRule 
 		{
 			/// <summary>
@@ -1308,6 +1394,33 @@ namespace Sawczyn.EFDesigner.EFModel
 						CompartmentItemAddRule.UpdateCompartments(elements, typeof(global::Sawczyn.EFDesigner.EFModel.EnumShape), "ValuesCompartment", repaintOnly);
 					}
 				}
+				if(typeof(global::Sawczyn.EFDesigner.EFModel.ProcedureHasParameters).IsAssignableFrom(e.DomainRelationship.ImplementationClass))
+				{
+					if(e.DomainRole.IsSource)
+					{
+						//global::System.Collections.IEnumerable oldElements = CompartmentItemAddRule.GetModelProcedureForProcedureShapeParametersCompartmentFromLastLink((global::Sawczyn.EFDesigner.EFModel.ModelParameter)e.OldRolePlayer);
+						//foreach(DslModeling::ModelElement element in oldElements)
+						//{
+						//	DslModeling::LinkedElementCollection<DslDiagrams::PresentationElement> pels = DslDiagrams::PresentationViewsSubject.GetPresentation(element);
+						//	foreach(DslDiagrams::PresentationElement pel in pels)
+						//	{
+						//		global::Sawczyn.EFDesigner.EFModel.ProcedureShape compartmentShape = pel as global::Sawczyn.EFDesigner.EFModel.ProcedureShape;
+						//		if(compartmentShape != null)
+						//		{
+						//			compartmentShape.GetCompartmentMappings()[0].InitializeCompartmentShape(compartmentShape);
+						//		}
+						//	}
+						//}
+						
+						global::System.Collections.IEnumerable elements = CompartmentItemAddRule.GetModelProcedureForProcedureShapeParametersCompartmentFromLastLink((global::Sawczyn.EFDesigner.EFModel.ProcedureHasParameters)e.ElementLink);
+						CompartmentItemAddRule.UpdateCompartments(elements, typeof(global::Sawczyn.EFDesigner.EFModel.ProcedureShape), "ParametersCompartment", repaintOnly);
+					}
+					else 
+					{
+						global::System.Collections.IEnumerable elements = CompartmentItemAddRule.GetModelProcedureForProcedureShapeParametersCompartment((global::Sawczyn.EFDesigner.EFModel.ModelParameter)e.NewRolePlayer);
+						CompartmentItemAddRule.UpdateCompartments(elements, typeof(global::Sawczyn.EFDesigner.EFModel.ProcedureShape), "ParametersCompartment", repaintOnly);
+					}
+				}
 			}
 		}
 	
@@ -1318,6 +1431,7 @@ namespace Sawczyn.EFDesigner.EFModel
 		[DslModeling::RuleOn(typeof(global::Sawczyn.EFDesigner.EFModel.Association), FireTime=DslModeling::TimeToFire.TopLevelCommit, InitiallyDisabled=true)]
 		[DslModeling::RuleOn(typeof(global::Sawczyn.EFDesigner.EFModel.BidirectionalAssociation), FireTime=DslModeling::TimeToFire.TopLevelCommit, InitiallyDisabled=true)]
 		[DslModeling::RuleOn(typeof(global::Sawczyn.EFDesigner.EFModel.ModelEnumHasValues), FireTime=DslModeling::TimeToFire.TopLevelCommit, InitiallyDisabled=true)]
+		[DslModeling::RuleOn(typeof(global::Sawczyn.EFDesigner.EFModel.ProcedureHasParameters), FireTime=DslModeling::TimeToFire.TopLevelCommit, InitiallyDisabled=true)]
 		internal sealed class CompartmentItemRolePlayerPositionChangeRule : DslModeling::RolePlayerPositionChangeRule 
 		{
 			/// <summary>
@@ -1362,6 +1476,14 @@ namespace Sawczyn.EFDesigner.EFModel
 					{
 						global::System.Collections.IEnumerable elements = CompartmentItemAddRule.GetModelEnumForEnumShapeValuesCompartment((global::Sawczyn.EFDesigner.EFModel.ModelEnumValue)e.CounterpartRolePlayer);
 						CompartmentItemAddRule.UpdateCompartments(elements, typeof(global::Sawczyn.EFDesigner.EFModel.EnumShape), "ValuesCompartment", repaintOnly);
+					}
+				}
+				if(typeof(global::Sawczyn.EFDesigner.EFModel.ProcedureHasParameters).IsAssignableFrom(e.DomainRelationship.ImplementationClass))
+				{
+					if(!e.CounterpartDomainRole.IsSource)
+					{
+						global::System.Collections.IEnumerable elements = CompartmentItemAddRule.GetModelProcedureForProcedureShapeParametersCompartment((global::Sawczyn.EFDesigner.EFModel.ModelParameter)e.CounterpartRolePlayer);
+						CompartmentItemAddRule.UpdateCompartments(elements, typeof(global::Sawczyn.EFDesigner.EFModel.ProcedureShape), "ParametersCompartment", repaintOnly);
 					}
 				}
 			}

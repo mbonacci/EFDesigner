@@ -69,6 +69,12 @@ namespace Sawczyn.EFDesigner.EFModel
 			this.AddExplorerNodeCustomSetting(global::Sawczyn.EFDesigner.EFModel.Comment.DomainClassId, 
 							DslDiagrams::ImageHelper.GetImage(resourceManager.GetObject("CommentExplorerImage")), 
 							false); 
+			this.AddExplorerNodeCustomSetting(global::Sawczyn.EFDesigner.EFModel.ModelParameter.DomainClassId, 
+							DslDiagrams::ImageHelper.GetImage(resourceManager.GetObject("ModelParameterExplorerImage")), 
+							false); 
+			this.AddExplorerNodeCustomSetting(global::Sawczyn.EFDesigner.EFModel.ModelProcedure.DomainClassId, 
+							DslDiagrams::ImageHelper.GetImage(resourceManager.GetObject("ModelProcedureExplorerImage")), 
+							false); 
 			
 			// Add a call back to provide ModelElementTreeNode TreeNode name in the Model Explorer
 			this.GetModelElementDisplayNameEventHandler = new DslShell.GetModelElementDisplayNameEventHandler(GetModelElementDisplayName);

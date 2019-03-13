@@ -74,6 +74,8 @@ namespace Sawczyn.EFDesigner.EFModel
 				typeof(ModelEnum),
 				typeof(ModelEnumValue),
 				typeof(DesignElement),
+				typeof(ModelProcedure),
+				typeof(ModelParameter),
 				typeof(Association),
 				typeof(UnidirectionalAssociation),
 				typeof(ClassHasAttributes),
@@ -86,6 +88,8 @@ namespace Sawczyn.EFDesigner.EFModel
 				typeof(CommentReferencesSubjects),
 				typeof(CommentReferencesClasses),
 				typeof(CommentReferencesEnums),
+				typeof(ModelRootHasProcedures),
+				typeof(ProcedureHasParameters),
 				typeof(EFModelDiagram),
 				typeof(AssociationConnector),
 				typeof(UnidirectionalConnector),
@@ -95,6 +99,7 @@ namespace Sawczyn.EFDesigner.EFModel
 				typeof(CommentBoxShape),
 				typeof(ClassShape),
 				typeof(EnumShape),
+				typeof(ProcedureShape),
 				typeof(global::Sawczyn.EFDesigner.EFModel.FixUpDiagram),
 				typeof(global::Sawczyn.EFDesigner.EFModel.DecoratorPropertyChanged),
 				typeof(global::Sawczyn.EFDesigner.EFModel.ConnectorRolePlayerChanged),
@@ -145,6 +150,7 @@ namespace Sawczyn.EFDesigner.EFModel
 				new DomainMemberInfo(typeof(ModelRoot), "Description", ModelRoot.DescriptionDomainPropertyId, typeof(ModelRoot.DescriptionPropertyHandler)),
 				new DomainMemberInfo(typeof(ModelRoot), "Summary", ModelRoot.SummaryDomainPropertyId, typeof(ModelRoot.SummaryPropertyHandler)),
 				new DomainMemberInfo(typeof(ModelRoot), "ShowWarningsInDesigner", ModelRoot.ShowWarningsInDesignerDomainPropertyId, typeof(ModelRoot.ShowWarningsInDesignerPropertyHandler)),
+				new DomainMemberInfo(typeof(ModelRoot), "ClientModelFile", ModelRoot.ClientModelFileDomainPropertyId, typeof(ModelRoot.ClientModelFilePropertyHandler)),
 				new DomainMemberInfo(typeof(ModelClass), "IsAbstract", ModelClass.IsAbstractDomainPropertyId, typeof(ModelClass.IsAbstractPropertyHandler)),
 				new DomainMemberInfo(typeof(ModelClass), "TableName", ModelClass.TableNameDomainPropertyId, typeof(ModelClass.TableNamePropertyHandler)),
 				new DomainMemberInfo(typeof(ModelClass), "DatabaseSchema", ModelClass.DatabaseSchemaDomainPropertyId, typeof(ModelClass.DatabaseSchemaPropertyHandler)),
@@ -164,6 +170,7 @@ namespace Sawczyn.EFDesigner.EFModel
 				new DomainMemberInfo(typeof(ModelClass), "Summary", ModelClass.SummaryDomainPropertyId, typeof(ModelClass.SummaryPropertyHandler)),
 				new DomainMemberInfo(typeof(ModelClass), "BaseClass", ModelClass.BaseClassDomainPropertyId, typeof(ModelClass.BaseClassPropertyHandler)),
 				new DomainMemberInfo(typeof(ModelClass), "CustomAttributes", ModelClass.CustomAttributesDomainPropertyId, typeof(ModelClass.CustomAttributesPropertyHandler)),
+				new DomainMemberInfo(typeof(ModelClass), "GenerateClient", ModelClass.GenerateClientDomainPropertyId, typeof(ModelClass.GenerateClientPropertyHandler)),
 				new DomainMemberInfo(typeof(ModelAttribute), "Type", ModelAttribute.TypeDomainPropertyId, typeof(ModelAttribute.TypePropertyHandler)),
 				new DomainMemberInfo(typeof(ModelAttribute), "InitialValue", ModelAttribute.InitialValueDomainPropertyId, typeof(ModelAttribute.InitialValuePropertyHandler)),
 				new DomainMemberInfo(typeof(ModelAttribute), "IsIdentity", ModelAttribute.IsIdentityDomainPropertyId, typeof(ModelAttribute.IsIdentityPropertyHandler)),
@@ -190,6 +197,7 @@ namespace Sawczyn.EFDesigner.EFModel
 				new DomainMemberInfo(typeof(ModelAttribute), "IsColumnTypeTracking", ModelAttribute.IsColumnTypeTrackingDomainPropertyId, typeof(ModelAttribute.IsColumnTypeTrackingPropertyHandler)),
 				new DomainMemberInfo(typeof(ModelAttribute), "CustomAttributes", ModelAttribute.CustomAttributesDomainPropertyId, typeof(ModelAttribute.CustomAttributesPropertyHandler)),
 				new DomainMemberInfo(typeof(ModelAttribute), "DisplayText", ModelAttribute.DisplayTextDomainPropertyId, typeof(ModelAttribute.DisplayTextPropertyHandler)),
+				new DomainMemberInfo(typeof(ModelAttribute), "GenerateClient", ModelAttribute.GenerateClientDomainPropertyId, typeof(ModelAttribute.GenerateClientPropertyHandler)),
 				new DomainMemberInfo(typeof(Comment), "Text", Comment.TextDomainPropertyId, typeof(Comment.TextPropertyHandler)),
 				new DomainMemberInfo(typeof(Comment), "ShortText", Comment.ShortTextDomainPropertyId, typeof(Comment.ShortTextPropertyHandler)),
 				new DomainMemberInfo(typeof(ModelEnum), "ValueType", ModelEnum.ValueTypeDomainPropertyId, typeof(ModelEnum.ValueTypePropertyHandler)),
@@ -209,6 +217,24 @@ namespace Sawczyn.EFDesigner.EFModel
 				new DomainMemberInfo(typeof(ModelEnumValue), "Summary", ModelEnumValue.SummaryDomainPropertyId, typeof(ModelEnumValue.SummaryPropertyHandler)),
 				new DomainMemberInfo(typeof(ModelEnumValue), "CustomAttributes", ModelEnumValue.CustomAttributesDomainPropertyId, typeof(ModelEnumValue.CustomAttributesPropertyHandler)),
 				new DomainMemberInfo(typeof(ModelEnumValue), "DisplayText", ModelEnumValue.DisplayTextDomainPropertyId, typeof(ModelEnumValue.DisplayTextPropertyHandler)),
+				new DomainMemberInfo(typeof(ModelProcedure), "Name", ModelProcedure.NameDomainPropertyId, typeof(ModelProcedure.NamePropertyHandler)),
+				new DomainMemberInfo(typeof(ModelProcedure), "DatabaseSchema", ModelProcedure.DatabaseSchemaDomainPropertyId, typeof(ModelProcedure.DatabaseSchemaPropertyHandler)),
+				new DomainMemberInfo(typeof(ModelProcedure), "Description", ModelProcedure.DescriptionDomainPropertyId, typeof(ModelProcedure.DescriptionPropertyHandler)),
+				new DomainMemberInfo(typeof(ModelProcedure), "Summary", ModelProcedure.SummaryDomainPropertyId, typeof(ModelProcedure.SummaryPropertyHandler)),
+				new DomainMemberInfo(typeof(ModelProcedure), "CustomAttributes", ModelProcedure.CustomAttributesDomainPropertyId, typeof(ModelProcedure.CustomAttributesPropertyHandler)),
+				new DomainMemberInfo(typeof(ModelProcedure), "StoredProcName", ModelProcedure.StoredProcNameDomainPropertyId, typeof(ModelProcedure.StoredProcNamePropertyHandler)),
+				new DomainMemberInfo(typeof(ModelProcedure), "ReturnType", ModelProcedure.ReturnTypeDomainPropertyId, typeof(ModelProcedure.ReturnTypePropertyHandler)),
+				new DomainMemberInfo(typeof(ModelProcedure), "IsFunction", ModelProcedure.IsFunctionDomainPropertyId, typeof(ModelProcedure.IsFunctionPropertyHandler)),
+				new DomainMemberInfo(typeof(ModelParameter), "Type", ModelParameter.TypeDomainPropertyId, typeof(ModelParameter.TypePropertyHandler)),
+				new DomainMemberInfo(typeof(ModelParameter), "Required", ModelParameter.RequiredDomainPropertyId, typeof(ModelParameter.RequiredPropertyHandler)),
+				new DomainMemberInfo(typeof(ModelParameter), "MaxLength", ModelParameter.MaxLengthDomainPropertyId, typeof(ModelParameter.MaxLengthPropertyHandler)),
+				new DomainMemberInfo(typeof(ModelParameter), "Description", ModelParameter.DescriptionDomainPropertyId, typeof(ModelParameter.DescriptionPropertyHandler)),
+				new DomainMemberInfo(typeof(ModelParameter), "Summary", ModelParameter.SummaryDomainPropertyId, typeof(ModelParameter.SummaryPropertyHandler)),
+				new DomainMemberInfo(typeof(ModelParameter), "Name", ModelParameter.NameDomainPropertyId, typeof(ModelParameter.NamePropertyHandler)),
+				new DomainMemberInfo(typeof(ModelParameter), "ParameterName", ModelParameter.ParameterNameDomainPropertyId, typeof(ModelParameter.ParameterNamePropertyHandler)),
+				new DomainMemberInfo(typeof(ModelParameter), "ColumnType", ModelParameter.ColumnTypeDomainPropertyId, typeof(ModelParameter.ColumnTypePropertyHandler)),
+				new DomainMemberInfo(typeof(ModelParameter), "CustomAttributes", ModelParameter.CustomAttributesDomainPropertyId, typeof(ModelParameter.CustomAttributesPropertyHandler)),
+				new DomainMemberInfo(typeof(ModelParameter), "Direction", ModelParameter.DirectionDomainPropertyId, typeof(ModelParameter.DirectionPropertyHandler)),
 				new DomainMemberInfo(typeof(Association), "SourceMultiplicity", Association.SourceMultiplicityDomainPropertyId, typeof(Association.SourceMultiplicityPropertyHandler)),
 				new DomainMemberInfo(typeof(Association), "TargetMultiplicity", Association.TargetMultiplicityDomainPropertyId, typeof(Association.TargetMultiplicityPropertyHandler)),
 				new DomainMemberInfo(typeof(Association), "TargetPropertyName", Association.TargetPropertyNameDomainPropertyId, typeof(Association.TargetPropertyNamePropertyHandler)),
@@ -227,6 +253,9 @@ namespace Sawczyn.EFDesigner.EFModel
 				new DomainMemberInfo(typeof(Association), "ForeignKeyLocation", Association.ForeignKeyLocationDomainPropertyId, typeof(Association.ForeignKeyLocationPropertyHandler)),
 				new DomainMemberInfo(typeof(Association), "TargetCustomAttributes", Association.TargetCustomAttributesDomainPropertyId, typeof(Association.TargetCustomAttributesPropertyHandler)),
 				new DomainMemberInfo(typeof(Association), "TargetDisplayText", Association.TargetDisplayTextDomainPropertyId, typeof(Association.TargetDisplayTextPropertyHandler)),
+				new DomainMemberInfo(typeof(Association), "TargetForeignKey", Association.TargetForeignKeyDomainPropertyId, typeof(Association.TargetForeignKeyPropertyHandler)),
+				new DomainMemberInfo(typeof(Association), "SourceForeignKey", Association.SourceForeignKeyDomainPropertyId, typeof(Association.SourceForeignKeyPropertyHandler)),
+				new DomainMemberInfo(typeof(Association), "GenerateClient", Association.GenerateClientDomainPropertyId, typeof(Association.GenerateClientPropertyHandler)),
 				new DomainMemberInfo(typeof(BidirectionalAssociation), "SourcePropertyName", BidirectionalAssociation.SourcePropertyNameDomainPropertyId, typeof(BidirectionalAssociation.SourcePropertyNamePropertyHandler)),
 				new DomainMemberInfo(typeof(BidirectionalAssociation), "SourceDescription", BidirectionalAssociation.SourceDescriptionDomainPropertyId, typeof(BidirectionalAssociation.SourceDescriptionPropertyHandler)),
 				new DomainMemberInfo(typeof(BidirectionalAssociation), "SourceSummary", BidirectionalAssociation.SourceSummaryDomainPropertyId, typeof(BidirectionalAssociation.SourceSummaryPropertyHandler)),
@@ -246,6 +275,12 @@ namespace Sawczyn.EFDesigner.EFModel
 				new DomainMemberInfo(typeof(EnumShape), "Visible", EnumShape.VisibleDomainPropertyId, typeof(EnumShape.VisiblePropertyHandler)),
 				new DomainMemberInfo(typeof(EnumShape), "OutlineThickness", EnumShape.OutlineThicknessDomainPropertyId, typeof(EnumShape.OutlineThicknessPropertyHandler)),
 				new DomainMemberInfo(typeof(EnumShape), "OutlineDashStyle", EnumShape.OutlineDashStyleDomainPropertyId, typeof(EnumShape.OutlineDashStylePropertyHandler)),
+				new DomainMemberInfo(typeof(ProcedureShape), "FillColor", ProcedureShape.FillColorDomainPropertyId, typeof(ProcedureShape.FillColorPropertyHandler)),
+				new DomainMemberInfo(typeof(ProcedureShape), "TextColor", ProcedureShape.TextColorDomainPropertyId, typeof(ProcedureShape.TextColorPropertyHandler)),
+				new DomainMemberInfo(typeof(ProcedureShape), "OutlineColor", ProcedureShape.OutlineColorDomainPropertyId, typeof(ProcedureShape.OutlineColorPropertyHandler)),
+				new DomainMemberInfo(typeof(ProcedureShape), "OutlineDashStyle", ProcedureShape.OutlineDashStyleDomainPropertyId, typeof(ProcedureShape.OutlineDashStylePropertyHandler)),
+				new DomainMemberInfo(typeof(ProcedureShape), "Visible", ProcedureShape.VisibleDomainPropertyId, typeof(ProcedureShape.VisiblePropertyHandler)),
+				new DomainMemberInfo(typeof(ProcedureShape), "OutlineThickness", ProcedureShape.OutlineThicknessDomainPropertyId, typeof(ProcedureShape.OutlineThicknessPropertyHandler)),
 			};
 		}
 		/// <summary>
@@ -280,6 +315,10 @@ namespace Sawczyn.EFDesigner.EFModel
 				new DomainRolePlayerInfo(typeof(CommentReferencesClasses), "ModelClass", CommentReferencesClasses.ModelClassDomainRoleId),
 				new DomainRolePlayerInfo(typeof(CommentReferencesEnums), "Comment", CommentReferencesEnums.CommentDomainRoleId),
 				new DomainRolePlayerInfo(typeof(CommentReferencesEnums), "ModelEnum", CommentReferencesEnums.ModelEnumDomainRoleId),
+				new DomainRolePlayerInfo(typeof(ModelRootHasProcedures), "ModelRoot", ModelRootHasProcedures.ModelRootDomainRoleId),
+				new DomainRolePlayerInfo(typeof(ModelRootHasProcedures), "ModelProcedure", ModelRootHasProcedures.ModelProcedureDomainRoleId),
+				new DomainRolePlayerInfo(typeof(ProcedureHasParameters), "ModelProcedure", ProcedureHasParameters.ModelProcedureDomainRoleId),
+				new DomainRolePlayerInfo(typeof(ProcedureHasParameters), "Parameter", ProcedureHasParameters.ParameterDomainRoleId),
 			};
 		}
 		#endregion
@@ -301,21 +340,24 @@ namespace Sawczyn.EFDesigner.EFModel
 	
 			if (createElementMap == null)
 			{
-				createElementMap = new global::System.Collections.Generic.Dictionary<global::System.Type, int>(16);
+				createElementMap = new global::System.Collections.Generic.Dictionary<global::System.Type, int>(19);
 				createElementMap.Add(typeof(ModelRoot), 0);
 				createElementMap.Add(typeof(ModelClass), 1);
 				createElementMap.Add(typeof(ModelAttribute), 2);
 				createElementMap.Add(typeof(Comment), 3);
 				createElementMap.Add(typeof(ModelEnum), 4);
 				createElementMap.Add(typeof(ModelEnumValue), 5);
-				createElementMap.Add(typeof(EFModelDiagram), 6);
-				createElementMap.Add(typeof(UnidirectionalConnector), 7);
-				createElementMap.Add(typeof(BidirectionalConnector), 8);
-				createElementMap.Add(typeof(GeneralizationConnector), 9);
-				createElementMap.Add(typeof(CommentConnector), 10);
-				createElementMap.Add(typeof(CommentBoxShape), 11);
-				createElementMap.Add(typeof(ClassShape), 12);
-				createElementMap.Add(typeof(EnumShape), 13);
+				createElementMap.Add(typeof(ModelProcedure), 6);
+				createElementMap.Add(typeof(ModelParameter), 7);
+				createElementMap.Add(typeof(EFModelDiagram), 8);
+				createElementMap.Add(typeof(UnidirectionalConnector), 9);
+				createElementMap.Add(typeof(BidirectionalConnector), 10);
+				createElementMap.Add(typeof(GeneralizationConnector), 11);
+				createElementMap.Add(typeof(CommentConnector), 12);
+				createElementMap.Add(typeof(CommentBoxShape), 13);
+				createElementMap.Add(typeof(ClassShape), 14);
+				createElementMap.Add(typeof(EnumShape), 15);
+				createElementMap.Add(typeof(ProcedureShape), 16);
 			}
 			int index;
 			if (!createElementMap.TryGetValue(elementType, out index))
@@ -335,14 +377,17 @@ namespace Sawczyn.EFDesigner.EFModel
 				case 3: return new Comment(partition, propertyAssignments);
 				case 4: return new ModelEnum(partition, propertyAssignments);
 				case 5: return new ModelEnumValue(partition, propertyAssignments);
-				case 6: return new EFModelDiagram(partition, propertyAssignments);
-				case 7: return new UnidirectionalConnector(partition, propertyAssignments);
-				case 8: return new BidirectionalConnector(partition, propertyAssignments);
-				case 9: return new GeneralizationConnector(partition, propertyAssignments);
-				case 10: return new CommentConnector(partition, propertyAssignments);
-				case 11: return new CommentBoxShape(partition, propertyAssignments);
-				case 12: return new ClassShape(partition, propertyAssignments);
-				case 13: return new EnumShape(partition, propertyAssignments);
+				case 6: return new ModelProcedure(partition, propertyAssignments);
+				case 7: return new ModelParameter(partition, propertyAssignments);
+				case 8: return new EFModelDiagram(partition, propertyAssignments);
+				case 9: return new UnidirectionalConnector(partition, propertyAssignments);
+				case 10: return new BidirectionalConnector(partition, propertyAssignments);
+				case 11: return new GeneralizationConnector(partition, propertyAssignments);
+				case 12: return new CommentConnector(partition, propertyAssignments);
+				case 13: return new CommentBoxShape(partition, propertyAssignments);
+				case 14: return new ClassShape(partition, propertyAssignments);
+				case 15: return new EnumShape(partition, propertyAssignments);
+				case 16: return new ProcedureShape(partition, propertyAssignments);
 				default: return null;
 			}
 		}
@@ -365,7 +410,7 @@ namespace Sawczyn.EFDesigner.EFModel
 	
 			if (createElementLinkMap == null)
 			{
-				createElementLinkMap = new global::System.Collections.Generic.Dictionary<global::System.Type, int>(12);
+				createElementLinkMap = new global::System.Collections.Generic.Dictionary<global::System.Type, int>(14);
 				createElementLinkMap.Add(typeof(UnidirectionalAssociation), 0);
 				createElementLinkMap.Add(typeof(ClassHasAttributes), 1);
 				createElementLinkMap.Add(typeof(ModelRootHasComments), 2);
@@ -376,6 +421,8 @@ namespace Sawczyn.EFDesigner.EFModel
 				createElementLinkMap.Add(typeof(ModelRootHasClasses), 7);
 				createElementLinkMap.Add(typeof(CommentReferencesClasses), 8);
 				createElementLinkMap.Add(typeof(CommentReferencesEnums), 9);
+				createElementLinkMap.Add(typeof(ModelRootHasProcedures), 10);
+				createElementLinkMap.Add(typeof(ProcedureHasParameters), 11);
 			}
 			int index;
 			if (!createElementLinkMap.TryGetValue(elementLinkType, out index))
@@ -400,6 +447,8 @@ namespace Sawczyn.EFDesigner.EFModel
 				case 7: return new ModelRootHasClasses(partition, roleAssignments, propertyAssignments);
 				case 8: return new CommentReferencesClasses(partition, roleAssignments, propertyAssignments);
 				case 9: return new CommentReferencesEnums(partition, roleAssignments, propertyAssignments);
+				case 10: return new ModelRootHasProcedures(partition, roleAssignments, propertyAssignments);
+				case 11: return new ProcedureHasParameters(partition, roleAssignments, propertyAssignments);
 				default: return null;
 			}
 		}
@@ -585,6 +634,8 @@ namespace Sawczyn.EFDesigner.EFModel
 			DomainRoles.Add(global::Sawczyn.EFDesigner.EFModel.ModelRootHasEnums.ModelEnumDomainRoleId, true);
 			DomainRoles.Add(global::Sawczyn.EFDesigner.EFModel.ModelEnumHasValues.ValueDomainRoleId, true);
 			DomainRoles.Add(global::Sawczyn.EFDesigner.EFModel.ModelRootHasClasses.ModelClassDomainRoleId, true);
+			DomainRoles.Add(global::Sawczyn.EFDesigner.EFModel.ModelRootHasProcedures.ModelProcedureDomainRoleId, true);
+			DomainRoles.Add(global::Sawczyn.EFDesigner.EFModel.ProcedureHasParameters.ParameterDomainRoleId, true);
 			#endregion
 		}
 		/// <summary>
@@ -1429,6 +1480,31 @@ namespace Sawczyn.EFDesigner.EFModel
 		/// </summary>
 		[DslDesign::DescriptionResource("Sawczyn.EFDesigner.EFModel.AutomaticAction/Ask.Description", typeof(global::Sawczyn.EFDesigner.EFModel.EFModelDomainModel), "Sawczyn.EFDesigner.EFModel.GeneratedCode.DomainModelResx")]
 		Ask = 2,
+	}
+}
+namespace Sawczyn.EFDesigner.EFModel
+{
+	/// <summary>
+	/// DomainEnumeration: ParamDirection
+	/// </summary>
+	[global::System.CLSCompliant(true)]
+	public enum ParamDirection
+	{
+		/// <summary>
+		/// In
+		/// </summary>
+		[DslDesign::DescriptionResource("Sawczyn.EFDesigner.EFModel.ParamDirection/In.Description", typeof(global::Sawczyn.EFDesigner.EFModel.EFModelDomainModel), "Sawczyn.EFDesigner.EFModel.GeneratedCode.DomainModelResx")]
+		In = 0,
+		/// <summary>
+		/// Out
+		/// </summary>
+		[DslDesign::DescriptionResource("Sawczyn.EFDesigner.EFModel.ParamDirection/Out.Description", typeof(global::Sawczyn.EFDesigner.EFModel.EFModelDomainModel), "Sawczyn.EFDesigner.EFModel.GeneratedCode.DomainModelResx")]
+		Out = 1,
+		/// <summary>
+		/// InOut
+		/// </summary>
+		[DslDesign::DescriptionResource("Sawczyn.EFDesigner.EFModel.ParamDirection/InOut.Description", typeof(global::Sawczyn.EFDesigner.EFModel.EFModelDomainModel), "Sawczyn.EFDesigner.EFModel.GeneratedCode.DomainModelResx")]
+		InOut = 2,
 	}
 }
 

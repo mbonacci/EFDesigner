@@ -1670,6 +1670,270 @@ namespace Sawczyn.EFDesigner.EFModel
 		}
 		
 		#endregion
+		#region TargetForeignKey domain property code
+		
+		/// <summary>
+		/// TargetForeignKey domain property Id.
+		/// </summary>
+		public static readonly global::System.Guid TargetForeignKeyDomainPropertyId = new global::System.Guid(0xb4ff6032, 0x80bb, 0x4e36, 0xb5, 0x69, 0x7e, 0x3d, 0x94, 0x1d, 0x32, 0x77);
+		
+		/// <summary>
+		/// Storage for TargetForeignKey
+		/// </summary>
+		private global::System.String targetForeignKeyPropertyStorage = string.Empty;
+		
+		/// <summary>
+		/// Gets or sets the value of TargetForeignKey domain property.
+		/// Name of the foreign key column at this end
+		/// </summary>
+		[DslDesign::DisplayNameResource("Sawczyn.EFDesigner.EFModel.Association/TargetForeignKey.DisplayName", typeof(global::Sawczyn.EFDesigner.EFModel.EFModelDomainModel), "Sawczyn.EFDesigner.EFModel.GeneratedCode.DomainModelResx")]
+		[DslDesign::CategoryResource("Sawczyn.EFDesigner.EFModel.Association/TargetForeignKey.Category", typeof(global::Sawczyn.EFDesigner.EFModel.EFModelDomainModel), "Sawczyn.EFDesigner.EFModel.GeneratedCode.DomainModelResx")]
+		[DslDesign::DescriptionResource("Sawczyn.EFDesigner.EFModel.Association/TargetForeignKey.Description", typeof(global::Sawczyn.EFDesigner.EFModel.EFModelDomainModel), "Sawczyn.EFDesigner.EFModel.GeneratedCode.DomainModelResx")]
+		[DslModeling::DomainObjectId("b4ff6032-80bb-4e36-b569-7e3d941d3277")]
+		public global::System.String TargetForeignKey
+		{
+			[global::System.Diagnostics.DebuggerStepThrough]
+			get
+			{
+				return targetForeignKeyPropertyStorage;
+			}
+			[global::System.Diagnostics.DebuggerStepThrough]
+			set
+			{
+				TargetForeignKeyPropertyHandler.Instance.SetValue(this, value);
+			}
+		}
+		/// <summary>
+		/// Value handler for the Association.TargetForeignKey domain property.
+		/// </summary>
+		internal sealed partial class TargetForeignKeyPropertyHandler : DslModeling::DomainPropertyValueHandler<Association, global::System.String>
+		{
+			private TargetForeignKeyPropertyHandler() { }
+		
+			/// <summary>
+			/// Gets the singleton instance of the Association.TargetForeignKey domain property value handler.
+			/// </summary>
+			public static readonly TargetForeignKeyPropertyHandler Instance = new TargetForeignKeyPropertyHandler();
+		
+			/// <summary>
+			/// Gets the Id of the Association.TargetForeignKey domain property.
+			/// </summary>
+			public sealed override global::System.Guid DomainPropertyId
+			{
+				[global::System.Diagnostics.DebuggerStepThrough]
+				get
+				{
+					return TargetForeignKeyDomainPropertyId;
+				}
+			}
+			
+			/// <summary>
+			/// Gets a strongly-typed value of the property on specified element.
+			/// </summary>
+			/// <param name="element">Element which owns the property.</param>
+			/// <returns>Property value.</returns>
+			public override sealed global::System.String GetValue(Association element)
+			{
+				if (element == null) throw new global::System.ArgumentNullException("element");
+				return element.targetForeignKeyPropertyStorage;
+			}
+		
+			/// <summary>
+			/// Sets property value on an element.
+			/// </summary>
+			/// <param name="element">Element which owns the property.</param>
+			/// <param name="newValue">New property value.</param>
+			public override sealed void SetValue(Association element, global::System.String newValue)
+			{
+				if (element == null) throw new global::System.ArgumentNullException("element");
+		
+				global::System.String oldValue = GetValue(element);
+				if (newValue != oldValue)
+				{
+					ValueChanging(element, oldValue, newValue);
+					element.targetForeignKeyPropertyStorage = newValue;
+					ValueChanged(element, oldValue, newValue);
+				}
+			}
+		}
+		
+		#endregion
+		#region SourceForeignKey domain property code
+		
+		/// <summary>
+		/// SourceForeignKey domain property Id.
+		/// </summary>
+		public static readonly global::System.Guid SourceForeignKeyDomainPropertyId = new global::System.Guid(0x48367f10, 0xc35e, 0x4151, 0xab, 0xea, 0x1a, 0x2b, 0xf0, 0x0c, 0x9f, 0x98);
+		
+		/// <summary>
+		/// Storage for SourceForeignKey
+		/// </summary>
+		private global::System.String sourceForeignKeyPropertyStorage = string.Empty;
+		
+		/// <summary>
+		/// Gets or sets the value of SourceForeignKey domain property.
+		/// Name of the foreign key column at this end
+		/// </summary>
+		[DslDesign::DisplayNameResource("Sawczyn.EFDesigner.EFModel.Association/SourceForeignKey.DisplayName", typeof(global::Sawczyn.EFDesigner.EFModel.EFModelDomainModel), "Sawczyn.EFDesigner.EFModel.GeneratedCode.DomainModelResx")]
+		[DslDesign::CategoryResource("Sawczyn.EFDesigner.EFModel.Association/SourceForeignKey.Category", typeof(global::Sawczyn.EFDesigner.EFModel.EFModelDomainModel), "Sawczyn.EFDesigner.EFModel.GeneratedCode.DomainModelResx")]
+		[DslDesign::DescriptionResource("Sawczyn.EFDesigner.EFModel.Association/SourceForeignKey.Description", typeof(global::Sawczyn.EFDesigner.EFModel.EFModelDomainModel), "Sawczyn.EFDesigner.EFModel.GeneratedCode.DomainModelResx")]
+		[DslModeling::DomainObjectId("48367f10-c35e-4151-abea-1a2bf00c9f98")]
+		public global::System.String SourceForeignKey
+		{
+			[global::System.Diagnostics.DebuggerStepThrough]
+			get
+			{
+				return sourceForeignKeyPropertyStorage;
+			}
+			[global::System.Diagnostics.DebuggerStepThrough]
+			set
+			{
+				SourceForeignKeyPropertyHandler.Instance.SetValue(this, value);
+			}
+		}
+		/// <summary>
+		/// Value handler for the Association.SourceForeignKey domain property.
+		/// </summary>
+		internal sealed partial class SourceForeignKeyPropertyHandler : DslModeling::DomainPropertyValueHandler<Association, global::System.String>
+		{
+			private SourceForeignKeyPropertyHandler() { }
+		
+			/// <summary>
+			/// Gets the singleton instance of the Association.SourceForeignKey domain property value handler.
+			/// </summary>
+			public static readonly SourceForeignKeyPropertyHandler Instance = new SourceForeignKeyPropertyHandler();
+		
+			/// <summary>
+			/// Gets the Id of the Association.SourceForeignKey domain property.
+			/// </summary>
+			public sealed override global::System.Guid DomainPropertyId
+			{
+				[global::System.Diagnostics.DebuggerStepThrough]
+				get
+				{
+					return SourceForeignKeyDomainPropertyId;
+				}
+			}
+			
+			/// <summary>
+			/// Gets a strongly-typed value of the property on specified element.
+			/// </summary>
+			/// <param name="element">Element which owns the property.</param>
+			/// <returns>Property value.</returns>
+			public override sealed global::System.String GetValue(Association element)
+			{
+				if (element == null) throw new global::System.ArgumentNullException("element");
+				return element.sourceForeignKeyPropertyStorage;
+			}
+		
+			/// <summary>
+			/// Sets property value on an element.
+			/// </summary>
+			/// <param name="element">Element which owns the property.</param>
+			/// <param name="newValue">New property value.</param>
+			public override sealed void SetValue(Association element, global::System.String newValue)
+			{
+				if (element == null) throw new global::System.ArgumentNullException("element");
+		
+				global::System.String oldValue = GetValue(element);
+				if (newValue != oldValue)
+				{
+					ValueChanging(element, oldValue, newValue);
+					element.sourceForeignKeyPropertyStorage = newValue;
+					ValueChanged(element, oldValue, newValue);
+				}
+			}
+		}
+		
+		#endregion
+		#region GenerateClient domain property code
+		
+		/// <summary>
+		/// GenerateClient domain property Id.
+		/// </summary>
+		public static readonly global::System.Guid GenerateClientDomainPropertyId = new global::System.Guid(0xe08f6f24, 0x0792, 0x496b, 0x88, 0xc0, 0x0d, 0x58, 0xf5, 0x3c, 0x8c, 0xf1);
+		
+		/// <summary>
+		/// Storage for GenerateClient
+		/// </summary>
+		private global::System.Boolean generateClientPropertyStorage;
+		
+		/// <summary>
+		/// Gets or sets the value of GenerateClient domain property.
+		/// Description for Sawczyn.EFDesigner.EFModel.Association.Generate Client Model
+		/// </summary>
+		[DslDesign::DisplayNameResource("Sawczyn.EFDesigner.EFModel.Association/GenerateClient.DisplayName", typeof(global::Sawczyn.EFDesigner.EFModel.EFModelDomainModel), "Sawczyn.EFDesigner.EFModel.GeneratedCode.DomainModelResx")]
+		[DslDesign::CategoryResource("Sawczyn.EFDesigner.EFModel.Association/GenerateClient.Category", typeof(global::Sawczyn.EFDesigner.EFModel.EFModelDomainModel), "Sawczyn.EFDesigner.EFModel.GeneratedCode.DomainModelResx")]
+		[DslDesign::DescriptionResource("Sawczyn.EFDesigner.EFModel.Association/GenerateClient.Description", typeof(global::Sawczyn.EFDesigner.EFModel.EFModelDomainModel), "Sawczyn.EFDesigner.EFModel.GeneratedCode.DomainModelResx")]
+		[DslModeling::DomainObjectId("e08f6f24-0792-496b-88c0-0d58f53c8cf1")]
+		public global::System.Boolean GenerateClient
+		{
+			[global::System.Diagnostics.DebuggerStepThrough]
+			get
+			{
+				return generateClientPropertyStorage;
+			}
+			[global::System.Diagnostics.DebuggerStepThrough]
+			set
+			{
+				GenerateClientPropertyHandler.Instance.SetValue(this, value);
+			}
+		}
+		/// <summary>
+		/// Value handler for the Association.GenerateClient domain property.
+		/// </summary>
+		internal sealed partial class GenerateClientPropertyHandler : DslModeling::DomainPropertyValueHandler<Association, global::System.Boolean>
+		{
+			private GenerateClientPropertyHandler() { }
+		
+			/// <summary>
+			/// Gets the singleton instance of the Association.GenerateClient domain property value handler.
+			/// </summary>
+			public static readonly GenerateClientPropertyHandler Instance = new GenerateClientPropertyHandler();
+		
+			/// <summary>
+			/// Gets the Id of the Association.GenerateClient domain property.
+			/// </summary>
+			public sealed override global::System.Guid DomainPropertyId
+			{
+				[global::System.Diagnostics.DebuggerStepThrough]
+				get
+				{
+					return GenerateClientDomainPropertyId;
+				}
+			}
+			
+			/// <summary>
+			/// Gets a strongly-typed value of the property on specified element.
+			/// </summary>
+			/// <param name="element">Element which owns the property.</param>
+			/// <returns>Property value.</returns>
+			public override sealed global::System.Boolean GetValue(Association element)
+			{
+				if (element == null) throw new global::System.ArgumentNullException("element");
+				return element.generateClientPropertyStorage;
+			}
+		
+			/// <summary>
+			/// Sets property value on an element.
+			/// </summary>
+			/// <param name="element">Element which owns the property.</param>
+			/// <param name="newValue">New property value.</param>
+			public override sealed void SetValue(Association element, global::System.Boolean newValue)
+			{
+				if (element == null) throw new global::System.ArgumentNullException("element");
+		
+				global::System.Boolean oldValue = GetValue(element);
+				if (newValue != oldValue)
+				{
+					ValueChanging(element, oldValue, newValue);
+					element.generateClientPropertyStorage = newValue;
+					ValueChanged(element, oldValue, newValue);
+				}
+			}
+		}
+		
+		#endregion
 		#region Source link accessor
 		/// <summary>
 		/// Get the list of Association links to a ModelClass.
@@ -4704,6 +4968,482 @@ namespace Sawczyn.EFDesigner.EFModel
 			foreach ( global::Sawczyn.EFDesigner.EFModel.CommentReferencesEnums link in links )
 			{
 				if ( target.Equals(link.ModelEnum) )
+				{
+					return link;
+				}
+			}
+			return null;
+		}
+		
+		#endregion
+	}
+}
+namespace Sawczyn.EFDesigner.EFModel
+{
+	/// <summary>
+	/// DomainRelationship ModelRootHasProcedures
+	/// Description for Sawczyn.EFDesigner.EFModel.ModelRootHasProcedures
+	/// </summary>
+	[DslDesign::DisplayNameResource("Sawczyn.EFDesigner.EFModel.ModelRootHasProcedures.DisplayName", typeof(global::Sawczyn.EFDesigner.EFModel.EFModelDomainModel), "Sawczyn.EFDesigner.EFModel.GeneratedCode.DomainModelResx")]
+	[DslDesign::DescriptionResource("Sawczyn.EFDesigner.EFModel.ModelRootHasProcedures.Description", typeof(global::Sawczyn.EFDesigner.EFModel.EFModelDomainModel), "Sawczyn.EFDesigner.EFModel.GeneratedCode.DomainModelResx")]
+	[DslModeling::DomainModelOwner(typeof(global::Sawczyn.EFDesigner.EFModel.EFModelDomainModel))]
+	[global::System.CLSCompliant(true)]
+	[DslModeling::DomainRelationship(IsEmbedding=true)]
+	[DslModeling::DomainObjectId("1a721467-9b93-4b40-9f37-eb7dddb64056")]
+	public partial class ModelRootHasProcedures : DslModeling::ElementLink
+	{
+		#region Constructors, domain class Id
+		
+		/// <summary>
+		/// ModelRootHasProcedures domain class Id.
+		/// </summary>
+		public static readonly new global::System.Guid DomainClassId = new global::System.Guid(0x1a721467, 0x9b93, 0x4b40, 0x9f, 0x37, 0xeb, 0x7d, 0xdd, 0xb6, 0x40, 0x56);
+	
+				
+		/// <summary>
+		/// Constructor
+		/// Creates a ModelRootHasProcedures link in the same Partition as the given ModelRoot
+		/// </summary>
+		/// <param name="source">ModelRoot to use as the source of the relationship.</param>
+		/// <param name="target">ModelProcedure to use as the target of the relationship.</param>
+		public ModelRootHasProcedures(ModelRoot source, ModelProcedure target)
+			: base((source != null ? source.Partition : null), new DslModeling::RoleAssignment[]{new DslModeling::RoleAssignment(ModelRootHasProcedures.ModelRootDomainRoleId, source), new DslModeling::RoleAssignment(ModelRootHasProcedures.ModelProcedureDomainRoleId, target)}, null)
+		{
+		}
+		
+		/// <summary>
+		/// Constructor
+		/// </summary>
+		/// <param name="store">Store where new link is to be created.</param>
+		/// <param name="roleAssignments">List of relationship role assignments.</param>
+		public ModelRootHasProcedures(DslModeling::Store store, params DslModeling::RoleAssignment[] roleAssignments)
+			: base(store != null ? store.DefaultPartitionForClass(DomainClassId) : null, roleAssignments, null)
+		{
+		}
+		
+		/// <summary>
+		/// Constructor
+		/// </summary>
+		/// <param name="store">Store where new link is to be created.</param>
+		/// <param name="roleAssignments">List of relationship role assignments.</param>
+		/// <param name="propertyAssignments">List of properties assignments to set on the new link.</param>
+		public ModelRootHasProcedures(DslModeling::Store store, DslModeling::RoleAssignment[] roleAssignments, DslModeling::PropertyAssignment[] propertyAssignments)
+			: base(store != null ? store.DefaultPartitionForClass(DomainClassId) : null, roleAssignments, propertyAssignments)
+		{
+		}
+		
+		/// <summary>
+		/// Constructor
+		/// </summary>
+		/// <param name="partition">Partition where new link is to be created.</param>
+		/// <param name="roleAssignments">List of relationship role assignments.</param>
+		public ModelRootHasProcedures(DslModeling::Partition partition, params DslModeling::RoleAssignment[] roleAssignments)
+			: base(partition, roleAssignments, null)
+		{
+		}
+		
+		/// <summary>
+		/// Constructor
+		/// </summary>
+		/// <param name="partition">Partition where new link is to be created.</param>
+		/// <param name="roleAssignments">List of relationship role assignments.</param>
+		/// <param name="propertyAssignments">List of properties assignments to set on the new link.</param>
+		public ModelRootHasProcedures(DslModeling::Partition partition, DslModeling::RoleAssignment[] roleAssignments, DslModeling::PropertyAssignment[] propertyAssignments)
+			: base(partition, roleAssignments, propertyAssignments)
+		{
+		}
+		#endregion
+		#region ModelRoot domain role code
+		
+		/// <summary>
+		/// ModelRoot domain role Id.
+		/// </summary>
+		public static readonly global::System.Guid ModelRootDomainRoleId = new global::System.Guid(0xa9dbf4fa, 0x2e22, 0x41ed, 0xa7, 0x5e, 0x92, 0xfb, 0xc7, 0xe6, 0x8f, 0xef);
+		
+		/// <summary>
+		/// DomainRole ModelRoot
+		/// Description for Sawczyn.EFDesigner.EFModel.ModelRootHasProcedures.ModelRoot
+		/// </summary>
+		[DslDesign::DisplayNameResource("Sawczyn.EFDesigner.EFModel.ModelRootHasProcedures/ModelRoot.DisplayName", typeof(global::Sawczyn.EFDesigner.EFModel.EFModelDomainModel), "Sawczyn.EFDesigner.EFModel.GeneratedCode.DomainModelResx")]
+		[DslDesign::DescriptionResource("Sawczyn.EFDesigner.EFModel.ModelRootHasProcedures/ModelRoot.Description", typeof(global::Sawczyn.EFDesigner.EFModel.EFModelDomainModel), "Sawczyn.EFDesigner.EFModel.GeneratedCode.DomainModelResx")]
+		[DslModeling::DomainRole(DslModeling::DomainRoleOrder.Source, PropertyName = "ModelProcedures", PropertyDisplayNameKey="Sawczyn.EFDesigner.EFModel.ModelRootHasProcedures/ModelRoot.PropertyDisplayName",  PropagatesCopy = DslModeling::PropagatesCopyOption.PropagatesCopyToLinkAndOppositeRolePlayer, Multiplicity = DslModeling::Multiplicity.ZeroMany)]
+		[DslModeling::DomainObjectId("a9dbf4fa-2e22-41ed-a75e-92fbc7e68fef")]
+		public virtual ModelRoot ModelRoot
+		{
+			[global::System.Diagnostics.DebuggerStepThrough]
+			get
+			{
+				return (ModelRoot)DslModeling::DomainRoleInfo.GetRolePlayer(this, ModelRootDomainRoleId);
+			}
+			[global::System.Diagnostics.DebuggerStepThrough]
+			set
+			{
+				DslModeling::DomainRoleInfo.SetRolePlayer(this, ModelRootDomainRoleId, value);
+			}
+		}
+				
+		#endregion
+		#region Static methods to access ModelRoot of a ModelProcedure
+		/// <summary>
+		/// Gets ModelRoot.
+		/// </summary>
+		[global::System.Diagnostics.DebuggerStepThrough]
+		[global::System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1011")]
+		public static ModelRoot GetModelRoot(ModelProcedure element)
+		{
+			return DslModeling::DomainRoleInfo.GetLinkedElement(element, ModelProcedureDomainRoleId) as ModelRoot;
+		}
+		
+		/// <summary>
+		/// Sets ModelRoot.
+		/// </summary>
+		[global::System.Diagnostics.DebuggerStepThrough]
+		[global::System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1011")]
+		public static void SetModelRoot(ModelProcedure element, ModelRoot newModelRoot)
+		{
+			DslModeling::DomainRoleInfo.SetLinkedElement(element, ModelProcedureDomainRoleId, newModelRoot);
+		}
+		#endregion
+		#region ModelProcedure domain role code
+		
+		/// <summary>
+		/// ModelProcedure domain role Id.
+		/// </summary>
+		public static readonly global::System.Guid ModelProcedureDomainRoleId = new global::System.Guid(0x0b88ce46, 0x629b, 0x4955, 0x90, 0x4e, 0xb3, 0xc6, 0xca, 0xff, 0xbe, 0xa8);
+		
+		/// <summary>
+		/// DomainRole ModelProcedure
+		/// Description for Sawczyn.EFDesigner.EFModel.ModelRootHasProcedures.ModelProcedure
+		/// </summary>
+		[DslDesign::DisplayNameResource("Sawczyn.EFDesigner.EFModel.ModelRootHasProcedures/ModelProcedure.DisplayName", typeof(global::Sawczyn.EFDesigner.EFModel.EFModelDomainModel), "Sawczyn.EFDesigner.EFModel.GeneratedCode.DomainModelResx")]
+		[DslDesign::DescriptionResource("Sawczyn.EFDesigner.EFModel.ModelRootHasProcedures/ModelProcedure.Description", typeof(global::Sawczyn.EFDesigner.EFModel.EFModelDomainModel), "Sawczyn.EFDesigner.EFModel.GeneratedCode.DomainModelResx")]
+		[DslModeling::DomainRole(DslModeling::DomainRoleOrder.Target, PropertyName = "ModelRoot", PropertyDisplayNameKey="Sawczyn.EFDesigner.EFModel.ModelRootHasProcedures/ModelProcedure.PropertyDisplayName", PropagatesDelete = true,  PropagatesCopy = DslModeling::PropagatesCopyOption.DoNotPropagateCopy, Multiplicity = DslModeling::Multiplicity.One)]
+		[DslModeling::DomainObjectId("0b88ce46-629b-4955-904e-b3c6caffbea8")]
+		public virtual ModelProcedure ModelProcedure
+		{
+			[global::System.Diagnostics.DebuggerStepThrough]
+			get
+			{
+				return (ModelProcedure)DslModeling::DomainRoleInfo.GetRolePlayer(this, ModelProcedureDomainRoleId);
+			}
+			[global::System.Diagnostics.DebuggerStepThrough]
+			set
+			{
+				DslModeling::DomainRoleInfo.SetRolePlayer(this, ModelProcedureDomainRoleId, value);
+			}
+		}
+				
+		#endregion
+		#region Static methods to access ModelProcedures of a ModelRoot
+		/// <summary>
+		/// Gets a list of ModelProcedures.
+		/// </summary>
+		[global::System.Diagnostics.DebuggerStepThrough]
+		[global::System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1011")]
+		public static DslModeling::LinkedElementCollection<ModelProcedure> GetModelProcedures(ModelRoot element)
+		{
+			return GetRoleCollection<DslModeling::LinkedElementCollection<ModelProcedure>, ModelProcedure>(element, ModelRootDomainRoleId);
+		}
+		#endregion
+		#region ModelRoot link accessor
+		/// <summary>
+		/// Get the list of ModelRootHasProcedures links to a ModelRoot.
+		/// </summary>
+		[global::System.Diagnostics.DebuggerStepThrough]
+		[global::System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1011")]
+		public static global::System.Collections.ObjectModel.ReadOnlyCollection<global::Sawczyn.EFDesigner.EFModel.ModelRootHasProcedures> GetLinksToModelProcedures ( global::Sawczyn.EFDesigner.EFModel.ModelRoot modelRootInstance )
+		{
+			return DslModeling::DomainRoleInfo.GetElementLinks<global::Sawczyn.EFDesigner.EFModel.ModelRootHasProcedures>(modelRootInstance, global::Sawczyn.EFDesigner.EFModel.ModelRootHasProcedures.ModelRootDomainRoleId);
+		}
+		#endregion
+		#region ModelProcedure link accessor
+		/// <summary>
+		/// Get the ModelRootHasProcedures link to a ModelProcedure.
+		/// </summary>
+		[global::System.Diagnostics.DebuggerStepThrough]
+		[global::System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1011")]
+		public static global::Sawczyn.EFDesigner.EFModel.ModelRootHasProcedures GetLinkToModelRoot (global::Sawczyn.EFDesigner.EFModel.ModelProcedure modelProcedureInstance)
+		{
+			global::System.Collections.Generic.IList<global::Sawczyn.EFDesigner.EFModel.ModelRootHasProcedures> links = DslModeling::DomainRoleInfo.GetElementLinks<global::Sawczyn.EFDesigner.EFModel.ModelRootHasProcedures>(modelProcedureInstance, global::Sawczyn.EFDesigner.EFModel.ModelRootHasProcedures.ModelProcedureDomainRoleId);
+			global::System.Diagnostics.Debug.Assert(links.Count <= 1, "Multiplicity of ModelProcedure not obeyed.");
+			if ( links.Count == 0 )
+			{
+				return null;
+			}
+			else
+			{
+				return links[0];
+			}
+		}
+		#endregion
+		#region ModelRootHasProcedures instance accessors
+		
+		/// <summary>
+		/// Get any ModelRootHasProcedures links between a given ModelRoot and a ModelProcedure.
+		/// </summary>
+		[global::System.Diagnostics.DebuggerStepThrough]
+		[global::System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1011")]
+		public static global::System.Collections.ObjectModel.ReadOnlyCollection<global::Sawczyn.EFDesigner.EFModel.ModelRootHasProcedures> GetLinks( global::Sawczyn.EFDesigner.EFModel.ModelRoot source, global::Sawczyn.EFDesigner.EFModel.ModelProcedure target )
+		{
+			global::System.Collections.Generic.List<global::Sawczyn.EFDesigner.EFModel.ModelRootHasProcedures> outLinks = new global::System.Collections.Generic.List<global::Sawczyn.EFDesigner.EFModel.ModelRootHasProcedures>();
+			global::System.Collections.Generic.IList<global::Sawczyn.EFDesigner.EFModel.ModelRootHasProcedures> links = DslModeling::DomainRoleInfo.GetElementLinks<global::Sawczyn.EFDesigner.EFModel.ModelRootHasProcedures>(source, global::Sawczyn.EFDesigner.EFModel.ModelRootHasProcedures.ModelRootDomainRoleId);
+			foreach ( global::Sawczyn.EFDesigner.EFModel.ModelRootHasProcedures link in links )
+			{
+				if ( target.Equals(link.ModelProcedure) )
+				{
+					outLinks.Add(link);
+				}
+			}
+			return outLinks.AsReadOnly();
+		}
+		/// <summary>
+		/// Get the one ModelRootHasProcedures link between a given ModelRootand a ModelProcedure.
+		/// </summary>
+		[global::System.Diagnostics.DebuggerStepThrough]
+		[global::System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1011")]
+		public static global::Sawczyn.EFDesigner.EFModel.ModelRootHasProcedures GetLink( global::Sawczyn.EFDesigner.EFModel.ModelRoot source, global::Sawczyn.EFDesigner.EFModel.ModelProcedure target )
+		{
+			global::System.Collections.Generic.IList<global::Sawczyn.EFDesigner.EFModel.ModelRootHasProcedures> links = DslModeling::DomainRoleInfo.GetElementLinks<global::Sawczyn.EFDesigner.EFModel.ModelRootHasProcedures>(source, global::Sawczyn.EFDesigner.EFModel.ModelRootHasProcedures.ModelRootDomainRoleId);
+			foreach ( global::Sawczyn.EFDesigner.EFModel.ModelRootHasProcedures link in links )
+			{
+				if ( target.Equals(link.ModelProcedure) )
+				{
+					return link;
+				}
+			}
+			return null;
+		}
+		
+		#endregion
+	}
+}
+namespace Sawczyn.EFDesigner.EFModel
+{
+	/// <summary>
+	/// DomainRelationship ProcedureHasParameters
+	/// Description for Sawczyn.EFDesigner.EFModel.ProcedureHasParameters
+	/// </summary>
+	[DslDesign::DisplayNameResource("Sawczyn.EFDesigner.EFModel.ProcedureHasParameters.DisplayName", typeof(global::Sawczyn.EFDesigner.EFModel.EFModelDomainModel), "Sawczyn.EFDesigner.EFModel.GeneratedCode.DomainModelResx")]
+	[DslDesign::DescriptionResource("Sawczyn.EFDesigner.EFModel.ProcedureHasParameters.Description", typeof(global::Sawczyn.EFDesigner.EFModel.EFModelDomainModel), "Sawczyn.EFDesigner.EFModel.GeneratedCode.DomainModelResx")]
+	[DslModeling::DomainModelOwner(typeof(global::Sawczyn.EFDesigner.EFModel.EFModelDomainModel))]
+	[global::System.CLSCompliant(true)]
+	[DslModeling::DomainRelationship(IsEmbedding=true)]
+	[DslModeling::DomainObjectId("117dfceb-f700-4733-920a-479a8058fca5")]
+	public partial class ProcedureHasParameters : DslModeling::ElementLink
+	{
+		#region Constructors, domain class Id
+		
+		/// <summary>
+		/// ProcedureHasParameters domain class Id.
+		/// </summary>
+		public static readonly new global::System.Guid DomainClassId = new global::System.Guid(0x117dfceb, 0xf700, 0x4733, 0x92, 0x0a, 0x47, 0x9a, 0x80, 0x58, 0xfc, 0xa5);
+	
+				
+		/// <summary>
+		/// Constructor
+		/// Creates a ProcedureHasParameters link in the same Partition as the given ModelProcedure
+		/// </summary>
+		/// <param name="source">ModelProcedure to use as the source of the relationship.</param>
+		/// <param name="target">ModelParameter to use as the target of the relationship.</param>
+		public ProcedureHasParameters(ModelProcedure source, ModelParameter target)
+			: base((source != null ? source.Partition : null), new DslModeling::RoleAssignment[]{new DslModeling::RoleAssignment(ProcedureHasParameters.ModelProcedureDomainRoleId, source), new DslModeling::RoleAssignment(ProcedureHasParameters.ParameterDomainRoleId, target)}, null)
+		{
+		}
+		
+		/// <summary>
+		/// Constructor
+		/// </summary>
+		/// <param name="store">Store where new link is to be created.</param>
+		/// <param name="roleAssignments">List of relationship role assignments.</param>
+		public ProcedureHasParameters(DslModeling::Store store, params DslModeling::RoleAssignment[] roleAssignments)
+			: base(store != null ? store.DefaultPartitionForClass(DomainClassId) : null, roleAssignments, null)
+		{
+		}
+		
+		/// <summary>
+		/// Constructor
+		/// </summary>
+		/// <param name="store">Store where new link is to be created.</param>
+		/// <param name="roleAssignments">List of relationship role assignments.</param>
+		/// <param name="propertyAssignments">List of properties assignments to set on the new link.</param>
+		public ProcedureHasParameters(DslModeling::Store store, DslModeling::RoleAssignment[] roleAssignments, DslModeling::PropertyAssignment[] propertyAssignments)
+			: base(store != null ? store.DefaultPartitionForClass(DomainClassId) : null, roleAssignments, propertyAssignments)
+		{
+		}
+		
+		/// <summary>
+		/// Constructor
+		/// </summary>
+		/// <param name="partition">Partition where new link is to be created.</param>
+		/// <param name="roleAssignments">List of relationship role assignments.</param>
+		public ProcedureHasParameters(DslModeling::Partition partition, params DslModeling::RoleAssignment[] roleAssignments)
+			: base(partition, roleAssignments, null)
+		{
+		}
+		
+		/// <summary>
+		/// Constructor
+		/// </summary>
+		/// <param name="partition">Partition where new link is to be created.</param>
+		/// <param name="roleAssignments">List of relationship role assignments.</param>
+		/// <param name="propertyAssignments">List of properties assignments to set on the new link.</param>
+		public ProcedureHasParameters(DslModeling::Partition partition, DslModeling::RoleAssignment[] roleAssignments, DslModeling::PropertyAssignment[] propertyAssignments)
+			: base(partition, roleAssignments, propertyAssignments)
+		{
+		}
+		#endregion
+		#region ModelProcedure domain role code
+		
+		/// <summary>
+		/// ModelProcedure domain role Id.
+		/// </summary>
+		public static readonly global::System.Guid ModelProcedureDomainRoleId = new global::System.Guid(0xd5d1020b, 0xf5d6, 0x4395, 0xa5, 0x3c, 0x1a, 0xd9, 0xc9, 0x80, 0x88, 0x53);
+		
+		/// <summary>
+		/// DomainRole ModelProcedure
+		/// </summary>
+		[DslDesign::DisplayNameResource("Sawczyn.EFDesigner.EFModel.ProcedureHasParameters/ModelProcedure.DisplayName", typeof(global::Sawczyn.EFDesigner.EFModel.EFModelDomainModel), "Sawczyn.EFDesigner.EFModel.GeneratedCode.DomainModelResx")]
+		[DslDesign::DescriptionResource("Sawczyn.EFDesigner.EFModel.ProcedureHasParameters/ModelProcedure.Description", typeof(global::Sawczyn.EFDesigner.EFModel.EFModelDomainModel), "Sawczyn.EFDesigner.EFModel.GeneratedCode.DomainModelResx")]
+		[DslModeling::DomainRole(DslModeling::DomainRoleOrder.Source, PropertyName = "Parameters", PropertyDisplayNameKey="Sawczyn.EFDesigner.EFModel.ProcedureHasParameters/ModelProcedure.PropertyDisplayName",  PropagatesCopy = DslModeling::PropagatesCopyOption.PropagatesCopyToLinkAndOppositeRolePlayer, Multiplicity = DslModeling::Multiplicity.ZeroMany)]
+		[DslModeling::DomainObjectId("d5d1020b-f5d6-4395-a53c-1ad9c9808853")]
+		public virtual ModelProcedure ModelProcedure
+		{
+			[global::System.Diagnostics.DebuggerStepThrough]
+			get
+			{
+				return (ModelProcedure)DslModeling::DomainRoleInfo.GetRolePlayer(this, ModelProcedureDomainRoleId);
+			}
+			[global::System.Diagnostics.DebuggerStepThrough]
+			set
+			{
+				DslModeling::DomainRoleInfo.SetRolePlayer(this, ModelProcedureDomainRoleId, value);
+			}
+		}
+				
+		#endregion
+		#region Static methods to access ModelProcedure of a ModelParameter
+		/// <summary>
+		/// Gets ModelProcedure.
+		/// </summary>
+		[global::System.Diagnostics.DebuggerStepThrough]
+		[global::System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1011")]
+		public static ModelProcedure GetModelProcedure(ModelParameter element)
+		{
+			return DslModeling::DomainRoleInfo.GetLinkedElement(element, ParameterDomainRoleId) as ModelProcedure;
+		}
+		
+		/// <summary>
+		/// Sets ModelProcedure.
+		/// </summary>
+		[global::System.Diagnostics.DebuggerStepThrough]
+		[global::System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1011")]
+		public static void SetModelProcedure(ModelParameter element, ModelProcedure newModelProcedure)
+		{
+			DslModeling::DomainRoleInfo.SetLinkedElement(element, ParameterDomainRoleId, newModelProcedure);
+		}
+		#endregion
+		#region Parameter domain role code
+		
+		/// <summary>
+		/// Parameter domain role Id.
+		/// </summary>
+		public static readonly global::System.Guid ParameterDomainRoleId = new global::System.Guid(0x1d79cbb1, 0x97aa, 0x490a, 0xbe, 0x65, 0xc1, 0x5d, 0x78, 0x20, 0xe8, 0x74);
+		
+		/// <summary>
+		/// DomainRole Parameter
+		/// </summary>
+		[DslDesign::DisplayNameResource("Sawczyn.EFDesigner.EFModel.ProcedureHasParameters/Parameter.DisplayName", typeof(global::Sawczyn.EFDesigner.EFModel.EFModelDomainModel), "Sawczyn.EFDesigner.EFModel.GeneratedCode.DomainModelResx")]
+		[DslDesign::DescriptionResource("Sawczyn.EFDesigner.EFModel.ProcedureHasParameters/Parameter.Description", typeof(global::Sawczyn.EFDesigner.EFModel.EFModelDomainModel), "Sawczyn.EFDesigner.EFModel.GeneratedCode.DomainModelResx")]
+		[DslModeling::DomainRole(DslModeling::DomainRoleOrder.Target, PropertyName = "ModelProcedure", PropertyDisplayNameKey="Sawczyn.EFDesigner.EFModel.ProcedureHasParameters/Parameter.PropertyDisplayName", PropagatesDelete = true,  PropagatesCopy = DslModeling::PropagatesCopyOption.DoNotPropagateCopy, Multiplicity = DslModeling::Multiplicity.ZeroOne)]
+		[DslModeling::DomainObjectId("1d79cbb1-97aa-490a-be65-c15d7820e874")]
+		public virtual ModelParameter Parameter
+		{
+			[global::System.Diagnostics.DebuggerStepThrough]
+			get
+			{
+				return (ModelParameter)DslModeling::DomainRoleInfo.GetRolePlayer(this, ParameterDomainRoleId);
+			}
+			[global::System.Diagnostics.DebuggerStepThrough]
+			set
+			{
+				DslModeling::DomainRoleInfo.SetRolePlayer(this, ParameterDomainRoleId, value);
+			}
+		}
+				
+		#endregion
+		#region Static methods to access Parameters of a ModelProcedure
+		/// <summary>
+		/// Gets a list of Parameters.
+		/// </summary>
+		[global::System.Diagnostics.DebuggerStepThrough]
+		[global::System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1011")]
+		public static DslModeling::LinkedElementCollection<ModelParameter> GetParameters(ModelProcedure element)
+		{
+			return GetRoleCollection<DslModeling::LinkedElementCollection<ModelParameter>, ModelParameter>(element, ModelProcedureDomainRoleId);
+		}
+		#endregion
+		#region ModelProcedure link accessor
+		/// <summary>
+		/// Get the list of ProcedureHasParameters links to a ModelProcedure.
+		/// </summary>
+		[global::System.Diagnostics.DebuggerStepThrough]
+		[global::System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1011")]
+		public static global::System.Collections.ObjectModel.ReadOnlyCollection<global::Sawczyn.EFDesigner.EFModel.ProcedureHasParameters> GetLinksToParameters ( global::Sawczyn.EFDesigner.EFModel.ModelProcedure modelProcedureInstance )
+		{
+			return DslModeling::DomainRoleInfo.GetElementLinks<global::Sawczyn.EFDesigner.EFModel.ProcedureHasParameters>(modelProcedureInstance, global::Sawczyn.EFDesigner.EFModel.ProcedureHasParameters.ModelProcedureDomainRoleId);
+		}
+		#endregion
+		#region Parameter link accessor
+		/// <summary>
+		/// Get the ProcedureHasParameters link to a ModelParameter.
+		/// </summary>
+		[global::System.Diagnostics.DebuggerStepThrough]
+		[global::System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1011")]
+		public static global::Sawczyn.EFDesigner.EFModel.ProcedureHasParameters GetLinkToModelProcedure (global::Sawczyn.EFDesigner.EFModel.ModelParameter parameterInstance)
+		{
+			global::System.Collections.Generic.IList<global::Sawczyn.EFDesigner.EFModel.ProcedureHasParameters> links = DslModeling::DomainRoleInfo.GetElementLinks<global::Sawczyn.EFDesigner.EFModel.ProcedureHasParameters>(parameterInstance, global::Sawczyn.EFDesigner.EFModel.ProcedureHasParameters.ParameterDomainRoleId);
+			global::System.Diagnostics.Debug.Assert(links.Count <= 1, "Multiplicity of Parameter not obeyed.");
+			if ( links.Count == 0 )
+			{
+				return null;
+			}
+			else
+			{
+				return links[0];
+			}
+		}
+		#endregion
+		#region ProcedureHasParameters instance accessors
+		
+		/// <summary>
+		/// Get any ProcedureHasParameters links between a given ModelProcedure and a ModelParameter.
+		/// </summary>
+		[global::System.Diagnostics.DebuggerStepThrough]
+		[global::System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1011")]
+		public static global::System.Collections.ObjectModel.ReadOnlyCollection<global::Sawczyn.EFDesigner.EFModel.ProcedureHasParameters> GetLinks( global::Sawczyn.EFDesigner.EFModel.ModelProcedure source, global::Sawczyn.EFDesigner.EFModel.ModelParameter target )
+		{
+			global::System.Collections.Generic.List<global::Sawczyn.EFDesigner.EFModel.ProcedureHasParameters> outLinks = new global::System.Collections.Generic.List<global::Sawczyn.EFDesigner.EFModel.ProcedureHasParameters>();
+			global::System.Collections.Generic.IList<global::Sawczyn.EFDesigner.EFModel.ProcedureHasParameters> links = DslModeling::DomainRoleInfo.GetElementLinks<global::Sawczyn.EFDesigner.EFModel.ProcedureHasParameters>(source, global::Sawczyn.EFDesigner.EFModel.ProcedureHasParameters.ModelProcedureDomainRoleId);
+			foreach ( global::Sawczyn.EFDesigner.EFModel.ProcedureHasParameters link in links )
+			{
+				if ( target.Equals(link.Parameter) )
+				{
+					outLinks.Add(link);
+				}
+			}
+			return outLinks.AsReadOnly();
+		}
+		/// <summary>
+		/// Get the one ProcedureHasParameters link between a given ModelProcedureand a ModelParameter.
+		/// </summary>
+		[global::System.Diagnostics.DebuggerStepThrough]
+		[global::System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1011")]
+		public static global::Sawczyn.EFDesigner.EFModel.ProcedureHasParameters GetLink( global::Sawczyn.EFDesigner.EFModel.ModelProcedure source, global::Sawczyn.EFDesigner.EFModel.ModelParameter target )
+		{
+			global::System.Collections.Generic.IList<global::Sawczyn.EFDesigner.EFModel.ProcedureHasParameters> links = DslModeling::DomainRoleInfo.GetElementLinks<global::Sawczyn.EFDesigner.EFModel.ProcedureHasParameters>(source, global::Sawczyn.EFDesigner.EFModel.ProcedureHasParameters.ModelProcedureDomainRoleId);
+			foreach ( global::Sawczyn.EFDesigner.EFModel.ProcedureHasParameters link in links )
+			{
+				if ( target.Equals(link.Parameter) )
 				{
 					return link;
 				}

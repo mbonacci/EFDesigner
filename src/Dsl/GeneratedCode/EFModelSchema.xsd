@@ -59,6 +59,21 @@
               </xsd:sequence>
             </xsd:complexType>
           </xsd:element>
+          <!-- Relationship: ModelRootHasProcedures -->
+          <xsd:element name="modelProcedures" minOccurs="0" maxOccurs="1">
+            <xsd:annotation>
+              <xsd:documentation>Instances of ModelRootHasProcedures</xsd:documentation>
+            </xsd:annotation>
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element ref="modelRootHasProcedures" minOccurs="0" maxOccurs="unbounded">
+                  <xsd:annotation>
+                    <xsd:documentation>[Instance of ModelRootHasProcedures needs to be serialized in full-form]</xsd:documentation>
+                  </xsd:annotation>
+                </xsd:element>
+              </xsd:sequence>
+            </xsd:complexType>
+          </xsd:element>
         </xsd:sequence>
         <!-- Id -->
         <xsd:attribute name="Id" type="xsd:string">
@@ -256,6 +271,12 @@
         <xsd:attribute name="showWarningsInDesigner" type="xsd:boolean" >
           <xsd:annotation>
             <xsd:documentation>If true, will display warning glyphs with tooltips when model elements have non-fatal issues detected</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+        <!-- Property: ClientModelFile -->
+        <xsd:attribute name="clientModelFile" type="xsd:string" >
+          <xsd:annotation>
+            <xsd:documentation>Output file for client entities</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
       </xsd:extension>
@@ -463,6 +484,8 @@
             <xsd:documentation>Any custom attributes to be generated for this element.  Will be passed through as entered.</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
+        <!-- Property: GenerateClient -->
+        <xsd:attribute name="generateClient" type="xsd:boolean" />
       </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>
@@ -649,6 +672,8 @@
             <xsd:documentation>Text for [Display(Name=&quot;&lt;text&gt;&quot;)] attribute</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
+        <!-- Property: GenerateClient -->
+        <xsd:attribute name="generateClient" type="xsd:boolean" />
       </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>
@@ -946,6 +971,178 @@
     </xsd:complexContent>
   </xsd:complexType>
   
+  <!-- ModelProcedure -->
+  <xsd:element name="modelProcedure" type="ModelProcedure" substitutionGroup="designElement" />
+  <xsd:complexType name="ModelProcedure">
+    <xsd:complexContent>
+      <xsd:extension base="DesignElement">
+        <xsd:sequence minOccurs="0" maxOccurs="1">
+          <!-- Relationship: ProcedureHasParameters -->
+          <xsd:element name="parameters" minOccurs="0" maxOccurs="1">
+            <xsd:annotation>
+              <xsd:documentation>Instances of ProcedureHasParameters</xsd:documentation>
+            </xsd:annotation>
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element ref="procedureHasParameters" minOccurs="0" maxOccurs="unbounded">
+                  <xsd:annotation>
+                    <xsd:documentation>[Instance of ProcedureHasParameters needs to be serialized in full-form]</xsd:documentation>
+                  </xsd:annotation>
+                </xsd:element>
+              </xsd:sequence>
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:sequence>
+        <!-- Id -->
+        <xsd:attribute name="Id" type="xsd:string">
+          <xsd:annotation>
+            <xsd:documentation>Instance Guid of this element, needed because SerializeId is set to true.</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+        <!-- Property: Name -->
+        <xsd:attribute name="name" type="xsd:string" >
+          <xsd:annotation>
+            <xsd:documentation>Procedure name</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+        <!-- Property: DatabaseSchema -->
+        <xsd:attribute name="databaseSchema" type="xsd:string" >
+          <xsd:annotation>
+            <xsd:documentation>The schema to use for table creation. Overrides default schema for model if present.</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+        <!-- Property: Description -->
+        <xsd:attribute name="description" type="xsd:string" >
+          <xsd:annotation>
+            <xsd:documentation>Detailed code documentation</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+        <!-- Property: Summary -->
+        <xsd:attribute name="summary" type="xsd:string" >
+          <xsd:annotation>
+            <xsd:documentation>Brief code documentation</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+        <!-- Property: CustomAttributes -->
+        <xsd:attribute name="customAttributes" type="xsd:string" >
+          <xsd:annotation>
+            <xsd:documentation>Any custom attributes to be generated for this element.  Will be passed through as entered.</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+        <!-- Property: StoredProcName -->
+        <xsd:attribute name="storedProcName" type="xsd:string" >
+          <xsd:annotation>
+            <xsd:documentation>Name of the stored procedure in the database</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+        <!-- Property: ReturnType -->
+        <xsd:attribute name="returnType" type="xsd:string" />
+        <!-- Property: IsFunction -->
+        <xsd:attribute name="isFunction" type="xsd:boolean" />
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  
+  <!-- ModelProcedure Moniker -->
+  <xsd:element name="modelProcedureMoniker" type="ModelProcedureMoniker" substitutionGroup="designElementMoniker" />
+  <xsd:complexType name="ModelProcedureMoniker">
+    <xsd:annotation>
+      <xsd:documentation>Moniker for ModelProcedure instance.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:extension base="DesignElementMoniker">
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  
+  <!-- ModelParameter -->
+  <xsd:element name="modelParameter" type="ModelParameter" substitutionGroup="core:modelElement" />
+  <xsd:complexType name="ModelParameter">
+    <xsd:complexContent>
+      <xsd:extension base="core:ModelElement">
+        <!-- Id -->
+        <xsd:attribute name="Id" type="xsd:string">
+          <xsd:annotation>
+            <xsd:documentation>Instance Guid of this element, needed because SerializeId is set to true.</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+        <!-- Property: Type -->
+        <xsd:attribute name="type" type="xsd:string" >
+          <xsd:annotation>
+            <xsd:documentation>Type of this parameter</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+        <!-- Property: Required -->
+        <xsd:attribute name="required" type="xsd:boolean" >
+          <xsd:annotation>
+            <xsd:documentation>If true, cannot be null (or the default value for the parametertype, if not nullable)</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+        <!-- Property: MaxLength -->
+        <xsd:attribute name="maxLength" type="xsd:integer" >
+          <xsd:annotation>
+            <xsd:documentation>Maximum length of the string, 0 for no max length</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+        <!-- Property: Description -->
+        <xsd:attribute name="description" type="xsd:string" >
+          <xsd:annotation>
+            <xsd:documentation>Detailed code documentation</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+        <!-- Property: Summary -->
+        <xsd:attribute name="summary" type="xsd:string" >
+          <xsd:annotation>
+            <xsd:documentation>Brief code documentation</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+        <!-- Property: Name -->
+        <xsd:attribute name="name" type="xsd:string" >
+          <xsd:annotation>
+            <xsd:documentation>The name of the parameter. Must be a valid C# symbol.</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+        <!-- Property: ParameterName -->
+        <xsd:attribute name="parameterName" type="xsd:string" >
+          <xsd:annotation>
+            <xsd:documentation>The name for the parameter in db</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+        <!-- Property: ColumnType -->
+        <xsd:attribute name="columnType" type="xsd:string" >
+          <xsd:annotation>
+            <xsd:documentation>The data type for the parameter in db</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+        <!-- Property: CustomAttributes -->
+        <xsd:attribute name="customAttributes" type="xsd:string" >
+          <xsd:annotation>
+            <xsd:documentation>Any custom attributes to be generated for this element.  Will be passed through as entered.</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+        <!-- Property: Direction -->
+        <xsd:attribute name="direction" type="ParamDirection" />
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  
+  <!-- ModelParameter Moniker -->
+  <xsd:element name="modelParameterMoniker" type="ModelParameterMoniker" substitutionGroup="core:modelElementMoniker" />
+  <xsd:complexType name="ModelParameterMoniker">
+    <xsd:annotation>
+      <xsd:documentation>Moniker for ModelParameter instance.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:extension base="core:ModelElementMoniker">
+        <xsd:attribute name="Id" type="xsd:string" >
+          <xsd:annotation>
+            <xsd:documentation>Attribute to store the moniker string.</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  
   <!-- Association -->
   <xsd:element name="association" abstract="true" type="Association" substitutionGroup="core:modelElement" />
   <xsd:complexType name="Association" abstract="true" >
@@ -1064,6 +1261,20 @@
             <xsd:documentation>Text for [Display(Name=&quot;&lt;text&gt;&quot;)] attribute on this end&apos;s property</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
+        <!-- Property: TargetForeignKey -->
+        <xsd:attribute name="targetForeignKey" type="xsd:string" >
+          <xsd:annotation>
+            <xsd:documentation>Name of the foreign key column at this end</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+        <!-- Property: SourceForeignKey -->
+        <xsd:attribute name="sourceForeignKey" type="xsd:string" >
+          <xsd:annotation>
+            <xsd:documentation>Name of the foreign key column at this end</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+        <!-- Property: GenerateClient -->
+        <xsd:attribute name="generateClient" type="xsd:boolean" />
       </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>
@@ -1512,6 +1723,86 @@
     </xsd:annotation>
     <xsd:complexContent>
       <xsd:extension base="CommentReferencesSubjectsMoniker">
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  
+  <!-- ModelRootHasProcedures -->
+  <xsd:element name="modelRootHasProcedures" type="ModelRootHasProcedures" substitutionGroup="core:modelElement" />
+  <xsd:complexType name="ModelRootHasProcedures">
+    <xsd:complexContent>
+      <xsd:extension base="core:ModelElement">
+        <xsd:sequence minOccurs="0" maxOccurs="1">
+          <!-- Target end ModelProcedure -->
+          <xsd:element ref="modelProcedure" minOccurs="1" maxOccurs="1">
+            <xsd:annotation>
+              <xsd:documentation>[Target role-player]</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+        </xsd:sequence>
+        <!-- Id -->
+        <xsd:attribute name="Id" type="xsd:string">
+          <xsd:annotation>
+            <xsd:documentation>Instance Guid of this element, needed because SerializeId is set to true.</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  
+  <!-- ModelRootHasProcedures Moniker -->
+  <xsd:element name="modelRootHasProceduresMoniker" type="ModelRootHasProceduresMoniker" substitutionGroup="core:modelElementMoniker" />
+  <xsd:complexType name="ModelRootHasProceduresMoniker">
+    <xsd:annotation>
+      <xsd:documentation>Moniker for ModelRootHasProcedures instance.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:extension base="core:ModelElementMoniker">
+        <xsd:attribute name="Id" type="xsd:string" >
+          <xsd:annotation>
+            <xsd:documentation>Attribute to store the moniker string.</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  
+  <!-- ProcedureHasParameters -->
+  <xsd:element name="procedureHasParameters" type="ProcedureHasParameters" substitutionGroup="core:modelElement" />
+  <xsd:complexType name="ProcedureHasParameters">
+    <xsd:complexContent>
+      <xsd:extension base="core:ModelElement">
+        <xsd:sequence minOccurs="0" maxOccurs="1">
+          <!-- Target end ModelParameter -->
+          <xsd:element ref="modelParameter" minOccurs="1" maxOccurs="1">
+            <xsd:annotation>
+              <xsd:documentation>[Target role-player]</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+        </xsd:sequence>
+        <!-- Id -->
+        <xsd:attribute name="Id" type="xsd:string">
+          <xsd:annotation>
+            <xsd:documentation>Instance Guid of this element, needed because SerializeId is set to true.</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  
+  <!-- ProcedureHasParameters Moniker -->
+  <xsd:element name="procedureHasParametersMoniker" type="ProcedureHasParametersMoniker" substitutionGroup="core:modelElementMoniker" />
+  <xsd:complexType name="ProcedureHasParametersMoniker">
+    <xsd:annotation>
+      <xsd:documentation>Moniker for ProcedureHasParameters instance.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:extension base="core:ModelElementMoniker">
+        <xsd:attribute name="Id" type="xsd:string" >
+          <xsd:annotation>
+            <xsd:documentation>Attribute to store the moniker string.</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
       </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>
@@ -1985,6 +2276,15 @@
           <xsd:documentation>Ask each time if should perform the action automatically</xsd:documentation>
         </xsd:annotation>
       </xsd:enumeration>
+    </xsd:restriction>
+  </xsd:simpleType>
+  
+  <!-- Enum ParamDirection -->
+  <xsd:simpleType name="ParamDirection">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="In"/>
+      <xsd:enumeration value="Out"/>
+      <xsd:enumeration value="InOut"/>
     </xsd:restriction>
   </xsd:simpleType>
   

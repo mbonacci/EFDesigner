@@ -75,6 +75,10 @@ namespace Sawczyn.EFDesigner.EFModel
 		/// Toolbox item filter string used to identify Enumeration element tool.
 		/// </summary>
 		public const string EnumerationFilterString = "Enumeration.1.2";
+		/// <summary>
+		/// Toolbox item filter string used to identify Procedure element tool.
+		/// </summary>
+		public const string ProcedureFilterString = "Procedure.1.2";
 
 	
 		private global::System.Collections.Generic.Dictionary<string, DslDesign::ModelingToolboxItem> toolboxItemCache = new global::System.Collections.Generic.Dictionary<string, DslDesign::ModelingToolboxItem>();
@@ -122,7 +126,7 @@ namespace Sawczyn.EFDesigner.EFModel
 		{
 			get
 			{
-				return 7;
+				return 8;
 			}
 		}
 		
@@ -292,6 +296,23 @@ namespace Sawczyn.EFDesigner.EFModel
 						new global::System.ComponentModel.ToolboxItemFilterAttribute[] { // Collection of ToolboxItemFilterAttribute objects that determine visibility of the toolbox item.
 						new global::System.ComponentModel.ToolboxItemFilterAttribute(ToolboxFilterString, global::System.ComponentModel.ToolboxItemFilterType.Require),
 						new global::System.ComponentModel.ToolboxItemFilterAttribute(EnumerationFilterString)
+						});
+					break;
+				case "Sawczyn.EFDesigner.EFModel.ProcedureToolboxItem":
+					// Add Procedure shape tool.
+					result = new DslDesign::ModelingToolboxItem(
+						"Sawczyn.EFDesigner.EFModel.ProcedureToolboxItem", // Unique identifier (non-localized) for the toolbox item.
+						8, // Position relative to other items in the same toolbox tab.
+						resourceManager.GetString("ProcedureToolboxItem", resourceCulture), // Localized display name for the item.
+						(global::System.Drawing.Bitmap)DslDiagrams::ImageHelper.GetImage(resourceManager.GetObject("ProcedureToolboxBitmap", resourceCulture)), // Image displayed next to the toolbox item.
+						"Sawczyn.EFDesigner.EFModel.Class DiagramsToolboxTab", // Unique identifier (non-localized) for the toolbox item tab.
+						resourceManager.GetString("Class DiagramsToolboxTab", resourceCulture), // Localized display name for the toolbox tab.
+						"Procedure", // F1 help keyword for the toolbox item.
+						resourceManager.GetString("ProcedureToolboxTooltip", resourceCulture), // Localized tooltip text for the toolbox item.
+						CreateElementToolPrototype(store, global::Sawczyn.EFDesigner.EFModel.ModelProcedure.DomainClassId), // ElementGroupPrototype (data object) representing model element on the toolbox.
+						new global::System.ComponentModel.ToolboxItemFilterAttribute[] { // Collection of ToolboxItemFilterAttribute objects that determine visibility of the toolbox item.
+						new global::System.ComponentModel.ToolboxItemFilterAttribute(ToolboxFilterString, global::System.ComponentModel.ToolboxItemFilterType.Require),
+						new global::System.ComponentModel.ToolboxItemFilterAttribute(ProcedureFilterString)
 						});
 					break;
 				default:

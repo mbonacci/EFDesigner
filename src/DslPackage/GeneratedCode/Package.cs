@@ -84,6 +84,14 @@ namespace Sawczyn.EFDesigner.EFModel
 					"@EnumerationToolboxBitmap;Sawczyn.EFDesigner.EFModel.Dsl.dll", 
 					0xff00ff,
 					Index = 6)]
+	[VSShell::ProvideStaticToolboxItem("Sawczyn.EFDesigner.EFModel.Class DiagramsToolboxTab",
+					"@ProcedureToolboxItem;Sawczyn.EFDesigner.EFModel.Dsl.dll", 
+					"Sawczyn.EFDesigner.EFModel.ProcedureToolboxItem", 
+					"CF_TOOLBOXITEMCONTAINER,CF_TOOLBOXITEMCONTAINER_HASH,CF_TOOLBOXITEMCONTAINER_CONTENTS", 
+					"Procedure", 
+					"@ProcedureToolboxBitmap;Sawczyn.EFDesigner.EFModel.Dsl.dll", 
+					0xff00ff,
+					Index = 7)]
 	[VSShell::ProvideEditorFactory(typeof(EFModelEditorFactory), 103, TrustLevel = VSShellInterop::__VSEDITORTRUSTLEVEL.ETL_AlwaysTrusted)]
 	[VSShell::ProvideEditorExtension(typeof(EFModelEditorFactory), "." + Constants.DesignerFileExtension, 50)]
 	[VSShell::ProvideEditorLogicalView(typeof(EFModelEditorFactory), "{7651A702-06E5-11D1-8EBD-00A0C90F26EA}")] // Designer logical view GUID i.e. VSConstants.LOGVIEWID_Designer

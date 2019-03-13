@@ -2530,4 +2530,1080 @@ namespace Sawczyn.EFDesigner.EFModel
 		#endregion
 	}
 }
+namespace Sawczyn.EFDesigner.EFModel
+{
+	/// <summary>
+	/// Double-derived base class for DomainClass ProcedureShape
+	/// </summary>
+	[DslDesign::DisplayNameResource("Sawczyn.EFDesigner.EFModel.ProcedureShape.DisplayName", typeof(global::Sawczyn.EFDesigner.EFModel.EFModelDomainModel), "Sawczyn.EFDesigner.EFModel.GeneratedCode.DomainModelResx")]
+	[DslDesign::DescriptionResource("Sawczyn.EFDesigner.EFModel.ProcedureShape.Description", typeof(global::Sawczyn.EFDesigner.EFModel.EFModelDomainModel), "Sawczyn.EFDesigner.EFModel.GeneratedCode.DomainModelResx")]
+	[DslModeling::DomainModelOwner(typeof(global::Sawczyn.EFDesigner.EFModel.EFModelDomainModel))]
+	[global::System.CLSCompliant(true)]
+	[DslModeling::DomainObjectId("481d2c6b-29e9-415c-8528-7def09ef16dc")]
+	public abstract partial class ProcedureShapeBase : DslDiagrams::CompartmentShape
+	{
+		#region DiagramElement boilerplate
+		private static DslDiagrams::StyleSet classStyleSet;
+		private static global::System.Collections.Generic.IList<DslDiagrams::ShapeField> shapeFields;
+		private static global::System.Collections.Generic.IList<DslDiagrams::Decorator> decorators;
+		
+		/// <summary>
+		/// Per-class style set for this shape.
+		/// </summary>
+		protected override DslDiagrams::StyleSet ClassStyleSet
+		{
+			get
+			{
+				if (classStyleSet == null)
+				{
+					classStyleSet = CreateClassStyleSet();
+				}
+				return classStyleSet;
+			}
+		}
+		
+		/// <summary>
+		/// Per-class ShapeFields for this shape.
+		/// </summary>
+		public override global::System.Collections.Generic.IList<DslDiagrams::ShapeField> ShapeFields
+		{
+			get
+			{
+				if (shapeFields == null)
+				{
+					shapeFields = CreateShapeFields();
+				}
+				return shapeFields;
+			}
+		}
+		
+		/// <summary>
+		/// Event fired when decorator initialization is complete for this shape type.
+		/// </summary>
+		public static event global::System.EventHandler DecoratorsInitialized;
+		
+		/// <summary>
+		/// List containing decorators used by this type.
+		/// </summary>
+		public override global::System.Collections.Generic.IList<DslDiagrams::Decorator> Decorators
+		{
+			get 
+			{
+				if(decorators == null)
+				{
+					decorators = CreateDecorators();
+					
+					// fire this event to allow the diagram to initialize decorator mappings for this shape type.
+					if(DecoratorsInitialized != null)
+					{
+						DecoratorsInitialized(this, global::System.EventArgs.Empty);
+					}
+				}
+				
+				return decorators; 
+			}
+		}
+		
+		/// <summary>
+		/// Finds a decorator associated with ProcedureShape.
+		/// </summary>
+		public static DslDiagrams::Decorator FindProcedureShapeDecorator(string decoratorName)
+		{	
+			if(decorators == null) return null;
+			return DslDiagrams::ShapeElement.FindDecorator(decorators, decoratorName);
+		}
+		
+		
+		/// <summary>
+		/// Shape instance initialization.
+		/// </summary>
+		public override void OnInitialize()
+		{
+			base.OnInitialize();
+			
+			// Create host shapes for outer decorators.
+			foreach(DslDiagrams::Decorator decorator in this.Decorators)
+			{
+				if(decorator.RequiresHost)
+				{
+					decorator.ConfigureHostShape(this);
+				}
+			}
+			
+		}
+		#endregion
+		#region Shape size
+		
+		/// <summary>
+		/// Default size for this shape.
+		/// </summary>
+		public override DslDiagrams::SizeD DefaultSize
+		{
+			get
+			{
+				return new DslDiagrams::SizeD(1.5, 0.3);
+			}
+		}
+		#endregion
+		#region Shape styles
+		/// <summary>
+		/// Initializes style set resources for this shape type
+		/// </summary>
+		/// <param name="classStyleSet">The style set for this shape class</param>
+		protected override void InitializeResources(DslDiagrams::StyleSet classStyleSet)
+		{
+			base.InitializeResources(classStyleSet);
+			
+			// Outline pen settings for this shape.
+			DslDiagrams::PenSettings outlinePen = new DslDiagrams::PenSettings();
+			outlinePen.Width = 0.01F;
+			classStyleSet.OverridePen(DslDiagrams::DiagramPens.ShapeOutline, outlinePen);
+			// Fill brush settings for this shape.
+			DslDiagrams::BrushSettings backgroundBrush = new DslDiagrams::BrushSettings();
+			backgroundBrush.Color = global::System.Drawing.Color.FromKnownColor(global::System.Drawing.KnownColor.MediumAquamarine);
+			classStyleSet.OverrideBrush(DslDiagrams::DiagramBrushes.ShapeBackground, backgroundBrush);
+		
+			// Text brush settings for this shape.
+			DslDiagrams::BrushSettings textBrush = new DslDiagrams::BrushSettings();
+			textBrush.Color = global::System.Drawing.Color.FromKnownColor(global::System.Drawing.KnownColor.White);
+			classStyleSet.OverrideBrush(DslDiagrams::DiagramBrushes.ShapeText, textBrush);
+		
+		}
+		
+		/// <summary>
+		/// Indicates whether this shape displays a background gradient.
+		/// </summary>
+		public override bool HasBackgroundGradient
+		{
+			get
+			{
+				return false;
+			}
+		}
+		#endregion
+		#region Custom storage for shape properties that appear in the property grid
+		/// <summary>
+		/// Custom storage for domain property OutlineColor.
+		/// </summary>
+		private global::System.Drawing.Color GetOutlineColorValue()
+		{
+			DslDiagrams::PenSettings settings = this.StyleSet.GetOverriddenPenSettings(DslDiagrams::DiagramPens.ShapeOutline);
+			if(settings != null && settings.IsOverridden(DslDiagrams::PenSettingsFlags.Color))
+			{
+				return settings.Color;
+			}
+			return global::System.Drawing.Color.FromKnownColor(global::System.Drawing.KnownColor.Black);
+		}
+		
+		/// <summary>
+		/// Custom storage for domain property OutlineColor.
+		/// </summary>
+		private void SetOutlineColorValue(global::System.Drawing.Color newValue)
+		{
+			DslDiagrams::PenSettings settings = this.StyleSet.GetOverriddenPenSettings(DslDiagrams::DiagramPens.ShapeOutline);
+			if(settings == null) settings = new DslDiagrams::PenSettings();
+			settings.Color = newValue;
+			this.StyleSet.OverridePen(DslDiagrams::DiagramPens.ShapeOutline, settings);
+			this.Invalidate();
+		}
+		
+		/// <summary>
+		/// Custom storage for domain property FillColor.
+		/// </summary>
+		private global::System.Drawing.Color GetFillColorValue()
+		{
+			DslDiagrams::BrushSettings settings = this.StyleSet.GetOverriddenBrushSettings(DslDiagrams::DiagramBrushes.ShapeBackground);
+			if(settings != null && settings.IsOverridden(DslDiagrams::BrushSettingsFlags.Color))
+			{
+				return settings.Color;
+			}
+			return global::System.Drawing.Color.FromKnownColor(global::System.Drawing.KnownColor.MediumAquamarine);
+		}
+		
+		/// <summary>
+		/// Custom storage for domain property FillColor.
+		/// </summary>
+		private void SetFillColorValue(global::System.Drawing.Color newValue)
+		{
+			DslDiagrams::BrushSettings settings = this.StyleSet.GetOverriddenBrushSettings(DslDiagrams::DiagramBrushes.ShapeBackground);
+			if(settings == null) settings = new DslDiagrams::BrushSettings();
+			settings.Color = newValue;
+			this.StyleSet.OverrideBrush(DslDiagrams::DiagramBrushes.ShapeBackground, settings);
+			this.Invalidate();
+		}
+		
+		/// <summary>
+		/// Custom storage for domain property FillColor.
+		/// </summary>
+		private global::System.Drawing.Color GetTextColorValue()
+		{
+			DslDiagrams::BrushSettings settings = this.StyleSet.GetOverriddenBrushSettings(DslDiagrams::DiagramBrushes.ShapeText);
+			if(settings != null && settings.IsOverridden(DslDiagrams::BrushSettingsFlags.Color))
+			{
+				return settings.Color;
+			}
+			return global::System.Drawing.Color.FromKnownColor(global::System.Drawing.KnownColor.White);
+		}
+		
+		/// <summary>
+		/// Custom storage for domain property FillColor.
+		/// </summary>
+		private void SetTextColorValue(global::System.Drawing.Color newValue)
+		{
+			DslDiagrams::BrushSettings settings = this.StyleSet.GetOverriddenBrushSettings(DslDiagrams::DiagramBrushes.ShapeText);
+			if(settings == null) settings = new DslDiagrams::BrushSettings();
+			settings.Color = newValue;
+			this.StyleSet.OverrideBrush(DslDiagrams::DiagramBrushes.ShapeText, settings);
+			this.Invalidate();
+		}
+		
+		/// <summary>
+		/// Custom storage for domain property OutlineDashStyle.
+		/// </summary>
+		private global::System.Drawing.Drawing2D.DashStyle GetOutlineDashStyleValue()
+		{
+			DslDiagrams::PenSettings settings = this.StyleSet.GetOverriddenPenSettings(DslDiagrams::DiagramPens.ShapeOutline);
+			if(settings != null && settings.IsOverridden(DslDiagrams::PenSettingsFlags.DashStyle))
+			{
+				return settings.DashStyle;
+			}
+			return global::System.Drawing.Drawing2D.DashStyle.Solid;
+		}
+		
+		/// <summary>
+		/// Custom storage for domain property OutlineDashStyle.
+		/// </summary>
+		private void SetOutlineDashStyleValue(global::System.Drawing.Drawing2D.DashStyle newValue)
+		{
+			DslDiagrams::PenSettings settings = this.StyleSet.GetOverriddenPenSettings(DslDiagrams::DiagramPens.ShapeOutline);
+			if(settings == null) settings = new DslDiagrams::PenSettings();
+			settings.DashStyle = newValue;
+			this.StyleSet.OverridePen(DslDiagrams::DiagramPens.ShapeOutline, settings);
+			this.Invalidate();
+		}
+		
+		/// <summary>
+		/// Custom storage for domain property OutlineThickness.
+		/// </summary>
+		private float GetOutlineThicknessValue()
+		{
+			DslDiagrams::PenSettings settings = this.StyleSet.GetOverriddenPenSettings(DslDiagrams::DiagramPens.ShapeOutline);
+			if(settings != null && settings.IsOverridden(DslDiagrams::PenSettingsFlags.Width))
+			{
+				return settings.Width;
+			}
+			return 0.01f;
+		}
+		
+		/// <summary>
+		/// Custom storage for domain property OutlineThickness.
+		/// </summary>
+		private void SetOutlineThicknessValue(float newValue)
+		{
+			DslDiagrams::PenSettings settings = this.StyleSet.GetOverriddenPenSettings(DslDiagrams::DiagramPens.ShapeOutline);
+			if(settings == null) settings = new DslDiagrams::PenSettings();
+			settings.Width = newValue;
+			this.StyleSet.OverridePen(DslDiagrams::DiagramPens.ShapeOutline, settings);
+			this.Invalidate();
+		}
+		
+		#endregion
+		#region Decorators
+		/// <summary>
+		/// Initialize the collection of shape fields associated with this shape type.
+		/// </summary>
+		protected override void InitializeShapeFields(global::System.Collections.Generic.IList<DslDiagrams::ShapeField> shapeFields)
+		{
+			base.InitializeShapeFields(shapeFields);
+			DslDiagrams::TextField field1 = new DslDiagrams::TextField("Name");
+			field1.DefaultText = global::Sawczyn.EFDesigner.EFModel.EFModelDomainModel.SingletonResourceManager.GetString("ProcedureShapeNameDefaultText");
+			field1.DefaultFocusable = true;
+			field1.DefaultAutoSize = true;
+			field1.AnchoringBehavior.MinimumHeightInLines = 1;
+			field1.AnchoringBehavior.MinimumWidthInCharacters = 1;
+			field1.DefaultAccessibleState = global::System.Windows.Forms.AccessibleStates.Invisible;
+			shapeFields.Add(field1);
+			
+			DslDiagrams::ChevronButtonField field2 = new DslDiagrams::ChevronButtonField("ExpandCollapse");
+			field2.DefaultSelectable = true;
+			field2.DefaultFocusable = true;
+			shapeFields.Add(field2);
+			
+			DslDiagrams::ImageField field3 = new DslDiagrams::ImageField("ProcedureGlyph");
+			field3.DefaultImage = DslDiagrams::ImageHelper.GetImage(global::Sawczyn.EFDesigner.EFModel.EFModelDomainModel.SingletonResourceManager.GetObject("ProcedureShapeProcedureGlyphDefaultImage"));
+			shapeFields.Add(field3);
+			
+		}
+		
+		/// <summary>
+		/// Initialize the collection of decorators associated with this shape type.  This method also
+		/// creates shape fields for outer decorators, because these are not part of the shape fields collection
+		/// associated with the shape, so they must be created here rather than in InitializeShapeFields.
+		/// </summary>
+		protected override void InitializeDecorators(global::System.Collections.Generic.IList<DslDiagrams::ShapeField> shapeFields, global::System.Collections.Generic.IList<DslDiagrams::Decorator> decorators)
+		{
+			base.InitializeDecorators(shapeFields, decorators);
+			
+			DslDiagrams::ShapeField field1 = DslDiagrams::ShapeElement.FindShapeField(shapeFields, "Name");
+			DslDiagrams::Decorator decorator1 = new DslDiagrams::ShapeDecorator(field1, DslDiagrams::ShapeDecoratorPosition.InnerTopCenter, DslDiagrams::PointD.Empty);
+			decorators.Add(decorator1);
+				
+			DslDiagrams::ShapeField field2 = DslDiagrams::ShapeElement.FindShapeField(shapeFields, "ExpandCollapse");
+			DslDiagrams::Decorator decorator2 = new DslDiagrams::ExpandCollapseDecorator(this.Store, (DslDiagrams::ToggleButtonField)field2, DslDiagrams::ShapeDecoratorPosition.InnerTopLeft, DslDiagrams::PointD.Empty);
+			decorators.Add(decorator2);
+				
+			DslDiagrams::ShapeField field3 = DslDiagrams::ShapeElement.FindShapeField(shapeFields, "ProcedureGlyph");
+			DslDiagrams::Decorator decorator3 = new DslDiagrams::ShapeDecorator(field3, DslDiagrams::ShapeDecoratorPosition.InnerTopLeft, DslDiagrams::PointD.Empty);
+			decorators.Add(decorator3);
+				
+		}
+		
+		/// <summary>
+		/// Ensure outer decorators are placed appropriately.  This is called during view fixup,
+		/// after the shape has been associated with the model element.
+		/// </summary>
+		public override void OnBoundsFixup(DslDiagrams::BoundsFixupState fixupState, int iteration, bool createdDuringViewFixup)
+		{
+			base.OnBoundsFixup(fixupState, iteration, createdDuringViewFixup);
+			
+			if(iteration == 0)
+			{
+				foreach(DslDiagrams::Decorator decorator in this.Decorators)
+				{
+					if(decorator.RequiresHost)
+					{
+						decorator.RepositionHostShape(decorator.GetHostShape(this));
+					}
+				}
+			}
+		}
+		#endregion
+		#region CompartmentShape code
+		/// <summary>
+		/// Returns a value indicating whether compartment header should be visible if there is only one of them.
+		/// </summary>
+		public override bool IsSingleCompartmentHeaderVisible
+		{
+			get { return true; }
+		}
+		
+		private static DslDiagrams::CompartmentDescription[] compartmentDescriptions;
+		
+		/// <summary>
+		/// Gets an array of CompartmentDescription for all compartments shown on this shape
+		/// (including compartments defined on base shapes).
+		/// </summary>
+		/// <returns></returns>
+		public override DslDiagrams::CompartmentDescription[] GetCompartmentDescriptions()
+		{
+			if(compartmentDescriptions == null)
+			{
+				// Initialize the array of compartment descriptions if we haven't done so already. 
+				// First we get any compartment descriptions in base shapes, and add on any compartments
+				// that are defined on this shape. 
+				DslDiagrams::CompartmentDescription[] baseCompartmentDescriptions = base.GetCompartmentDescriptions();
+				
+				int localCompartmentsOffset = 0;
+				if(baseCompartmentDescriptions!=null)
+				{
+					localCompartmentsOffset = baseCompartmentDescriptions.Length;
+				}
+				compartmentDescriptions = new DslDiagrams::ElementListCompartmentDescription[1+localCompartmentsOffset];
+				
+				if(baseCompartmentDescriptions!=null)
+				{
+					baseCompartmentDescriptions.CopyTo(compartmentDescriptions, 0);	
+				}
+				{
+					string title = global::Sawczyn.EFDesigner.EFModel.EFModelDomainModel.SingletonResourceManager.GetString("ProcedureShapeParametersCompartmentTitle");
+					DslDiagrams::ElementListCompartmentDescription descriptor = new DslDiagrams::ElementListCompartmentDescription("ParametersCompartment", title, 
+						global::System.Drawing.Color.FromKnownColor(global::System.Drawing.KnownColor.LightGray), false, 
+						global::System.Drawing.Color.FromKnownColor(global::System.Drawing.KnownColor.White), false,
+						null, null,
+						false);
+					compartmentDescriptions[localCompartmentsOffset+0] = descriptor;
+				}
+			}
+			
+			return ProcedureShape.compartmentDescriptions;
+		}
+		
+		private static global::System.Collections.Generic.Dictionary<global::System.Type, DslDiagrams::CompartmentMapping[]> compartmentMappings;
+		
+		/// <summary>
+		/// Gets an array of CompartmentMappings for all compartments displayed on this shape
+		/// (including compartment maps defined on base shapes). 
+		/// </summary>
+		/// <param name="melType">The type of the DomainClass that this shape is mapped to</param>
+		/// <returns></returns>
+		protected override DslDiagrams::CompartmentMapping[] GetCompartmentMappings(global::System.Type melType)
+		{
+			if(melType==null) throw new global::System.ArgumentNullException("melType");
+			
+			if(compartmentMappings==null)
+			{
+				// Initialize the table of compartment mappings if we haven't done so already. 
+				// The table contains an array of CompartmentMapping for every Type that this
+				// shape can be mapped to. 
+				compartmentMappings = new global::System.Collections.Generic.Dictionary<global::System.Type, DslDiagrams::CompartmentMapping[]>();
+				{
+					// First we get the mappings defined for the base shape, and add on any mappings defined for this
+					// shape. 
+					DslDiagrams::CompartmentMapping[] baseMappings = base.GetCompartmentMappings(typeof(global::Sawczyn.EFDesigner.EFModel.ModelProcedure));
+					int localCompartmentMappingsOffset = 0;
+					if(baseMappings!=null)
+					{
+						localCompartmentMappingsOffset = baseMappings.Length;
+					}
+					DslDiagrams::CompartmentMapping[] mappings = new DslDiagrams::CompartmentMapping[1+localCompartmentMappingsOffset];
+					
+					if(baseMappings!=null)
+					{
+						baseMappings.CopyTo(mappings, 0);
+					}
+					////////
+					// CompartmentMap.DisplaysCustomString == true
+					// Please provide the following method to get the string to be
+					// displayed in the compartment list: 
+					//
+					// static string GetDisplayPropertyFromModelProcedureForParametersCompartment(DslModeling::ModelElement element)
+					////////
+					mappings[localCompartmentMappingsOffset+0] = new DslDiagrams::ElementListCompartmentMapping(
+																				"ParametersCompartment", 
+																				global::Sawczyn.EFDesigner.EFModel.ModelParameter.NameDomainPropertyId, 
+																				global::Sawczyn.EFDesigner.EFModel.ModelParameter.DomainClassId, 
+																				GetElementsFromModelProcedureForParametersCompartment,
+																				null,
+																				GetDisplayPropertyFromModelProcedureForParametersCompartment,	// This method needs to be provided. Please see comment-block above.
+																				null);
+					compartmentMappings.Add(typeof(global::Sawczyn.EFDesigner.EFModel.ModelProcedure), mappings);
+				}
+			}
+			
+			// See if we can find the mapping being requested directly in the table. 
+			DslDiagrams::CompartmentMapping[] returnValue;
+			if(compartmentMappings.TryGetValue(melType, out returnValue))
+			{
+				return returnValue;
+			}
+			
+			// If not, loop through the types in the table, and find the 'most derived' base
+			// class of melType. 
+			global::System.Type selectedMappedType = null;
+			foreach(global::System.Type mappedType in compartmentMappings.Keys)
+			{
+				if(mappedType.IsAssignableFrom(melType) && (selectedMappedType==null || selectedMappedType.IsAssignableFrom(mappedType)))
+				{
+					selectedMappedType = mappedType;
+				}
+			}
+			if(selectedMappedType!=null)
+			{
+				return compartmentMappings[selectedMappedType];
+			}
+			return new DslDiagrams::CompartmentMapping[] {};
+		}
+		
+			#region DomainPath traversal methods to get the list of elements to display in a compartment.
+			internal static global::System.Collections.IList GetElementsFromModelProcedureForParametersCompartment(DslModeling::ModelElement rootElement)
+			{
+				global::Sawczyn.EFDesigner.EFModel.ModelProcedure root = (global::Sawczyn.EFDesigner.EFModel.ModelProcedure)rootElement;
+					// Segments 0 and 1
+					DslModeling::LinkedElementCollection<global::Sawczyn.EFDesigner.EFModel.ModelParameter> result = root.Parameters;
+				return result;
+			}
+			#endregion
+		
+		#endregion
+		#region Constructors, domain class Id
+	
+		/// <summary>
+		/// ProcedureShape domain class Id.
+		/// </summary>
+		public static readonly new global::System.Guid DomainClassId = new global::System.Guid(0x481d2c6b, 0x29e9, 0x415c, 0x85, 0x28, 0x7d, 0xef, 0x09, 0xef, 0x16, 0xdc);
+		/// <summary>
+		/// Constructor.
+		/// </summary>
+		/// <param name="partition">Partition where new element is to be created.</param>
+		/// <param name="propertyAssignments">List of domain property id/value pairs to set once the element is created.</param>
+		protected ProcedureShapeBase(DslModeling::Partition partition, DslModeling::PropertyAssignment[] propertyAssignments)
+			: base(partition, propertyAssignments)
+		{
+		}
+		#endregion
+		#region FillColor domain property code
+		
+		/// <summary>
+		/// FillColor domain property Id.
+		/// </summary>
+		public static readonly global::System.Guid FillColorDomainPropertyId = new global::System.Guid(0x18d2f258, 0x5e59, 0x4e71, 0x8c, 0xc9, 0x9a, 0x93, 0xba, 0x2a, 0x7b, 0x6e);
+		
+		/// <summary>
+		/// Gets or sets the value of FillColor domain property.
+		/// No description available
+		/// </summary>
+		[DslDesign::DisplayNameResource("Sawczyn.EFDesigner.EFModel.ProcedureShape/FillColor.DisplayName", typeof(global::Sawczyn.EFDesigner.EFModel.EFModelDomainModel), "Sawczyn.EFDesigner.EFModel.GeneratedCode.DomainModelResx")]
+		[DslDesign::CategoryResource("Sawczyn.EFDesigner.EFModel.ProcedureShape/FillColor.Category", typeof(global::Sawczyn.EFDesigner.EFModel.EFModelDomainModel), "Sawczyn.EFDesigner.EFModel.GeneratedCode.DomainModelResx")]
+		[DslDesign::DescriptionResource("Sawczyn.EFDesigner.EFModel.ProcedureShape/FillColor.Description", typeof(global::Sawczyn.EFDesigner.EFModel.EFModelDomainModel), "Sawczyn.EFDesigner.EFModel.GeneratedCode.DomainModelResx")]
+		[DslModeling::DomainProperty(Kind = DslModeling::DomainPropertyKind.CustomStorage)]
+		[DslModeling::DomainObjectId("18d2f258-5e59-4e71-8cc9-9a93ba2a7b6e")]
+		public global::System.Drawing.Color FillColor
+		{
+			[global::System.Diagnostics.DebuggerStepThrough]
+			get
+			{
+				return FillColorPropertyHandler.Instance.GetValue(this);
+			}
+			[global::System.Diagnostics.DebuggerStepThrough]
+			set
+			{
+				FillColorPropertyHandler.Instance.SetValue(this, value);
+			}
+		}
+		/// <summary>
+		/// Value handler for the ProcedureShape.FillColor domain property.
+		/// </summary>
+		internal sealed partial class FillColorPropertyHandler : DslModeling::DomainPropertyValueHandler<ProcedureShapeBase, global::System.Drawing.Color>
+		{
+			private FillColorPropertyHandler() { }
+		
+			/// <summary>
+			/// Gets the singleton instance of the ProcedureShape.FillColor domain property value handler.
+			/// </summary>
+			public static readonly FillColorPropertyHandler Instance = new FillColorPropertyHandler();
+		
+			/// <summary>
+			/// Gets the Id of the ProcedureShape.FillColor domain property.
+			/// </summary>
+			public sealed override global::System.Guid DomainPropertyId
+			{
+				[global::System.Diagnostics.DebuggerStepThrough]
+				get
+				{
+					return FillColorDomainPropertyId;
+				}
+			}
+			
+			/// <summary>
+			/// Gets a strongly-typed value of the property on specified element.
+			/// </summary>
+			/// <param name="element">Element which owns the property.</param>
+			/// <returns>Property value.</returns>
+			public override sealed global::System.Drawing.Color GetValue(ProcedureShapeBase element)
+			{
+				if (element == null) throw new global::System.ArgumentNullException("element");
+				// There is no storage for FillColor because its Kind is
+				// set to CustomStorage. Please provide the GetFillColorValue()
+				// method on the domain class.
+				return element.GetFillColorValue();
+			}
+		
+			/// <summary>
+			/// Sets property value on an element.
+			/// </summary>
+			/// <param name="element">Element which owns the property.</param>
+			/// <param name="newValue">New property value.</param>
+			public override sealed void SetValue(ProcedureShapeBase element, global::System.Drawing.Color newValue)
+			{
+				if (element == null) throw new global::System.ArgumentNullException("element");
+		
+				global::System.Drawing.Color oldValue = GetValue(element);
+				if (newValue != oldValue)
+				{
+					ValueChanging(element, oldValue, newValue);
+					// There is no storage for FillColor because its Kind is
+					// set to CustomStorage. Please provide the SetFillColorValue()
+					// method on the domain class.
+					element.SetFillColorValue(newValue);
+					ValueChanged(element, oldValue, GetValue(element));
+				}
+			}
+		}
+		
+		#endregion
+		#region TextColor domain property code
+		
+		/// <summary>
+		/// TextColor domain property Id.
+		/// </summary>
+		public static readonly global::System.Guid TextColorDomainPropertyId = new global::System.Guid(0xf0f07a03, 0x7eb3, 0x4607, 0x98, 0x97, 0x9f, 0x39, 0x21, 0x06, 0x4d, 0x2d);
+		
+		/// <summary>
+		/// Gets or sets the value of TextColor domain property.
+		/// No description available
+		/// </summary>
+		[DslDesign::DisplayNameResource("Sawczyn.EFDesigner.EFModel.ProcedureShape/TextColor.DisplayName", typeof(global::Sawczyn.EFDesigner.EFModel.EFModelDomainModel), "Sawczyn.EFDesigner.EFModel.GeneratedCode.DomainModelResx")]
+		[DslDesign::CategoryResource("Sawczyn.EFDesigner.EFModel.ProcedureShape/TextColor.Category", typeof(global::Sawczyn.EFDesigner.EFModel.EFModelDomainModel), "Sawczyn.EFDesigner.EFModel.GeneratedCode.DomainModelResx")]
+		[DslDesign::DescriptionResource("Sawczyn.EFDesigner.EFModel.ProcedureShape/TextColor.Description", typeof(global::Sawczyn.EFDesigner.EFModel.EFModelDomainModel), "Sawczyn.EFDesigner.EFModel.GeneratedCode.DomainModelResx")]
+		[global::System.ComponentModel.Browsable(false)]
+		[DslModeling::DomainProperty(Kind = DslModeling::DomainPropertyKind.CustomStorage)]
+		[DslModeling::DomainObjectId("f0f07a03-7eb3-4607-9897-9f3921064d2d")]
+		public global::System.Drawing.Color TextColor
+		{
+			[global::System.Diagnostics.DebuggerStepThrough]
+			get
+			{
+				return TextColorPropertyHandler.Instance.GetValue(this);
+			}
+			[global::System.Diagnostics.DebuggerStepThrough]
+			set
+			{
+				TextColorPropertyHandler.Instance.SetValue(this, value);
+			}
+		}
+		/// <summary>
+		/// Value handler for the ProcedureShape.TextColor domain property.
+		/// </summary>
+		internal sealed partial class TextColorPropertyHandler : DslModeling::DomainPropertyValueHandler<ProcedureShapeBase, global::System.Drawing.Color>
+		{
+			private TextColorPropertyHandler() { }
+		
+			/// <summary>
+			/// Gets the singleton instance of the ProcedureShape.TextColor domain property value handler.
+			/// </summary>
+			public static readonly TextColorPropertyHandler Instance = new TextColorPropertyHandler();
+		
+			/// <summary>
+			/// Gets the Id of the ProcedureShape.TextColor domain property.
+			/// </summary>
+			public sealed override global::System.Guid DomainPropertyId
+			{
+				[global::System.Diagnostics.DebuggerStepThrough]
+				get
+				{
+					return TextColorDomainPropertyId;
+				}
+			}
+			
+			/// <summary>
+			/// Gets a strongly-typed value of the property on specified element.
+			/// </summary>
+			/// <param name="element">Element which owns the property.</param>
+			/// <returns>Property value.</returns>
+			public override sealed global::System.Drawing.Color GetValue(ProcedureShapeBase element)
+			{
+				if (element == null) throw new global::System.ArgumentNullException("element");
+				// There is no storage for TextColor because its Kind is
+				// set to CustomStorage. Please provide the GetTextColorValue()
+				// method on the domain class.
+				return element.GetTextColorValue();
+			}
+		
+			/// <summary>
+			/// Sets property value on an element.
+			/// </summary>
+			/// <param name="element">Element which owns the property.</param>
+			/// <param name="newValue">New property value.</param>
+			public override sealed void SetValue(ProcedureShapeBase element, global::System.Drawing.Color newValue)
+			{
+				if (element == null) throw new global::System.ArgumentNullException("element");
+		
+				global::System.Drawing.Color oldValue = GetValue(element);
+				if (newValue != oldValue)
+				{
+					ValueChanging(element, oldValue, newValue);
+					// There is no storage for TextColor because its Kind is
+					// set to CustomStorage. Please provide the SetTextColorValue()
+					// method on the domain class.
+					element.SetTextColorValue(newValue);
+					ValueChanged(element, oldValue, GetValue(element));
+				}
+			}
+		}
+		
+		#endregion
+		#region OutlineColor domain property code
+		
+		/// <summary>
+		/// OutlineColor domain property Id.
+		/// </summary>
+		public static readonly global::System.Guid OutlineColorDomainPropertyId = new global::System.Guid(0x59c069d7, 0x3d38, 0x492d, 0xae, 0xd2, 0x3b, 0xce, 0xee, 0x71, 0x82, 0xa9);
+		
+		/// <summary>
+		/// Gets or sets the value of OutlineColor domain property.
+		/// No description available
+		/// </summary>
+		[DslDesign::DisplayNameResource("Sawczyn.EFDesigner.EFModel.ProcedureShape/OutlineColor.DisplayName", typeof(global::Sawczyn.EFDesigner.EFModel.EFModelDomainModel), "Sawczyn.EFDesigner.EFModel.GeneratedCode.DomainModelResx")]
+		[DslDesign::CategoryResource("Sawczyn.EFDesigner.EFModel.ProcedureShape/OutlineColor.Category", typeof(global::Sawczyn.EFDesigner.EFModel.EFModelDomainModel), "Sawczyn.EFDesigner.EFModel.GeneratedCode.DomainModelResx")]
+		[DslDesign::DescriptionResource("Sawczyn.EFDesigner.EFModel.ProcedureShape/OutlineColor.Description", typeof(global::Sawczyn.EFDesigner.EFModel.EFModelDomainModel), "Sawczyn.EFDesigner.EFModel.GeneratedCode.DomainModelResx")]
+		[global::System.ComponentModel.Browsable(false)]
+		[DslModeling::DomainProperty(Kind = DslModeling::DomainPropertyKind.CustomStorage)]
+		[DslModeling::DomainObjectId("59c069d7-3d38-492d-aed2-3bceee7182a9")]
+		public global::System.Drawing.Color OutlineColor
+		{
+			[global::System.Diagnostics.DebuggerStepThrough]
+			get
+			{
+				return OutlineColorPropertyHandler.Instance.GetValue(this);
+			}
+			[global::System.Diagnostics.DebuggerStepThrough]
+			set
+			{
+				OutlineColorPropertyHandler.Instance.SetValue(this, value);
+			}
+		}
+		/// <summary>
+		/// Value handler for the ProcedureShape.OutlineColor domain property.
+		/// </summary>
+		internal sealed partial class OutlineColorPropertyHandler : DslModeling::DomainPropertyValueHandler<ProcedureShapeBase, global::System.Drawing.Color>
+		{
+			private OutlineColorPropertyHandler() { }
+		
+			/// <summary>
+			/// Gets the singleton instance of the ProcedureShape.OutlineColor domain property value handler.
+			/// </summary>
+			public static readonly OutlineColorPropertyHandler Instance = new OutlineColorPropertyHandler();
+		
+			/// <summary>
+			/// Gets the Id of the ProcedureShape.OutlineColor domain property.
+			/// </summary>
+			public sealed override global::System.Guid DomainPropertyId
+			{
+				[global::System.Diagnostics.DebuggerStepThrough]
+				get
+				{
+					return OutlineColorDomainPropertyId;
+				}
+			}
+			
+			/// <summary>
+			/// Gets a strongly-typed value of the property on specified element.
+			/// </summary>
+			/// <param name="element">Element which owns the property.</param>
+			/// <returns>Property value.</returns>
+			public override sealed global::System.Drawing.Color GetValue(ProcedureShapeBase element)
+			{
+				if (element == null) throw new global::System.ArgumentNullException("element");
+				// There is no storage for OutlineColor because its Kind is
+				// set to CustomStorage. Please provide the GetOutlineColorValue()
+				// method on the domain class.
+				return element.GetOutlineColorValue();
+			}
+		
+			/// <summary>
+			/// Sets property value on an element.
+			/// </summary>
+			/// <param name="element">Element which owns the property.</param>
+			/// <param name="newValue">New property value.</param>
+			public override sealed void SetValue(ProcedureShapeBase element, global::System.Drawing.Color newValue)
+			{
+				if (element == null) throw new global::System.ArgumentNullException("element");
+		
+				global::System.Drawing.Color oldValue = GetValue(element);
+				if (newValue != oldValue)
+				{
+					ValueChanging(element, oldValue, newValue);
+					// There is no storage for OutlineColor because its Kind is
+					// set to CustomStorage. Please provide the SetOutlineColorValue()
+					// method on the domain class.
+					element.SetOutlineColorValue(newValue);
+					ValueChanged(element, oldValue, GetValue(element));
+				}
+			}
+		}
+		
+		#endregion
+		#region OutlineDashStyle domain property code
+		
+		/// <summary>
+		/// OutlineDashStyle domain property Id.
+		/// </summary>
+		public static readonly global::System.Guid OutlineDashStyleDomainPropertyId = new global::System.Guid(0x391443e6, 0x7a56, 0x430a, 0x82, 0x05, 0x74, 0x69, 0x57, 0x28, 0x58, 0xdb);
+		
+		/// <summary>
+		/// Gets or sets the value of OutlineDashStyle domain property.
+		/// Description for Sawczyn.EFDesigner.EFModel.ProcedureShape.Outline Dash Style
+		/// </summary>
+		[DslDesign::DisplayNameResource("Sawczyn.EFDesigner.EFModel.ProcedureShape/OutlineDashStyle.DisplayName", typeof(global::Sawczyn.EFDesigner.EFModel.EFModelDomainModel), "Sawczyn.EFDesigner.EFModel.GeneratedCode.DomainModelResx")]
+		[DslDesign::CategoryResource("Sawczyn.EFDesigner.EFModel.ProcedureShape/OutlineDashStyle.Category", typeof(global::Sawczyn.EFDesigner.EFModel.EFModelDomainModel), "Sawczyn.EFDesigner.EFModel.GeneratedCode.DomainModelResx")]
+		[DslDesign::DescriptionResource("Sawczyn.EFDesigner.EFModel.ProcedureShape/OutlineDashStyle.Description", typeof(global::Sawczyn.EFDesigner.EFModel.EFModelDomainModel), "Sawczyn.EFDesigner.EFModel.GeneratedCode.DomainModelResx")]
+		[global::System.ComponentModel.Browsable(false)]
+		[DslModeling::DomainProperty(Kind = DslModeling::DomainPropertyKind.CustomStorage)]
+		[DslModeling::DomainObjectId("391443e6-7a56-430a-8205-7469572858db")]
+		public global::System.Drawing.Drawing2D.DashStyle OutlineDashStyle
+		{
+			[global::System.Diagnostics.DebuggerStepThrough]
+			get
+			{
+				return OutlineDashStylePropertyHandler.Instance.GetValue(this);
+			}
+			[global::System.Diagnostics.DebuggerStepThrough]
+			set
+			{
+				OutlineDashStylePropertyHandler.Instance.SetValue(this, value);
+			}
+		}
+		/// <summary>
+		/// Value handler for the ProcedureShape.OutlineDashStyle domain property.
+		/// </summary>
+		internal sealed partial class OutlineDashStylePropertyHandler : DslModeling::DomainPropertyValueHandler<ProcedureShapeBase, global::System.Drawing.Drawing2D.DashStyle>
+		{
+			private OutlineDashStylePropertyHandler() { }
+		
+			/// <summary>
+			/// Gets the singleton instance of the ProcedureShape.OutlineDashStyle domain property value handler.
+			/// </summary>
+			public static readonly OutlineDashStylePropertyHandler Instance = new OutlineDashStylePropertyHandler();
+		
+			/// <summary>
+			/// Gets the Id of the ProcedureShape.OutlineDashStyle domain property.
+			/// </summary>
+			public sealed override global::System.Guid DomainPropertyId
+			{
+				[global::System.Diagnostics.DebuggerStepThrough]
+				get
+				{
+					return OutlineDashStyleDomainPropertyId;
+				}
+			}
+			
+			/// <summary>
+			/// Gets a strongly-typed value of the property on specified element.
+			/// </summary>
+			/// <param name="element">Element which owns the property.</param>
+			/// <returns>Property value.</returns>
+			public override sealed global::System.Drawing.Drawing2D.DashStyle GetValue(ProcedureShapeBase element)
+			{
+				if (element == null) throw new global::System.ArgumentNullException("element");
+				// There is no storage for OutlineDashStyle because its Kind is
+				// set to CustomStorage. Please provide the GetOutlineDashStyleValue()
+				// method on the domain class.
+				return element.GetOutlineDashStyleValue();
+			}
+		
+			/// <summary>
+			/// Sets property value on an element.
+			/// </summary>
+			/// <param name="element">Element which owns the property.</param>
+			/// <param name="newValue">New property value.</param>
+			public override sealed void SetValue(ProcedureShapeBase element, global::System.Drawing.Drawing2D.DashStyle newValue)
+			{
+				if (element == null) throw new global::System.ArgumentNullException("element");
+		
+				global::System.Drawing.Drawing2D.DashStyle oldValue = GetValue(element);
+				if (newValue != oldValue)
+				{
+					ValueChanging(element, oldValue, newValue);
+					// There is no storage for OutlineDashStyle because its Kind is
+					// set to CustomStorage. Please provide the SetOutlineDashStyleValue()
+					// method on the domain class.
+					element.SetOutlineDashStyleValue(newValue);
+					ValueChanged(element, oldValue, GetValue(element));
+				}
+			}
+		}
+		
+		#endregion
+		#region Visible domain property code
+		
+		/// <summary>
+		/// Visible domain property Id.
+		/// </summary>
+		public static readonly global::System.Guid VisibleDomainPropertyId = new global::System.Guid(0xca58b2f0, 0xd147, 0x42f9, 0xaf, 0x71, 0x9c, 0x11, 0x16, 0xaf, 0x99, 0x0c);
+		
+		/// <summary>
+		/// Gets or sets the value of Visible domain property.
+		/// Description for Sawczyn.EFDesigner.EFModel.ProcedureShape.Visible
+		/// </summary>
+		[DslDesign::DisplayNameResource("Sawczyn.EFDesigner.EFModel.ProcedureShape/Visible.DisplayName", typeof(global::Sawczyn.EFDesigner.EFModel.EFModelDomainModel), "Sawczyn.EFDesigner.EFModel.GeneratedCode.DomainModelResx")]
+		[DslDesign::CategoryResource("Sawczyn.EFDesigner.EFModel.ProcedureShape/Visible.Category", typeof(global::Sawczyn.EFDesigner.EFModel.EFModelDomainModel), "Sawczyn.EFDesigner.EFModel.GeneratedCode.DomainModelResx")]
+		[DslDesign::DescriptionResource("Sawczyn.EFDesigner.EFModel.ProcedureShape/Visible.Description", typeof(global::Sawczyn.EFDesigner.EFModel.EFModelDomainModel), "Sawczyn.EFDesigner.EFModel.GeneratedCode.DomainModelResx")]
+		[DslModeling::DomainProperty(Kind = DslModeling::DomainPropertyKind.CustomStorage)]
+		[DslModeling::DomainObjectId("ca58b2f0-d147-42f9-af71-9c1116af990c")]
+		public global::System.Boolean Visible
+		{
+			[global::System.Diagnostics.DebuggerStepThrough]
+			get
+			{
+				return VisiblePropertyHandler.Instance.GetValue(this);
+			}
+			[global::System.Diagnostics.DebuggerStepThrough]
+			set
+			{
+				VisiblePropertyHandler.Instance.SetValue(this, value);
+			}
+		}
+		/// <summary>
+		/// Value handler for the ProcedureShape.Visible domain property.
+		/// </summary>
+		internal sealed partial class VisiblePropertyHandler : DslModeling::DomainPropertyValueHandler<ProcedureShapeBase, global::System.Boolean>
+		{
+			private VisiblePropertyHandler() { }
+		
+			/// <summary>
+			/// Gets the singleton instance of the ProcedureShape.Visible domain property value handler.
+			/// </summary>
+			public static readonly VisiblePropertyHandler Instance = new VisiblePropertyHandler();
+		
+			/// <summary>
+			/// Gets the Id of the ProcedureShape.Visible domain property.
+			/// </summary>
+			public sealed override global::System.Guid DomainPropertyId
+			{
+				[global::System.Diagnostics.DebuggerStepThrough]
+				get
+				{
+					return VisibleDomainPropertyId;
+				}
+			}
+			
+			/// <summary>
+			/// Gets a strongly-typed value of the property on specified element.
+			/// </summary>
+			/// <param name="element">Element which owns the property.</param>
+			/// <returns>Property value.</returns>
+			public override sealed global::System.Boolean GetValue(ProcedureShapeBase element)
+			{
+				if (element == null) throw new global::System.ArgumentNullException("element");
+				// There is no storage for Visible because its Kind is
+				// set to CustomStorage. Please provide the GetVisibleValue()
+				// method on the domain class.
+				return element.GetVisibleValue();
+			}
+		
+			/// <summary>
+			/// Sets property value on an element.
+			/// </summary>
+			/// <param name="element">Element which owns the property.</param>
+			/// <param name="newValue">New property value.</param>
+			public override sealed void SetValue(ProcedureShapeBase element, global::System.Boolean newValue)
+			{
+				if (element == null) throw new global::System.ArgumentNullException("element");
+		
+				global::System.Boolean oldValue = GetValue(element);
+				if (newValue != oldValue)
+				{
+					ValueChanging(element, oldValue, newValue);
+					// There is no storage for Visible because its Kind is
+					// set to CustomStorage. Please provide the SetVisibleValue()
+					// method on the domain class.
+					element.SetVisibleValue(newValue);
+					ValueChanged(element, oldValue, GetValue(element));
+				}
+			}
+		}
+		
+		#endregion
+		#region OutlineThickness domain property code
+		
+		/// <summary>
+		/// OutlineThickness domain property Id.
+		/// </summary>
+		public static readonly global::System.Guid OutlineThicknessDomainPropertyId = new global::System.Guid(0xbcdfea28, 0xbbb1, 0x4a94, 0x8f, 0xa4, 0x5e, 0xdd, 0xc9, 0x25, 0x66, 0x99);
+		
+		/// <summary>
+		/// Gets or sets the value of OutlineThickness domain property.
+		/// Description for Sawczyn.EFDesigner.EFModel.ProcedureShape.Outline Thickness
+		/// </summary>
+		[DslDesign::DisplayNameResource("Sawczyn.EFDesigner.EFModel.ProcedureShape/OutlineThickness.DisplayName", typeof(global::Sawczyn.EFDesigner.EFModel.EFModelDomainModel), "Sawczyn.EFDesigner.EFModel.GeneratedCode.DomainModelResx")]
+		[DslDesign::DescriptionResource("Sawczyn.EFDesigner.EFModel.ProcedureShape/OutlineThickness.Description", typeof(global::Sawczyn.EFDesigner.EFModel.EFModelDomainModel), "Sawczyn.EFDesigner.EFModel.GeneratedCode.DomainModelResx")]
+		[global::System.ComponentModel.Browsable(false)]
+		[DslModeling::DomainProperty(Kind = DslModeling::DomainPropertyKind.CustomStorage)]
+		[DslModeling::DomainObjectId("bcdfea28-bbb1-4a94-8fa4-5eddc9256699")]
+		public global::System.Single OutlineThickness
+		{
+			[global::System.Diagnostics.DebuggerStepThrough]
+			get
+			{
+				return OutlineThicknessPropertyHandler.Instance.GetValue(this);
+			}
+			[global::System.Diagnostics.DebuggerStepThrough]
+			set
+			{
+				OutlineThicknessPropertyHandler.Instance.SetValue(this, value);
+			}
+		}
+		/// <summary>
+		/// Value handler for the ProcedureShape.OutlineThickness domain property.
+		/// </summary>
+		internal sealed partial class OutlineThicknessPropertyHandler : DslModeling::DomainPropertyValueHandler<ProcedureShapeBase, global::System.Single>
+		{
+			private OutlineThicknessPropertyHandler() { }
+		
+			/// <summary>
+			/// Gets the singleton instance of the ProcedureShape.OutlineThickness domain property value handler.
+			/// </summary>
+			public static readonly OutlineThicknessPropertyHandler Instance = new OutlineThicknessPropertyHandler();
+		
+			/// <summary>
+			/// Gets the Id of the ProcedureShape.OutlineThickness domain property.
+			/// </summary>
+			public sealed override global::System.Guid DomainPropertyId
+			{
+				[global::System.Diagnostics.DebuggerStepThrough]
+				get
+				{
+					return OutlineThicknessDomainPropertyId;
+				}
+			}
+			
+			/// <summary>
+			/// Gets a strongly-typed value of the property on specified element.
+			/// </summary>
+			/// <param name="element">Element which owns the property.</param>
+			/// <returns>Property value.</returns>
+			public override sealed global::System.Single GetValue(ProcedureShapeBase element)
+			{
+				if (element == null) throw new global::System.ArgumentNullException("element");
+				// There is no storage for OutlineThickness because its Kind is
+				// set to CustomStorage. Please provide the GetOutlineThicknessValue()
+				// method on the domain class.
+				return element.GetOutlineThicknessValue();
+			}
+		
+			/// <summary>
+			/// Sets property value on an element.
+			/// </summary>
+			/// <param name="element">Element which owns the property.</param>
+			/// <param name="newValue">New property value.</param>
+			public override sealed void SetValue(ProcedureShapeBase element, global::System.Single newValue)
+			{
+				if (element == null) throw new global::System.ArgumentNullException("element");
+		
+				global::System.Single oldValue = GetValue(element);
+				// float type precision is guaranteed only to 7th digit.
+				if (global::System.Math.Abs(newValue - oldValue) > 1e-7)
+				{
+					ValueChanging(element, oldValue, newValue);
+					// There is no storage for OutlineThickness because its Kind is
+					// set to CustomStorage. Please provide the SetOutlineThicknessValue()
+					// method on the domain class.
+					element.SetOutlineThicknessValue(newValue);
+					ValueChanged(element, oldValue, GetValue(element));
+				}
+			}
+		}
+		
+		#endregion
+	}
+	/// <summary>
+	/// DomainClass ProcedureShape
+	/// </summary>
+	[global::System.CLSCompliant(true)]
+			
+	public partial class ProcedureShape : ProcedureShapeBase
+	{
+		#region Constructors
+		/// <summary>
+		/// Constructor
+		/// </summary>
+		/// <param name="store">Store where new element is to be created.</param>
+		/// <param name="propertyAssignments">List of domain property id/value pairs to set once the element is created.</param>
+		public ProcedureShape(DslModeling::Store store, params DslModeling::PropertyAssignment[] propertyAssignments)
+			: this(store != null ? store.DefaultPartitionForClass(DomainClassId) : null, propertyAssignments)
+		{
+		}
+		
+		/// <summary>
+		/// Constructor
+		/// </summary>
+		/// <param name="partition">Partition where new element is to be created.</param>
+		/// <param name="propertyAssignments">List of domain property id/value pairs to set once the element is created.</param>
+		public ProcedureShape(DslModeling::Partition partition, params DslModeling::PropertyAssignment[] propertyAssignments)
+			: base(partition, propertyAssignments)
+		{
+		}
+		#endregion
+	}
+}
 

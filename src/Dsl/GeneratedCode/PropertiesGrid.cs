@@ -371,6 +371,186 @@ namespace Sawczyn.EFDesigner.EFModel
 	
 }
 #endregion
+#region Custom property definitions for ModelProcedure
+namespace Sawczyn.EFDesigner.EFModel
+{
+	
+	/// <summary>
+	/// Factory class for ModelProcedure type descriptors.
+	/// Double-derived class to allow easier code customization.
+	/// </summary>
+	internal sealed partial class ModelProcedureTypeDescriptionProvider : ModelProcedureTypeDescriptionProviderBase
+	{
+		/// <summary>
+		/// Constructor
+		/// </summary>
+		public ModelProcedureTypeDescriptionProvider()
+		{
+		}
+		
+	}
+	
+	/// <summary>
+	/// Base factory class for ModelProcedure type descriptors.
+	/// </summary>
+	abstract internal class ModelProcedureTypeDescriptionProviderBase : DslDesign::ElementTypeDescriptionProvider
+	{
+		/// <summary>
+		/// Called by the System.ComponentModel framework when it requires a type descriptor instance.
+		/// </summary>
+		protected override DslDesign::ElementTypeDescriptor CreateTypeDescriptor(global::System.ComponentModel.ICustomTypeDescriptor parent, DslModeling::ModelElement element)
+		{
+			return new ModelProcedureTypeDescriptor(parent, element);
+		}
+	}
+	
+	/// <summary>
+	/// Custom type descriptor class for ModelProcedure elements.
+	/// </summary>
+	public partial class ModelProcedureTypeDescriptor : DslDesign::ElementTypeDescriptor
+	{
+		/// <summary>
+		/// Constructor
+		/// </summary>
+		public ModelProcedureTypeDescriptor(global::System.ComponentModel.ICustomTypeDescriptor parent, 
+											DslModeling::ModelElement selectedElement)
+			: base(parent, selectedElement)
+		{
+		}
+	
+		/// <summary>
+		/// Constructor
+		/// </summary>
+		public ModelProcedureTypeDescriptor(global::System.ComponentModel.ICustomTypeDescriptor parent,
+												global::System.Type modelElementType)
+			: base(parent, modelElementType)
+		{
+		}
+	
+		public override global::System.ComponentModel.PropertyDescriptorCollection GetProperties(global::System.Attribute[] attributes)
+		{
+			// The following method needs to be added in a partial class
+			//   private override global::System.ComponentModel.PropertyDescriptorCollection GetCustomProperties(global::System.Attribute[] attributes)
+			// The skeleton of a suggested method is provided in the comment below.
+			return this.GetCustomProperties(attributes);
+	
+		}
+	
+		// EXAMPLE "GetCustomProperties" METHOD
+		///// <summary>
+		///// Returns a collection of property descriptors an instance of ModelProcedure.
+		///// </summary>
+		//private global::System.ComponentModel.PropertyDescriptorCollection GetCustomProperties(global::System.Attribute[] attributes)
+		//{
+		//    // Get the default property descriptors from the base class
+		//    global::System.ComponentModel.PropertyDescriptorCollection propertyDescriptors = base.GetProperties(attributes);
+	
+		//    // Get a reference to the model element that is being described.
+		//    ModelProcedure source = this.ModelElement as ModelProcedure;
+		//    if (source != null)
+		//    {
+		//        //Add in extra custom properties here...
+		//    }
+	
+		//    // Return the property descriptors for this element
+		//    return propertyDescriptors;
+		//}
+	
+	}
+	
+	
+}
+#endregion
+#region Custom property definitions for ModelParameter
+namespace Sawczyn.EFDesigner.EFModel
+{
+	
+	/// <summary>
+	/// Factory class for ModelParameter type descriptors.
+	/// Double-derived class to allow easier code customization.
+	/// </summary>
+	internal sealed partial class ModelParameterTypeDescriptionProvider : ModelParameterTypeDescriptionProviderBase
+	{
+		/// <summary>
+		/// Constructor
+		/// </summary>
+		public ModelParameterTypeDescriptionProvider()
+		{
+		}
+		
+	}
+	
+	/// <summary>
+	/// Base factory class for ModelParameter type descriptors.
+	/// </summary>
+	abstract internal class ModelParameterTypeDescriptionProviderBase : DslDesign::ElementTypeDescriptionProvider
+	{
+		/// <summary>
+		/// Called by the System.ComponentModel framework when it requires a type descriptor instance.
+		/// </summary>
+		protected override DslDesign::ElementTypeDescriptor CreateTypeDescriptor(global::System.ComponentModel.ICustomTypeDescriptor parent, DslModeling::ModelElement element)
+		{
+			return new ModelParameterTypeDescriptor(parent, element);
+		}
+	}
+	
+	/// <summary>
+	/// Custom type descriptor class for ModelParameter elements.
+	/// </summary>
+	public partial class ModelParameterTypeDescriptor : DslDesign::ElementTypeDescriptor
+	{
+		/// <summary>
+		/// Constructor
+		/// </summary>
+		public ModelParameterTypeDescriptor(global::System.ComponentModel.ICustomTypeDescriptor parent, 
+											DslModeling::ModelElement selectedElement)
+			: base(parent, selectedElement)
+		{
+		}
+	
+		/// <summary>
+		/// Constructor
+		/// </summary>
+		public ModelParameterTypeDescriptor(global::System.ComponentModel.ICustomTypeDescriptor parent,
+												global::System.Type modelElementType)
+			: base(parent, modelElementType)
+		{
+		}
+	
+		public override global::System.ComponentModel.PropertyDescriptorCollection GetProperties(global::System.Attribute[] attributes)
+		{
+			// The following method needs to be added in a partial class
+			//   private override global::System.ComponentModel.PropertyDescriptorCollection GetCustomProperties(global::System.Attribute[] attributes)
+			// The skeleton of a suggested method is provided in the comment below.
+			return this.GetCustomProperties(attributes);
+	
+		}
+	
+		// EXAMPLE "GetCustomProperties" METHOD
+		///// <summary>
+		///// Returns a collection of property descriptors an instance of ModelParameter.
+		///// </summary>
+		//private global::System.ComponentModel.PropertyDescriptorCollection GetCustomProperties(global::System.Attribute[] attributes)
+		//{
+		//    // Get the default property descriptors from the base class
+		//    global::System.ComponentModel.PropertyDescriptorCollection propertyDescriptors = base.GetProperties(attributes);
+	
+		//    // Get a reference to the model element that is being described.
+		//    ModelParameter source = this.ModelElement as ModelParameter;
+		//    if (source != null)
+		//    {
+		//        //Add in extra custom properties here...
+		//    }
+	
+		//    // Return the property descriptors for this element
+		//    return propertyDescriptors;
+		//}
+	
+	}
+	
+	
+}
+#endregion
 #region Custom property definitions for Association
 namespace Sawczyn.EFDesigner.EFModel
 {
