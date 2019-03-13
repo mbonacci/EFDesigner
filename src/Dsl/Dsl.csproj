@@ -89,6 +89,9 @@
     <Reference Include="Microsoft.Data.ConnectionUI.Dialog, Version=0.0.0.0, Culture=neutral, PublicKeyToken=f4ca07f51760da93, processorArchitecture=MSIL">
       <HintPath>..\packages\DataConnectionDialog.1.2\lib\Microsoft.Data.ConnectionUI.Dialog.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.VisualStudio.Data, Version=15.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.VisualStudio.Data.Framework, Version=15.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.VisualStudio.Data.Services, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.VisualStudio.Modeling.Sdk$(DslToolsVersionSuffix)" />
     <Reference Include="Microsoft.VisualStudio.Modeling.Sdk.Diagrams$(DslToolsVersionSuffix)" />
     <Reference Include="Microsoft.VisualStudio.TextTemplating$(T4VersionSuffix)" />
@@ -238,9 +241,16 @@
     <Compile Include="CustomCode\Name Providers\ModelParameterNameProvider.cs" />
     <Compile Include="CustomCode\Name Providers\ModelProcedureNameProvider.cs" />
     <Compile Include="CustomCode\Partials\AssociationConnector.cs" />
+    <None Include="CustomCode\Partials\EFModelDiagram_n._cs" />
     <Compile Include="CustomCode\Partials\ModelParameter.cs" />
     <Compile Include="CustomCode\Partials\ModelProcedure.cs" />
     <Compile Include="CustomCode\Partials\ProcedureShapeBase.cs" />
+    <Compile Include="CustomCode\Scaffolding\DSRefAdapter.cs" />
+    <Compile Include="CustomCode\Scaffolding\GenClass.cs" />
+    <Compile Include="CustomCode\Scaffolding\GenField.cs" />
+    <Compile Include="CustomCode\Scaffolding\GenProc.cs" />
+    <Compile Include="CustomCode\Scaffolding\ModelGen.cs" />
+    <Compile Include="CustomCode\Scaffolding\Oracle\OracleModelGen.cs" />
     <Compile Include="CustomCode\Type Descriptors\AssociationTypeDescriptor.cs" />
     <Compile Include="CustomCode\Partials\BidirectionalAssociation.cs" />
     <Compile Include="CustomCode\Connection Builders\BidirectionalAssociationBuilder.cs" />

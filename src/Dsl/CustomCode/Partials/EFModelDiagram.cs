@@ -1,8 +1,13 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Runtime.InteropServices;
+using System.Runtime.InteropServices.ComTypes;
 using System.Windows.Forms;
-
+using Microsoft.VisualStudio.Data.Framework;
+using Microsoft.VisualStudio.Data.Services.SupportEntities.Interop;
 using Microsoft.VisualStudio.Modeling;
 using Microsoft.VisualStudio.Modeling.Diagrams;
 using Microsoft.VisualStudio.Modeling.Diagrams.GraphObject;
@@ -23,8 +28,9 @@ namespace Sawczyn.EFDesigner.EFModel
       }
 
       public static bool IsDropping { get; private set; }
+      public static DSRefAdapter DSRef { get; private set; }
 
-      public override void OnDragOver(DiagramDragEventArgs diagramDragEventArgs)
+        public override void OnDragOver(DiagramDragEventArgs diagramDragEventArgs)
       {
          base.OnDragOver(diagramDragEventArgs);
 
@@ -34,7 +40,18 @@ namespace Sawczyn.EFDesigner.EFModel
 
       private bool IsAcceptableDropItem(DiagramDragEventArgs diagramDragEventArgs)
       {
-         IsDropping = (diagramDragEventArgs.Data.GetData("Text") is string filename && File.Exists(filename)) || 
+            DSRef = null;
+            if (diagramDragEventArgs.Data is DSRefClipboardObject dsRefCO) {
+                object dsRef = dsRefCO.GetDSRef(ActiveDiagramView.Site);
+                if (dsRef != null && dsRef is IDSRefConsumer c) {
+                    DSRefAdapter ds = new DSRefAdapter(c);
+                    if (ds.Type == DSRefType.Table || ds.Type == DSRefType.View || ds.Type == DSRefType.Procedure) {
+                        DSRef = ds;
+                        return true;
+                    }
+                }
+            }
+            IsDropping = (diagramDragEventArgs.Data.GetData("Text") is string filename && File.Exists(filename)) || 
                       (diagramDragEventArgs.Data.GetData("FileDrop") is string[] filenames && filenames.All(File.Exists));
 
          return IsDropping;
@@ -43,6 +60,12 @@ namespace Sawczyn.EFDesigner.EFModel
       public override void OnDragDrop(DiagramDragEventArgs diagramDragEventArgs)
       {
          base.OnDragDrop(diagramDragEventArgs);
+
+        if (DSRef != null) {
+            ModelGen.ModelGenerator.GenerateItem(Store, DSRef);
+            DSRef = null;
+            IsDropping = false;
+        }
 
          if (IsDropping)
          {
