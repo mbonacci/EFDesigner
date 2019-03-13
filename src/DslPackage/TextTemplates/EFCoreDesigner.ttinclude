@@ -106,10 +106,13 @@ void WriteDbContextEFCore(ModelRoot modelRoot)
 
    Output("using System;");
    Output("using System.Collections.Generic;");
+   Output("using System.Data;");
+   Output("using System.Data.Common;");	
    Output("using System.Linq;");
    Output("using System.ComponentModel.DataAnnotations.Schema;");
    Output("using Microsoft.EntityFrameworkCore;");
-   NL();
+	
+	NL();
 
    BeginNamespace(modelRoot.Namespace);
 
@@ -373,7 +376,6 @@ void WriteDbContextEFCore(ModelRoot modelRoot)
       foreach (UnidirectionalAssociation association in Association.GetLinksToTargets(modelClass).OfType<UnidirectionalAssociation>())
       {
          if (visited.Contains(association)) continue;
-         visited.Add(association);
 
          segments.Clear();
          segments.Add($"modelBuilder.Entity<{modelClass.FullName}>()");
@@ -383,6 +385,7 @@ void WriteDbContextEFCore(ModelRoot modelRoot)
          {
             case Sawczyn.EFDesigner.EFModel.Multiplicity.ZeroMany:
                // TODO: Implement many-to-many
+			   continue;
                if (association.SourceMultiplicity != Sawczyn.EFDesigner.EFModel.Multiplicity.ZeroMany)
                   segments.Add($"HasMany(x => x.{association.TargetPropertyName})");
                break;
@@ -396,6 +399,8 @@ void WriteDbContextEFCore(ModelRoot modelRoot)
             //   segments.Add($"HasMany(x => x.{association.TargetPropertyName})");
             //   break;
          }
+
+		 visited.Add(association);
 
          switch (association.SourceMultiplicity) // realized by property on target, but no property on target
          {
@@ -416,9 +421,12 @@ void WriteDbContextEFCore(ModelRoot modelRoot)
             //   break;
          }
 
-         string dependentClass = association.SourceRole == EndpointRole.Dependent ? association.Source.FullName : association.Target.FullName;
-         string columnPrefix = association.SourceRole == EndpointRole.Dependent ? "" : association.Target.FullName;
-         segments.Add($"HasForeignKey(\"{columnPrefix}{association.TargetPropertyName}_Id\")");
+		 if (association.SourceRole == EndpointRole.Dependent) 
+            segments.Add(CreateForeignKeyColumnSegmentEFCore(association, foreignKeyColumns));
+
+         //string dependentClass = association.SourceRole == EndpointRole.Dependent ? association.Source.FullName : association.Target.FullName;
+         //string columnPrefix = association.SourceRole == EndpointRole.Dependent ? "" : association.Target.FullName;
+         //segments.Add($"HasForeignKey(\"{columnPrefix}{association.TargetPropertyName}_Id\")");
 
          if (required)
             segments.Add("IsRequired()");
@@ -449,7 +457,6 @@ void WriteDbContextEFCore(ModelRoot modelRoot)
       foreach (BidirectionalAssociation association in Association.GetLinksToSources(modelClass).OfType<BidirectionalAssociation>())
       {
          if (visited.Contains(association)) continue;
-         visited.Add(association);
 
          // TODO: fix cascade delete
          bool required = false;
@@ -461,6 +468,7 @@ void WriteDbContextEFCore(ModelRoot modelRoot)
          {
             case Sawczyn.EFDesigner.EFModel.Multiplicity.ZeroMany:
                // TODO: Implement many-to-many
+				 continue;
                if (association.TargetMultiplicity != Sawczyn.EFDesigner.EFModel.Multiplicity.ZeroMany)
                   segments.Add($"HasMany(x => x.{association.SourcePropertyName})");
                break;
@@ -475,7 +483,9 @@ void WriteDbContextEFCore(ModelRoot modelRoot)
             //   break;
          }
 
-         switch (association.TargetMultiplicity) // realized by property on source
+		 visited.Add(association);
+
+          switch (association.TargetMultiplicity) // realized by property on source
          {
             case Sawczyn.EFDesigner.EFModel.Multiplicity.ZeroMany:
                // TODO: Implement many-to-many
@@ -534,6 +544,8 @@ void WriteDbContextEFCore(ModelRoot modelRoot)
    Output("OnModelCreatedImpl(modelBuilder);");
    Output("}");
 
+   GenerateProcedures(modelRoot);
+
    Output("}");
 
    EndNamespace(modelRoot.Namespace);
@@ -544,11 +556,20 @@ string CreateForeignKeyColumnSegmentEFCore(Association association, List<string>
    // foreign key definitions always go in the table representing the Dependent end of the association
    // if there is no dependent end (i.e., many-to-many), there are no foreign keys
    string nameBase = string.Empty;
-
-   if (association.SourceRole == EndpointRole.Dependent)
+   string dependentClass = string.Empty;
+   string foreignKey = string.Empty;
+	
+   if (association.SourceRole == EndpointRole.Dependent) {
       nameBase = association.TargetPropertyName;
+      dependentClass = association.Source.Name;
+	  foreignKey = association.SourceForeignKey;
+   }
    else if (association.TargetRole == EndpointRole.Dependent)
-      nameBase = association is BidirectionalAssociation b ? b.SourcePropertyName :  $"{association.Source.Name}.{association.TargetPropertyName}";
+   {
+      nameBase = (association as BidirectionalAssociation)?.SourcePropertyName ?? association.Source.Name;
+      dependentClass = association.Target.Name;
+	  foreignKey = association.TargetForeignKey;
+   }
    else
       return null;
 
@@ -561,7 +582,84 @@ string CreateForeignKeyColumnSegmentEFCore(Association association, List<string>
          columnName = $"{nameBase}{++index}_Id";
       } while (foreignKeyColumns.Contains(columnName));
    }
+
+   if (!string.IsNullOrEmpty(foreignKey)) columnName = foreignKey;
+
    foreignKeyColumns.Add(columnName);
    return $"HasForeignKey(\"{columnName}\")";
 }
+
+bool IsNullable(ModelParameter param)
+{
+   return (!param.Required || param.Direction != ParamDirection.In) &&
+          !NonNullableTypes.Contains(param.Type);
+}
+
+void GenerateProcedures(ModelRoot modelRoot)
+{
+	if (modelRoot.ModelProcedures.Count <= 0) return;
+
+	// generate parameter helper
+	NL();
+	Output(@"private DbParameter CreateParam(DbCommand cmd, string name, DbType type, ParameterDirection dir = ParameterDirection.Input, object value = null)");
+	Output(@"{");
+	Output(@"DbParameter p = cmd.CreateParameter();");
+	Output(@"p.DbType = type;");
+	Output(@"p.Direction = dir;");
+	Output(@"p.ParameterName = name;");
+	Output(@"p.Value = value;");
+	Output(@"return p;");
+	Output(@"}");
+
+	foreach (ModelProcedure proc in modelRoot.ModelProcedures) {
+		string tmp = "";
+		NL();
+        bool first = true;
+        foreach (ModelParameter p in proc.Parameters) {
+            string mod = "";
+			string nullable = IsNullable(p) ? "?" : "";
+            if (p.Direction == ParamDirection.Out) mod = "out ";
+            if (p.Direction == ParamDirection.InOut) mod = "ref ";
+            tmp += $"{(first?"":", ")}{mod}{p.PrimitiveType}{nullable} {p.Name}";
+            first = false;
+        }
+		Output($"public { (proc.IsFunction ? proc.ReturnPrimitiveType : "void") } { proc.Name }({ tmp })");
+        Output("{");
+
+		Output($@"DbCommand cmd = this.Database.GetDbConnection().CreateCommand();");
+		Output($@"if (cmd.Connection.State != ConnectionState.Open) cmd.Connection.Open();");
+		Output($@"cmd.CommandType = CommandType.StoredProcedure;");
+		Output($@"cmd.CommandText = ""{proc.StoredProcName}"";");
+
+        foreach (ModelParameter p in proc.Parameters) {
+			if (p.Direction == ParamDirection.In)
+				Output($"cmd.Parameters.Add(CreateParam(cmd, \"{ p.ParameterName }\", DbType.{p.Type}, ParameterDirection.Input, { p.Name }));");
+			else if (p.Direction == ParamDirection.InOut)
+				Output($"cmd.Parameters.Add(CreateParam(cmd, \"{ p.ParameterName }\", DbType.{p.Type}, ParameterDirection.InputOutput, { p.Name }));");
+			else 
+				Output($"cmd.Parameters.Add(CreateParam(cmd, \"{ p.ParameterName }\", DbType.{p.Type}, ParameterDirection.Output));");
+        }
+        if (proc.IsFunction)
+            Output($"cmd.Parameters.Add(CreateParam(\"_retVal\", DbType.{proc.ReturnType}, ParameterDirection.ReturnValue));");
+
+		NL();
+        Output("int res = cmd.ExecuteNonQuery();");
+
+		foreach (ModelParameter p in proc.Parameters) {
+            if (p.Direction != ParamDirection.In) {
+                Output($"{p.Name} = null;");
+                Output($"if (cmd.Parameters[\"{p.ParameterName}\"].Value != DBNull.Value)");
+                Output($"\t{p.Name} = cmd.Parameters[\"{p.ParameterName}\"].Value as {p.PrimitiveType}{ (!NonNullableTypes.Contains(p.Type) ? "?" : "") };");
+            }
+        }
+        if (proc.IsFunction) {
+            Output($"return cmd.Parameters[\"_retVal\"].Value as { proc.ReturnPrimitiveType }{ (!NonNullableTypes.Contains(proc.ReturnType) ? "?" : "") };");
+        } else {
+            Output("return;");
+        }
+
+        Output("}");
+    }
+}
+
 #>

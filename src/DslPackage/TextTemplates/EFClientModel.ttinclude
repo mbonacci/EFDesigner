@@ -1,0 +1,151 @@
+﻿<#@ assembly name="System.Core"
+#><#@ assembly name="System.Data.Linq"
+#><#@ assembly name="EnvDTE"
+#><#@ assembly name="System.Xml"
+#><#@ assembly name="System.Xml.Linq"
+#><#@ import namespace="System.Collections.Generic"
+#><#@ import namespace="System.IO"
+#><#@ import namespace="System.Linq" #><#+
+
+// EFDesigner v1.2.6.18
+// Copyright (c) 2017-2018 Michael Sawczyn
+// https://github.com/msawczyn/EFDesigner
+
+void GenerateClientModels(Manager manager, ModelRoot modelRoot)
+{
+	if (string.IsNullOrEmpty(modelRoot.ClientModelFile)) return;
+      manager.StartNewFile(modelRoot.ClientModelFile);
+
+   // Entities
+
+   foreach (ModelClass modelClass in modelRoot.Classes.Where(c => c.GenerateClient))
+   {
+      WriteClientClass(modelClass);
+   }
+
+   // Enums
+
+   //foreach (ModelEnum modelEnum in modelRoot.Enums)
+   //{
+   //  WriteEnum(modelEnum);
+   //}
+}
+
+void WriteClientClass(ModelClass modelClass)
+{
+   List<string> bases = new List<string>();
+   if (modelClass.Superclass != null) 
+      bases.Add(modelClass.Superclass.FullName);
+   string baseClass = bases.Any() ? $" : {string.Join(", ", bases.Select(x => x.Trim()))}" : string.Empty;
+
+   Output($"export class {modelClass.Name}{baseClass}");
+   Output("{");
+
+   WriteClientProperties(modelClass);
+   WriteClientNavigationProperties(modelClass);
+
+   Output("}");
+   NL();
+}
+
+void WriteClientProperties(ModelClass modelClass)
+{
+   List<string> segments = new List<string>();
+
+   foreach (ModelAttribute modelAttribute in modelClass.Attributes.Where(a => a.GenerateClient))
+   {
+	   string def = "";
+	   if (!string.IsNullOrEmpty(modelAttribute.InitialValue))
+	   {
+         string quote = modelAttribute.PrimitiveType == "string" ? "\"" : modelAttribute.PrimitiveType == "char" ? "'" : string.Empty;
+         def = $" = {quote}{modelAttribute.InitialValue}{quote}";
+       }
+
+	   Output($"public {ToTSName(modelAttribute.Name)}: {ToTSType(modelAttribute.Type)}{def};");
+   }
+}
+
+void WriteClientNavigationProperties(ModelClass modelClass)
+{
+   foreach (NavigationProperty navigationProperty in modelClass.LocalNavigationProperties().Where(n => n.AssociationObject.GenerateClient))
+   {
+      string type = navigationProperty.IsCollection
+                        ? $"Array<{navigationProperty.ClassType.Name}>"
+                        : navigationProperty.ClassType.Name;
+
+	  Output($"public {ToTSName(navigationProperty.PropertyName)}: {type};");
+   }
+}
+
+void WriteClientEnum(ModelEnum modelEnum)
+{
+      Output($"public enum {modelEnum.Name} : {modelEnum.ValueType}");
+      Output("{");
+
+      ModelEnumValue[] values = modelEnum.Values.ToArray();
+      for (int index = 0; index < values.Length; ++index)
+      {
+         if (!string.IsNullOrEmpty(values[index].Summary))
+         {
+            Output("/// <summary>");
+            Output("/// {0}", values[index].Summary);
+            Output("/// </summary>");
+         }
+         if (!string.IsNullOrEmpty(values[index].Description))
+         {
+            Output("/// <remarks>");
+            Output("/// {0}", values[index].Description);
+            Output("/// </remarks>");
+         }
+
+         if (!string.IsNullOrWhiteSpace(values[index].CustomAttributes))
+             Output($"[{values[index].CustomAttributes.Trim('[',']')}]");
+
+         if (!string.IsNullOrWhiteSpace(values[index].DisplayText))
+            Output($"[System.ComponentModel.DataAnnotations.Display(Name=\"{values[index].DisplayText}\")]");
+
+         if (string.IsNullOrEmpty(values[index].Value))
+            Output($"{values[index].Name}{(index < values.Length - 1 ? "," : string.Empty)}");
+         else
+            Output($"{values[index].Name} = {values[index].Value}{(index < values.Length - 1 ? "," : string.Empty)}");
+      }
+      Output("}");
+
+      EndNamespace(modelEnum.Namespace);
+}
+
+public string ToTSName(string name)
+{
+	if (name != null && name.Length > 0) return Char.ToLower(name[0]) + name.Substring(1);
+	return name;
+}
+
+public string ToTSType(string typeName)
+{
+    switch (typeName)
+    {
+    case "Binary":
+        return "Int8Array";
+    case "Boolean":
+        return "boolean";
+    case "Byte":
+    case "byte":
+    case "Decimal":
+    case "Single":
+    case "Double":
+    case "Int16":
+    case "Int32":
+    case "Int64":
+        return "number";
+	case "Date":
+	case "DateTime":
+	case "Time":
+		return "Date";
+    case "String":
+        return "string";
+    }
+
+    return typeName;
+}
+
+#>

@@ -8,6 +8,7 @@
 #><#@ include file="EFDesigner.ttinclude" once="true"
 #><#@ include file="EF6Designer.ttinclude" once="true"
 #><#@ include file="EFCoreDesigner.ttinclude" once="true"
+#><#@ include file="EFClientModel.ttinclude" once="true"
 #><#@ output extension=".cs" 
 #><#@ import namespace="System.Linq" 
 #><#@ import namespace="System" 
@@ -44,6 +45,7 @@
             GenerateEFCore(manager, this.ModelRoot);
             break;
       }
+	  GenerateClientModels(manager, this.ModelRoot);
 
    }
 
